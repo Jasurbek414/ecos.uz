@@ -1,92 +1,92 @@
 import React from 'react';
 import {
-  Code,
-  Cpu,
-  Layers,
-  ShieldCheck,
   Check,
+  Building,
+  ShieldCheck,
+  Users,
+  Award,
 } from 'lucide-react';
 
 export const AboutSection: React.FC = () => {
   return (
-    <section id="about" className="py-16 bg-slate-50/70 border-y border-slate-200/80">
+    <section id="about" className="py-16 md:py-20 bg-slate-50/60 border-b border-slate-100">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           {/* Left Text (7 Cols) */}
           <div className="lg:col-span-7 space-y-4">
             <span className="text-xs font-mono font-bold uppercase text-emerald-700 tracking-wider">
-              Kompaniya Haqida
+              Biz Haqimizda
             </span>
             <h2 className="text-2xl sm:text-4xl font-outfit font-black text-slate-900 tracking-tight">
-              ECOS Technologies — Biznesingizning Ishonchli IT Hamkori
+              ECOS Technologies — Biznes Infratuzilmasini Yaratuvchi Jamoa
             </h2>
             <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-              Biz O'zbekiston bozoridagi korxonalar, savdo tarmoqlari va mehmonxonalar uchun dasturiy ta'minot
-              ishlab chiqish, smart uskunalar montaji va kiberxavfsiz tarmoq infratuzilmasini kompleks ravishda
-              yo'lga qo'yuvchi texnologik kompaniyamiz.
+              Biz O'zbekiston korxonalari uchun dasturiy ta'minot yaratish, biometrik Face ID uskunalarini o'rnatish
+              hamda kiberxavfsiz tarmoqlarni sozlashga ixtisoslashgan texnologik kompaniyamiz.
             </p>
             <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-              Mijozlarimizga tarqoq xizmatlar o'rniga barcha kerakli jarayonlarni — dastur, server, turniket,
-              Face ID va kameralarni bitta qo'ldan, o'zaro to'liq integratsiyalangan holda topshiramiz.
+              Bizning asosiy afzalligimiz — <strong>bitta qo'ldan kalit ostida topshirish</strong> tamoyili.
+              Siz dasturchi, tarmoqchi va xavfsizlik muhandisini alohida izlamaysiz. Barcha apparat va dasturiy
+              ta'minot bir-biriga uzviy bog'langan holda ishga tushiriladi.
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-              <div className="flex items-center gap-2 text-xs font-semibold text-slate-700">
-                <div className="w-4 h-4 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
-                  <Check className="w-2.5 h-2.5 stroke-[3]" />
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-3">
+              <div className="flex items-center gap-2.5 text-xs font-semibold text-slate-700">
+                <div className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
+                  <Check className="w-3 h-3 stroke-[2.5]" />
                 </div>
                 <span>Shartnoma asosida 100% rasmiy faoliyat</span>
               </div>
-              <div className="flex items-center gap-2 text-xs font-semibold text-slate-700">
-                <div className="w-4 h-4 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
-                  <Check className="w-2.5 h-2.5 stroke-[3]" />
+              <div className="flex items-center gap-2.5 text-xs font-semibold text-slate-700">
+                <div className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
+                  <Check className="w-3 h-3 stroke-[2.5]" />
                 </div>
-                <span>Professional muhandislar jamoasi</span>
+                <span>Soliq OFD va Click/Payme to'liq integratsiya</span>
               </div>
-              <div className="flex items-center gap-2 text-xs font-semibold text-slate-700">
-                <div className="w-4 h-4 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
-                  <Check className="w-2.5 h-2.5 stroke-[3]" />
+              <div className="flex items-center gap-2.5 text-xs font-semibold text-slate-700">
+                <div className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
+                  <Check className="w-3 h-3 stroke-[2.5]" />
                 </div>
-                <span>Milliy to'lov (Click, Payme) va Soliq OFD</span>
+                <span>1 yillik rasmiy kafolat va texnik yordam</span>
               </div>
-              <div className="flex items-center gap-2 text-xs font-semibold text-slate-700">
-                <div className="w-4 h-4 rounded-full bg-rose-100 text-rose-700 flex items-center justify-center shrink-0">
-                  <Check className="w-2.5 h-2.5 stroke-[3]" />
+              <div className="flex items-center gap-2.5 text-xs font-semibold text-slate-700">
+                <div className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
+                  <Check className="w-3 h-3 stroke-[2.5]" />
                 </div>
-                <span>Toshkentda laboratoriya va tezkor servis</span>
+                <span>Toshkentda o'z servis laboratoriyamiz</span>
               </div>
             </div>
           </div>
 
-          {/* Right Highlights (5 Cols) */}
-          <div className="lg:col-span-5 grid grid-cols-1 gap-3.5">
-            <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-2xs flex items-center gap-4">
-              <div className="w-11 h-11 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
-                <Code className="w-6 h-6" />
+          {/* Right Cards (5 Cols) */}
+          <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3.5">
+            <div className="p-4 rounded-xl bg-white border border-slate-200/90 shadow-2xs flex items-center gap-3.5">
+              <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0">
+                <Building className="w-5 h-5" />
               </div>
               <div>
-                <h3 className="text-sm font-bold text-slate-900">Dasturlash & Integratsiya</h3>
-                <p className="text-xs text-slate-500 mt-0.5">Veb, mobil ilovalar va ERP/CRM platformalari</p>
+                <h4 className="text-sm font-bold text-slate-900">Ofis va Laboratoriya</h4>
+                <p className="text-xs text-slate-500 mt-0.5">Toshkent shahri, IT Park hududi</p>
               </div>
             </div>
 
-            <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-2xs flex items-center gap-4">
-              <div className="w-11 h-11 rounded-xl bg-rose-100 text-rose-700 flex items-center justify-center shrink-0">
-                <Cpu className="w-6 h-6" />
+            <div className="p-4 rounded-xl bg-white border border-slate-200/90 shadow-2xs flex items-center gap-3.5">
+              <div className="w-10 h-10 rounded-xl bg-slate-100 text-slate-700 flex items-center justify-center shrink-0">
+                <Users className="w-5 h-5" />
               </div>
               <div>
-                <h3 className="text-sm font-bold text-slate-900">Smart Uskunalar & Tarmoq</h3>
-                <p className="text-xs text-slate-500 mt-0.5">Face ID, MikroTik WireGuard va 4K CCTV montaji</p>
+                <h4 className="text-sm font-bold text-slate-900">Tajribali Muhandislar</h4>
+                <p className="text-xs text-slate-500 mt-0.5">Dasturchilar va tarmoq xavfsizligi mutaxassislari</p>
               </div>
             </div>
 
-            <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-2xs flex items-center gap-4">
-              <div className="w-11 h-11 rounded-xl bg-slate-100 text-slate-700 flex items-center justify-center shrink-0">
-                <ShieldCheck className="w-6 h-6" />
+            <div className="p-4 rounded-xl bg-white border border-slate-200/90 shadow-2xs flex items-center gap-3.5">
+              <div className="w-10 h-10 rounded-xl bg-rose-50 text-rose-700 flex items-center justify-center shrink-0">
+                <ShieldCheck className="w-5 h-5" />
               </div>
               <div>
-                <h3 className="text-sm font-bold text-slate-900">Kafolatli Servis & Qo'llab-quvvatlash</h3>
-                <p className="text-xs text-slate-500 mt-0.5">24/7 monitoring va bepul texnik ko'rsatmalar</p>
+                <h4 className="text-sm font-bold text-slate-900">Ishonchli Xizmat</h4>
+                <p className="text-xs text-slate-500 mt-0.5">Barcha loyihalar rasmiy shartnoma bilan topshiriladi</p>
               </div>
             </div>
           </div>

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { AboutSection } from './components/AboutSection';
+import { ProductsSection } from './components/ProductsSection';
 import { ServicesSection } from './components/ServicesSection';
-import { EcosystemShowcase } from './components/EcosystemShowcase';
-import { WhyUs } from './components/WhyUs';
+import { AboutSection } from './components/AboutSection';
+import { WhyUsSection } from './components/WhyUsSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { ConsultModal } from './components/ConsultModal';
@@ -19,22 +19,22 @@ export function App() {
 
       {/* 2. Main Page Content */}
       <main className="flex-1">
-        {/* Hero Banner */}
+        {/* Hero Section */}
         <Hero onOpenConsult={() => setIsConsultOpen(true)} />
+
+        {/* Flagship Products */}
+        <ProductsSection onOpenConsult={() => setIsConsultOpen(true)} />
+
+        {/* Custom IT Services */}
+        <ServicesSection onOpenConsult={() => setIsConsultOpen(true)} />
 
         {/* About ECOS Technologies */}
         <AboutSection />
 
-        {/* Core IT Services */}
-        <ServicesSection onOpenConsult={() => setIsConsultOpen(true)} />
-
-        {/* Flagship Products (Hotel ECOS, CRM, Edu) */}
-        <EcosystemShowcase onOpenConsult={() => setIsConsultOpen(true)} />
-
         {/* Why Choose ECOS */}
-        <WhyUs />
+        <WhyUsSection />
 
-        {/* Contact & Consultation Form */}
+        {/* Contact Information & Form */}
         <ContactSection />
       </main>
 
