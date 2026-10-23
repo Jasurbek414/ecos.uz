@@ -4,80 +4,63 @@ import {
   CreditCard,
   ShieldCheck,
   Headphones,
-  Award,
 } from 'lucide-react';
 
 export const WhyUs: React.FC = () => {
   const advantages = [
     {
-      title: 'Bitta Qo\'ldan To\'liq Yechim (Turnkey)',
-      description:
-        'Dasturchi, tarmoq muhandisi va apparat o\'rnatuvchilarni alohida qidirishingiz shart emas. ECOS dasturiy ta\'minotdan boshlab, Face ID va serverlarni montaj qilishgacha barcha bosqichni o\'z bo\'yniga oladi.',
+      title: 'Bitta Qo\'ldan Kalit Ostida',
+      description: 'Dasturchi, tarmoqchi va montajchilarni alohida izlamaysiz. Barcha tizimni ECOS o\'z zimmasiga oladi.',
       icon: Layers,
-      color: 'text-emerald-700 bg-emerald-100 border-emerald-300',
+      color: 'text-emerald-700 bg-emerald-100',
     },
     {
-      title: 'O\'zbekiston To\'lov & Soliq Integratsiyasi',
-      description:
-        'Click, Payme, Uzum Bank to\'lovlari, milliy fiskal chek (OFD Soliq) tizimlari va mahalliy mehnat qonunchiligi (HR davomat) standartlariga 100% moslashtirilgan.',
+      title: 'O\'zbekiston Standartlari',
+      description: 'Click, Payme, Uzum to\'lovlari, milliy Soliq OFD cheklari va mahalliy mehnat qonunchiligiga to\'liq mos.',
       icon: CreditCard,
-      color: 'text-rose-700 bg-rose-100 border-rose-300',
+      color: 'text-rose-700 bg-rose-100',
     },
     {
-      title: 'Kiberxavfsizlik & Shifrlangan VPN Tarmoq',
-      description:
-        'Ma\'lumotlaringiz tashqi xakerlik hujumlaridan himoyalangan. MikroTik WireGuard orqali filiallararo shifrlangan aloqa va Face ID da fotosurat orqali aldashdan (anti-spoofing) to\'liq himoya.',
+      title: 'Kiberxavfsizlik & VPN',
+      description: 'MikroTik WireGuard orqali shifrlangan tarmoq va Face ID da fotosurat orqali aldashdan (anti-spoofing) himoya.',
       icon: ShieldCheck,
-      color: 'text-emerald-700 bg-emerald-100 border-emerald-300',
+      color: 'text-emerald-700 bg-emerald-100',
     },
     {
-      title: '24/7 Jonli Texnik Qo\'llab-Quvvatlash & Kafolat',
-      description:
-        'Barcha dastur va o\'rnatilgan uskunalarga rasmiy 1 yillik to\'liq kafolat. Muhandislarimiz tunu-kun favqulodda holatlarda monitoring va tezkor yordam ko\'rsatishga tayyor.',
+      title: '1 Yillik Kafolat & 24/7 Servis',
+      description: 'Barcha dastur va uskunalarga rasmiy 1 yillik kafolat hamda favqulodda holatlarda tunu-kun tezkor yordam.',
       icon: Headphones,
-      color: 'text-rose-700 bg-rose-100 border-rose-300',
+      color: 'text-slate-800 bg-slate-100',
     },
   ];
 
   return (
-    <section id="why-us" className="py-20 relative bg-slate-50/70 border-y border-slate-200/80">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-100 border border-emerald-300 text-xs font-bold text-emerald-800 uppercase tracking-wider mb-4">
-            <Award className="w-3.5 h-3.5 text-emerald-600" />
-            <span>Nega Aynan ECOS?</span>
-          </div>
-          <h2 className="text-3xl sm:text-5xl font-outfit font-black text-slate-900 tracking-tight">
-            Biznesingizni Nega Bizga Ishonishingiz Kerak?
+    <section id="why-us" className="py-16 bg-white">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-2xl mx-auto mb-12">
+          <span className="text-xs font-mono font-bold uppercase text-emerald-700 tracking-wider">
+            Nega Aynan ECOS?
+          </span>
+          <h2 className="text-2xl sm:text-4xl font-outfit font-black text-slate-900 tracking-tight mt-1">
+            Biznesingiz Uchun Asosiy Afzalliklar
           </h2>
-          <p className="mt-4 text-base text-slate-600 leading-relaxed">
-            Biz shunchaki dastur yozmaymiz, balki biznesingizni samarali va to'xtovsiz ishlaydigan
-            avtomatlashtirilgan raqamli tizimga aylantiramiz.
-          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {advantages.map((adv, idx) => {
             const Icon = adv.icon;
             return (
               <div
                 key={idx}
-                className="bg-white p-8 rounded-3xl border border-slate-200 hover:border-emerald-300 shadow-sm hover:shadow-xl transition-all flex flex-col sm:flex-row items-start gap-6 group"
+                className="p-5 rounded-2xl bg-slate-50/70 border border-slate-200 hover:border-slate-300 hover:bg-white hover:shadow-xs transition-all space-y-3"
               >
-                <div
-                  className={`p-4 rounded-2xl border shrink-0 group-hover:scale-105 transition-transform ${adv.color}`}
-                >
-                  <Icon className="w-7 h-7" />
+                <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${adv.color}`}>
+                  <Icon className="w-5 h-5" />
                 </div>
-
-                <div className="space-y-2">
-                  <h3 className="text-xl font-outfit font-bold text-slate-900 group-hover:text-emerald-700 transition-colors">
-                    {adv.title}
-                  </h3>
-                  <p className="text-sm text-slate-600 leading-relaxed">
-                    {adv.description}
-                  </p>
-                </div>
+                <h3 className="font-outfit font-bold text-sm text-slate-900">{adv.title}</h3>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  {adv.description}
+                </p>
               </div>
             );
           })}

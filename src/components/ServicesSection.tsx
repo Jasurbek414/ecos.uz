@@ -1,11 +1,10 @@
 import React from 'react';
 import {
   Code2,
-  Cpu,
-  Bot,
   ScanFace,
-  CheckCircle2,
+  Bot,
   ArrowRight,
+  Check,
 } from 'lucide-react';
 
 interface ServicesSectionProps {
@@ -13,184 +12,113 @@ interface ServicesSectionProps {
 }
 
 export const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenConsult }) => {
+  const services = [
+    {
+      id: 'software',
+      title: 'Dasturiy Ta\'minot Ishlab Chiqish',
+      description: 'Biznesingiz ehtiyojlariga moslashtirilgan veb-saytlar, mobil ilovalar (iOS/Android), CRM va ERP tizimlarini noldan ishlab chiqamiz.',
+      icon: Code2,
+      iconColor: 'bg-emerald-100 text-emerald-700 border-emerald-200',
+      tag: 'Software Dev',
+      tagColor: 'bg-emerald-50 text-emerald-700',
+      bullets: [
+        'Veb-saytlar va mijozlar portallari (React, Next.js)',
+        'Mobil ilovalar (Flutter iOS & Android)',
+        'Click, Payme, Uzum va Soliq OFD integratsiyalari',
+      ],
+    },
+    {
+      id: 'hardware',
+      title: 'Smart IoT, Face ID & Tarmoq',
+      description: 'Korxona va mehmonxonalar uchun zamonaviy biometrik Face ID turniketlari, 4K video kuzatuv va xavfsiz VPN tarmoqlarini montaj qilamiz.',
+      icon: ScanFace,
+      iconColor: 'bg-rose-100 text-rose-700 border-rose-200',
+      tag: 'IoT & Network',
+      tagColor: 'bg-rose-50 text-rose-700',
+      bullets: [
+        'Hikvision va Dahua Face ID terminallari',
+        'MikroTik WireGuard shifrlangan korporativ VPN',
+        'Elektron smart NFC/Bluetooth qulflar va turniketlar',
+      ],
+    },
+    {
+      id: 'ai',
+      title: 'AI & Biznes Avtomatlashtirish',
+      description: 'Mijozlaringiz bilan 24/7 muloqot qiluvchi, buyurtma qabul qiluvchi aqlli sun\'iy intellekt agentlari va avtomatik hisobot tizimlari.',
+      icon: Bot,
+      iconColor: 'bg-teal-100 text-teal-800 border-teal-200',
+      tag: 'AI Solutions',
+      tagColor: 'bg-teal-50 text-teal-800',
+      bullets: [
+        'Telegram va veb-saytlar uchun 24/7 AI maslahatchilar',
+        'Face ID orqali avtomatik HR oylik (payroll) hisobi',
+        'Biznes ko\'rsatkichlarini jonli tahlil qilish (BI)',
+      ],
+    },
+  ];
+
   return (
-    <section id="services" className="py-20 relative bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Heading */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-100 border border-emerald-300 text-xs font-bold text-emerald-800 uppercase tracking-wider mb-4">
-            <Cpu className="w-3.5 h-3.5 text-emerald-600" />
-            <span>Asosiy Yo'nalishlar & Kompetensiyalar</span>
-          </div>
-          <h2 className="text-3xl sm:text-5xl font-outfit font-black text-slate-900 tracking-tight">
-            Biznesingiz Uchun Kompleks IT Xizmatlar
+    <section id="services" className="py-16 bg-white">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-2xl mx-auto mb-12">
+          <span className="text-xs font-mono font-bold uppercase text-emerald-700 tracking-wider">
+            Xizmatlarimiz
+          </span>
+          <h2 className="text-2xl sm:text-4xl font-outfit font-black text-slate-900 tracking-tight mt-1">
+            Biznes Uchun IT Xizmatlar Majmuasi
           </h2>
-          <p className="mt-4 text-base text-slate-600 leading-relaxed">
-            Dasturiy ta'minot yaratishdan boshlab, tarmoq uskunalarini montaj qilish va sun'iy intellekt
-            integratsiyasigacha bo'lgan to'liq tsiklli IT-xizmatlar.
+          <p className="mt-2 text-sm text-slate-600">
+            Dasturlashdan boshlab, tarmoq uskunalarini o'rnatishgacha bo'lgan barcha IT jarayonlar.
           </p>
         </div>
 
-        {/* 3 Core Pillars Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* ================= PILLAR 1: SOFTWARE DEVELOPMENT ================= */}
-          <div className="bg-slate-50/80 hover:bg-white rounded-3xl p-8 border border-slate-200 shadow-sm hover:shadow-xl hover:border-emerald-300 transition-all flex flex-col justify-between group">
-            <div className="space-y-6">
-              <div className="w-14 h-14 rounded-2xl bg-emerald-100 border border-emerald-300 text-emerald-700 flex items-center justify-center shadow-xs">
-                <Code2 className="w-7 h-7" />
-              </div>
-
-              <div>
-                <span className="text-xs font-mono font-bold uppercase text-emerald-700 tracking-wider">
-                  01. Dasturiy Ta'minot
-                </span>
-                <h3 className="text-xl sm:text-2xl font-outfit font-bold text-slate-900 mt-1">
-                  Veb & Mobil Ilovalar, ERP / CRM
-                </h3>
-                <p className="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed">
-                  Har qanday murakkablikdagi biznes jarayonlarini avtomatlashtiruvchi zamonaviy dasturlar ishlab chiqamiz.
-                </p>
-              </div>
-
-              {/* Specific Offerings */}
-              <div className="space-y-3 pt-2">
-                <div className="flex items-start gap-3 text-xs sm:text-sm text-slate-700">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                  <span><strong>Web & Mobil ilovalar:</strong> React, Flutter (iOS & Android)</span>
-                </div>
-                <div className="flex items-start gap-3 text-xs sm:text-sm text-slate-700">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                  <span><strong>ERP & CRM Tizimlari:</strong> Savdo, moliya va omborxona</span>
-                </div>
-                <div className="flex items-start gap-3 text-xs sm:text-sm text-slate-700">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                  <span><strong>To'lov tizimlari:</strong> Click, Payme, Uzum va bank API lari</span>
-                </div>
-                <div className="flex items-start gap-3 text-xs sm:text-sm text-slate-700">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                  <span><strong>Yuqori yuklama:</strong> PostgreSQL, Redis, Docker mikroservislar</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="pt-8 border-t border-slate-200 mt-8">
-              <button
-                onClick={onOpenConsult}
-                className="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer"
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {services.map((s) => {
+            const Icon = s.icon;
+            return (
+              <div
+                key={s.id}
+                className="p-6 rounded-3xl bg-slate-50/70 border border-slate-200 hover:border-slate-300 hover:bg-white hover:shadow-md transition-all flex flex-col justify-between"
               >
-                <span>Dastur Buyurtma Qilish</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </button>
-            </div>
-          </div>
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <div className={`w-12 h-12 rounded-2xl border flex items-center justify-center ${s.iconColor}`}>
+                      <Icon className="w-6 h-6" />
+                    </div>
+                    <span className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded ${s.tagColor}`}>
+                      {s.tag}
+                    </span>
+                  </div>
 
-          {/* ================= PILLAR 2: SMART IOT & HARDWARE ================= */}
-          <div
-            id="iot-hardware"
-            className="bg-slate-50/80 hover:bg-white rounded-3xl p-8 border border-slate-200 shadow-sm hover:shadow-xl hover:border-rose-300 transition-all flex flex-col justify-between group"
-          >
-            <div className="space-y-6">
-              <div className="w-14 h-14 rounded-2xl bg-rose-100 border border-rose-300 text-rose-700 flex items-center justify-center shadow-xs">
-                <ScanFace className="w-7 h-7" />
-              </div>
+                  <div>
+                    <h3 className="text-lg font-outfit font-bold text-slate-900">{s.title}</h3>
+                    <p className="text-xs text-slate-600 mt-1.5 leading-relaxed">
+                      {s.description}
+                    </p>
+                  </div>
 
-              <div>
-                <span className="text-xs font-mono font-bold uppercase text-rose-700 tracking-wider">
-                  02. Smart IoT & Uskunalar
-                </span>
-                <h3 className="text-xl sm:text-2xl font-outfit font-bold text-slate-900 mt-1">
-                  Face ID, MikroTik & Smart Qulflar
-                </h3>
-                <p className="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed">
-                  Biometrik xavfsizlik, xodimlar davomati va korporativ tarmoq infratuzilmasini noldan o'rnatamiz.
-                </p>
-              </div>
+                  <div className="space-y-2 pt-2 border-t border-slate-200/60 text-xs text-slate-700">
+                    {s.bullets.map((b, idx) => (
+                      <div key={idx} className="flex items-start gap-2">
+                        <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                        <span>{b}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
 
-              {/* Specific Offerings */}
-              <div className="space-y-3 pt-2">
-                <div className="flex items-start gap-3 text-xs sm:text-sm text-slate-700">
-                  <CheckCircle2 className="w-4 h-4 text-rose-600 shrink-0 mt-0.5" />
-                  <span><strong>Face ID Terminallari:</strong> Hikvision, Dahua va ZKTeco</span>
-                </div>
-                <div className="flex items-start gap-3 text-xs sm:text-sm text-slate-700">
-                  <CheckCircle2 className="w-4 h-4 text-rose-600 shrink-0 mt-0.5" />
-                  <span><strong>MikroTik & VPN:</strong> WireGuard xavfsiz ofislararo tunnel</span>
-                </div>
-                <div className="flex items-start gap-3 text-xs sm:text-sm text-slate-700">
-                  <CheckCircle2 className="w-4 h-4 text-rose-600 shrink-0 mt-0.5" />
-                  <span><strong>Smart Qulflar:</strong> Mehmonxona va ofislar uchun NFC/Bluetooth</span>
-                </div>
-                <div className="flex items-start gap-3 text-xs sm:text-sm text-slate-700">
-                  <CheckCircle2 className="w-4 h-4 text-rose-600 shrink-0 mt-0.5" />
-                  <span><strong>CCTV Kuzatuv:</strong> 4K kameralar, NVR va AI harakat tahlili</span>
+                <div className="pt-6 mt-4 border-t border-slate-200/60">
+                  <button
+                    onClick={onOpenConsult}
+                    className="w-full py-2.5 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 text-slate-800 text-xs font-bold transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+                  >
+                    <span>Batafsil ma'lumot</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
                 </div>
               </div>
-            </div>
-
-            <div className="pt-8 border-t border-slate-200 mt-8">
-              <button
-                onClick={onOpenConsult}
-                className="w-full py-3 rounded-xl bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer"
-              >
-                <span>Uskunalarni Tanlash</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </button>
-            </div>
-          </div>
-
-          {/* ================= PILLAR 3: AI & AUTOMATION ================= */}
-          <div
-            id="ai-solutions"
-            className="bg-slate-50/80 hover:bg-white rounded-3xl p-8 border border-slate-200 shadow-sm hover:shadow-xl hover:border-emerald-300 transition-all flex flex-col justify-between group"
-          >
-            <div className="space-y-6">
-              <div className="w-14 h-14 rounded-2xl bg-teal-100 border border-teal-300 text-teal-800 flex items-center justify-center shadow-xs">
-                <Bot className="w-7 h-7" />
-              </div>
-
-              <div>
-                <span className="text-xs font-mono font-bold uppercase text-teal-800 tracking-wider">
-                  03. AI & Avtomatlashtirish
-                </span>
-                <h3 className="text-xl sm:text-2xl font-outfit font-bold text-slate-900 mt-1">
-                  Sun'iy Intellekt & Aqlli Agentlar
-                </h3>
-                <p className="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed">
-                  Mijozlar bilan 24/7 muloqot qiluvchi, buyurtma qabul qiluvchi va hisobot tayyorlovchi AI tizimlari.
-                </p>
-              </div>
-
-              {/* Specific Offerings */}
-              <div className="space-y-3 pt-2">
-                <div className="flex items-start gap-3 text-xs sm:text-sm text-slate-700">
-                  <CheckCircle2 className="w-4 h-4 text-teal-600 shrink-0 mt-0.5" />
-                  <span><strong>AI Mijozlar Xizmati:</strong> Telegram, Instagram va sayt botlari</span>
-                </div>
-                <div className="flex items-start gap-3 text-xs sm:text-sm text-slate-700">
-                  <CheckCircle2 className="w-4 h-4 text-teal-600 shrink-0 mt-0.5" />
-                  <span><strong>Avtomat HR Davomat:</strong> Face ID skani orqali oylik (payroll) hisobi</span>
-                </div>
-                <div className="flex items-start gap-3 text-xs sm:text-sm text-slate-700">
-                  <CheckCircle2 className="w-4 h-4 text-teal-600 shrink-0 mt-0.5" />
-                  <span><strong>Savdo Analitikasi:</strong> Katta ma'lumotlar (BI) va savdo prognozi</span>
-                </div>
-                <div className="flex items-start gap-3 text-xs sm:text-sm text-slate-700">
-                  <CheckCircle2 className="w-4 h-4 text-teal-600 shrink-0 mt-0.5" />
-                  <span><strong>Inson omilini kamaytirish:</strong> Qaytariluvchi ishlarni 90% avtomat qilish</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="pt-8 border-t border-slate-200 mt-8">
-              <button
-                onClick={onOpenConsult}
-                className="w-full py-3 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold transition-all shadow-sm flex items-center justify-center gap-2 cursor-pointer"
-              >
-                <span>AI Agentini Ulash</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </button>
-            </div>
-          </div>
+            );
+          })}
         </div>
       </div>
     </section>
