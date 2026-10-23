@@ -9,7 +9,6 @@ import {
   Menu,
   X,
   ChevronRight,
-  Globe,
   ArrowRight,
   ShieldCheck,
 } from 'lucide-react';
@@ -45,7 +44,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenConsult }) => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-slate-950/85 backdrop-blur-xl border-b border-white/10 shadow-2xl py-3.5'
+          ? 'bg-white/90 backdrop-blur-xl border-b border-slate-200/80 shadow-sm py-3'
           : 'bg-transparent py-5'
       }`}
     >
@@ -53,39 +52,40 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenConsult }) => {
         <div className="flex items-center justify-between">
           {/* Brand Logo */}
           <a href="#" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-cyan-400 p-0.5 shadow-lg shadow-indigo-500/30 group-hover:shadow-indigo-500/50 transition-all group-hover:scale-105">
-              <div className="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
-                <span className="font-outfit font-black text-xl bg-gradient-to-r from-indigo-400 to-cyan-300 bg-clip-text text-transparent">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 via-teal-500 to-rose-500 p-0.5 shadow-md shadow-emerald-500/20 group-hover:scale-105 transition-all">
+              <div className="w-full h-full bg-white rounded-[10px] flex items-center justify-center relative">
+                <span className="font-outfit font-black text-xl text-emerald-700">
                   E
                 </span>
+                <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-rose-600" />
               </div>
             </div>
             <div>
               <div className="flex items-center gap-1.5">
-                <span className="font-outfit font-black text-xl sm:text-2xl tracking-wider text-white">
+                <span className="font-outfit font-black text-xl sm:text-2xl tracking-wider text-slate-900">
                   ECOS
                 </span>
-                <span className="text-[10px] font-mono font-bold uppercase px-1.5 py-0.5 rounded bg-indigo-500/20 text-cyan-300 border border-indigo-400/30">
+                <span className="text-[10px] font-mono font-bold uppercase px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200">
                   TECH
                 </span>
               </div>
-              <p className="text-[10px] font-medium text-slate-400 tracking-widest uppercase -mt-0.5">
+              <p className="text-[10px] font-semibold text-slate-500 tracking-widest uppercase -mt-0.5">
                 Technologies
               </p>
             </div>
           </a>
 
           {/* Desktop Navigation Links */}
-          <div className="hidden lg:flex items-center gap-1 bg-slate-900/60 p-1.5 rounded-2xl border border-white/5 backdrop-blur-md">
+          <div className="hidden lg:flex items-center gap-1 bg-slate-100/80 p-1.5 rounded-2xl border border-slate-200/80">
             {navLinks.map((link) => {
               const Icon = link.icon;
               return (
                 <a
                   key={link.href}
                   href={link.href}
-                  className="px-3.5 py-1.5 rounded-xl text-xs font-semibold text-slate-300 hover:text-white hover:bg-white/10 transition-all flex items-center gap-1.5"
+                  className="px-3.5 py-1.5 rounded-xl text-xs font-semibold text-slate-700 hover:text-emerald-700 hover:bg-white hover:shadow-xs transition-all flex items-center gap-1.5"
                 >
-                  <Icon className="w-3.5 h-3.5 text-indigo-400" />
+                  <Icon className="w-3.5 h-3.5 text-emerald-600" />
                   <span>{link.label}</span>
                 </a>
               );
@@ -95,11 +95,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenConsult }) => {
           {/* Right Action Buttons */}
           <div className="hidden sm:flex items-center gap-3">
             {/* Language Pill */}
-            <div className="flex items-center bg-slate-900/80 border border-white/10 rounded-xl p-1 text-xs font-bold text-slate-400">
+            <div className="flex items-center bg-slate-100 border border-slate-200 rounded-xl p-1 text-xs font-bold text-slate-600">
               <button
                 onClick={() => setLanguage('uz')}
                 className={`px-2 py-1 rounded-lg transition-colors cursor-pointer ${
-                  language === 'uz' ? 'bg-indigo-600 text-white' : 'hover:text-white'
+                  language === 'uz' ? 'bg-emerald-600 text-white shadow-xs' : 'hover:text-slate-900'
                 }`}
               >
                 UZ
@@ -107,7 +107,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenConsult }) => {
               <button
                 onClick={() => setLanguage('ru')}
                 className={`px-2 py-1 rounded-lg transition-colors cursor-pointer ${
-                  language === 'ru' ? 'bg-indigo-600 text-white' : 'hover:text-white'
+                  language === 'ru' ? 'bg-emerald-600 text-white shadow-xs' : 'hover:text-slate-900'
                 }`}
               >
                 RU
@@ -115,7 +115,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenConsult }) => {
               <button
                 onClick={() => setLanguage('en')}
                 className={`px-2 py-1 rounded-lg transition-colors cursor-pointer ${
-                  language === 'en' ? 'bg-indigo-600 text-white' : 'hover:text-white'
+                  language === 'en' ? 'bg-emerald-600 text-white shadow-xs' : 'hover:text-slate-900'
                 }`}
               >
                 EN
@@ -125,11 +125,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenConsult }) => {
             {/* CTA Button */}
             <button
               onClick={onOpenConsult}
-              className="relative group px-5 py-2.5 rounded-xl font-bold text-xs text-white overflow-hidden transition-all duration-300 cursor-pointer shadow-lg shadow-indigo-600/30 hover:shadow-indigo-600/50 hover:scale-105 active:scale-95"
+              className="relative group px-5 py-2.5 rounded-xl font-bold text-xs text-white overflow-hidden transition-all duration-300 cursor-pointer shadow-md shadow-emerald-600/25 hover:shadow-lg hover:shadow-emerald-600/35 hover:-translate-y-0.5 active:translate-y-0"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-indigo-600 via-indigo-500 to-cyan-500 transition-all duration-300 group-hover:opacity-90" />
+              <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 transition-all duration-300 group-hover:opacity-95" />
               <span className="relative flex items-center gap-2">
                 <span>Konsultatsiya Olish</span>
+                <span className="w-1.5 h-1.5 rounded-full bg-rose-400 animate-ping" />
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
               </span>
             </button>
@@ -139,13 +140,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenConsult }) => {
           <div className="lg:hidden flex items-center gap-2">
             <button
               onClick={onOpenConsult}
-              className="sm:hidden px-3 py-1.5 rounded-lg bg-indigo-600 text-white text-xs font-bold"
+              className="sm:hidden px-3 py-1.5 rounded-lg bg-emerald-600 text-white text-xs font-bold shadow-xs"
             >
               Bog'lanish
             </button>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-xl bg-slate-900 border border-white/10 text-slate-300 hover:text-white cursor-pointer"
+              className="p-2 rounded-xl bg-white border border-slate-200 text-slate-700 hover:text-slate-900 shadow-xs cursor-pointer"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -156,7 +157,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenConsult }) => {
       {/* Mobile Slide-down Menu */}
       {mobileMenuOpen && (
         <div className="lg:hidden mt-3 px-4 pb-4 animate-in fade-in slide-in-from-top-2">
-          <div className="glass-panel p-5 rounded-3xl border border-white/10 space-y-3">
+          <div className="bg-white p-5 rounded-3xl border border-slate-200 shadow-xl space-y-3">
             <div className="grid grid-cols-1 gap-2">
               {navLinks.map((link) => {
                 const Icon = link.icon;
@@ -165,36 +166,36 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenConsult }) => {
                     key={link.href}
                     href={link.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="p-3 rounded-xl bg-slate-900/70 border border-white/5 hover:border-indigo-500/40 text-sm font-semibold text-slate-200 hover:text-white flex items-center justify-between transition-colors"
+                    className="p-3 rounded-xl bg-slate-50 border border-slate-100 hover:border-emerald-300 text-sm font-semibold text-slate-700 hover:text-emerald-700 flex items-center justify-between transition-colors"
                   >
                     <div className="flex items-center gap-3">
-                      <Icon className="w-4 h-4 text-indigo-400" />
+                      <Icon className="w-4 h-4 text-emerald-600" />
                       <span>{link.label}</span>
                     </div>
-                    <ChevronRight className="w-4 h-4 text-slate-500" />
+                    <ChevronRight className="w-4 h-4 text-slate-400" />
                   </a>
                 );
               })}
             </div>
 
-            <div className="pt-3 border-t border-white/10 flex items-center justify-between">
-              <span className="text-xs text-slate-400 font-medium">Tilni tanlang:</span>
-              <div className="flex items-center bg-slate-900 border border-white/10 rounded-xl p-1 text-xs font-bold text-slate-300">
+            <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
+              <span className="text-xs text-slate-500 font-medium">Tilni tanlang:</span>
+              <div className="flex items-center bg-slate-100 border border-slate-200 rounded-xl p-1 text-xs font-bold text-slate-700">
                 <button
                   onClick={() => setLanguage('uz')}
-                  className={`px-2.5 py-1 rounded-lg ${language === 'uz' ? 'bg-indigo-600 text-white' : ''}`}
+                  className={`px-2.5 py-1 rounded-lg ${language === 'uz' ? 'bg-emerald-600 text-white shadow-xs' : ''}`}
                 >
                   UZ
                 </button>
                 <button
                   onClick={() => setLanguage('ru')}
-                  className={`px-2.5 py-1 rounded-lg ${language === 'ru' ? 'bg-indigo-600 text-white' : ''}`}
+                  className={`px-2.5 py-1 rounded-lg ${language === 'ru' ? 'bg-emerald-600 text-white shadow-xs' : ''}`}
                 >
                   RU
                 </button>
                 <button
                   onClick={() => setLanguage('en')}
-                  className={`px-2.5 py-1 rounded-lg ${language === 'en' ? 'bg-indigo-600 text-white' : ''}`}
+                  className={`px-2.5 py-1 rounded-lg ${language === 'en' ? 'bg-emerald-600 text-white shadow-xs' : ''}`}
                 >
                   EN
                 </button>
@@ -206,7 +207,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenConsult }) => {
                 setMobileMenuOpen(false);
                 onOpenConsult();
               }}
-              className="w-full py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-500 text-white font-bold text-sm shadow-lg flex items-center justify-center gap-2"
+              className="w-full py-3 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-bold text-sm shadow-md flex items-center justify-center gap-2"
             >
               <span>Bepul Konsultatsiya Olish</span>
               <ArrowRight className="w-4 h-4" />

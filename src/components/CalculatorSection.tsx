@@ -2,18 +2,14 @@ import React, { useState } from 'react';
 import {
   Calculator,
   Check,
-  Plus,
   Sparkles,
   Clock,
-  ShieldCheck,
   Building2,
   ShoppingCart,
   Factory,
   GraduationCap,
   Briefcase,
   ArrowRight,
-  Sliders,
-  Zap,
 } from 'lucide-react';
 
 interface ModuleOption {
@@ -142,18 +138,18 @@ export const CalculatorSection: React.FC<CalculatorSectionProps> = ({
   };
 
   return (
-    <section id="calculator" className="py-24 relative bg-slate-950">
+    <section id="calculator" className="py-20 relative bg-slate-50/70 border-y border-slate-200/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Heading */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-500/10 border border-amber-400/20 text-xs font-bold text-amber-400 uppercase tracking-wider mb-4">
-            <Calculator className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-100 border border-emerald-300 text-xs font-bold text-emerald-800 uppercase tracking-wider mb-4">
+            <Calculator className="w-3.5 h-3.5 text-emerald-600" />
             <span>Interaktiv Kalkulyator</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-outfit font-black text-white tracking-tight">
+          <h2 className="text-3xl sm:text-5xl font-outfit font-black text-slate-900 tracking-tight">
             Loyiha Narxi va Muddatini Hisoblang
           </h2>
-          <p className="mt-4 text-base text-slate-400">
+          <p className="mt-4 text-base text-slate-600 leading-relaxed">
             Biznesingiz ehtiyojidan kelib chiqib kerakli texnologik modullarni tanlang va taxminiy
             investitsiya hajmini real vaqtda ko'ring.
           </p>
@@ -164,12 +160,12 @@ export const CalculatorSection: React.FC<CalculatorSectionProps> = ({
           {/* Left Column: Selectors & Options (8 Cols) */}
           <div className="lg:col-span-8 space-y-8">
             {/* Step 1: Business Type */}
-            <div className="glass-panel p-6 sm:p-8 rounded-3xl border border-white/10 space-y-4">
+            <div className="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm space-y-4">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-mono font-bold uppercase text-indigo-400 tracking-wider">
+                <span className="text-xs font-mono font-bold uppercase text-emerald-700 tracking-wider">
                   1-Qadam: Biznes Sohangiz
                 </span>
-                <span className="text-xs text-slate-400">1 tasini tanlang</span>
+                <span className="text-xs text-slate-500 font-medium">1 tasini tanlang</span>
               </div>
 
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
@@ -182,11 +178,11 @@ export const CalculatorSection: React.FC<CalculatorSectionProps> = ({
                       onClick={() => setBusinessType(bt.id)}
                       className={`p-3.5 rounded-2xl border text-left transition-all cursor-pointer flex items-center gap-3 ${
                         isSelected
-                          ? 'bg-indigo-600/30 border-indigo-500 text-white shadow-lg shadow-indigo-600/20'
-                          : 'bg-slate-900/60 border-white/5 text-slate-300 hover:border-white/20'
+                          ? 'bg-emerald-50 border-emerald-500 text-emerald-900 shadow-xs'
+                          : 'bg-slate-50 border-slate-200 text-slate-700 hover:border-slate-300'
                       }`}
                     >
-                      <span className={`p-2 rounded-xl ${isSelected ? 'bg-indigo-600 text-white' : 'bg-slate-800 text-slate-400'}`}>
+                      <span className={`p-2 rounded-xl ${isSelected ? 'bg-emerald-600 text-white' : 'bg-white border border-slate-200 text-slate-600'}`}>
                         <Icon className="w-4 h-4" />
                       </span>
                       <span className="text-xs font-bold leading-tight">{bt.label}</span>
@@ -197,13 +193,13 @@ export const CalculatorSection: React.FC<CalculatorSectionProps> = ({
             </div>
 
             {/* Step 2: Choose Modules */}
-            <div className="glass-panel p-6 sm:p-8 rounded-3xl border border-white/10 space-y-4">
+            <div className="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm space-y-4">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-mono font-bold uppercase text-cyan-400 tracking-wider">
+                <span className="text-xs font-mono font-bold uppercase text-emerald-700 tracking-wider">
                   2-Qadam: Kerakli IT & IoT Modullar
                 </span>
-                <span className="text-xs text-slate-400">
-                  Tanlandi: <strong className="text-white">{selectedModules.length} ta</strong>
+                <span className="text-xs text-slate-500 font-medium">
+                  Tanlandi: <strong className="text-slate-900">{selectedModules.length} ta</strong>
                 </span>
               </div>
 
@@ -216,15 +212,15 @@ export const CalculatorSection: React.FC<CalculatorSectionProps> = ({
                       onClick={() => toggleModule(mod.id)}
                       className={`p-4 rounded-2xl border transition-all cursor-pointer flex items-start gap-3.5 select-none ${
                         isChecked
-                          ? 'bg-cyan-500/10 border-cyan-500/60 text-white shadow-md'
-                          : 'bg-slate-900/60 border-white/5 text-slate-400 hover:border-white/20'
+                          ? 'bg-emerald-50/70 border-emerald-400 text-slate-900 shadow-xs'
+                          : 'bg-slate-50/50 border-slate-200 text-slate-600 hover:border-slate-300'
                       }`}
                     >
                       <div
                         className={`w-5 h-5 rounded-lg border flex items-center justify-center shrink-0 mt-0.5 transition-colors ${
                           isChecked
-                            ? 'bg-cyan-500 border-cyan-400 text-slate-950 font-bold'
-                            : 'border-slate-700 bg-slate-800'
+                            ? 'bg-emerald-600 border-emerald-600 text-white font-bold'
+                            : 'border-slate-300 bg-white'
                         }`}
                       >
                         {isChecked && <Check className="w-3.5 h-3.5 stroke-[3]" />}
@@ -232,11 +228,11 @@ export const CalculatorSection: React.FC<CalculatorSectionProps> = ({
 
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center justify-between">
-                          <h4 className={`text-xs sm:text-sm font-bold ${isChecked ? 'text-white' : 'text-slate-300'}`}>
+                          <h4 className={`text-xs sm:text-sm font-bold ${isChecked ? 'text-slate-900' : 'text-slate-700'}`}>
                             {mod.name}
                           </h4>
                         </div>
-                        <p className="text-[11px] text-slate-400 mt-1 line-clamp-2">
+                        <p className="text-[11px] text-slate-500 mt-1 line-clamp-2">
                           {mod.description}
                         </p>
                       </div>
@@ -247,17 +243,17 @@ export const CalculatorSection: React.FC<CalculatorSectionProps> = ({
             </div>
 
             {/* Step 3: Scale Slider */}
-            <div className="glass-panel p-6 sm:p-8 rounded-3xl border border-white/10 space-y-4">
+            <div className="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm space-y-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <span className="text-xs font-mono font-bold uppercase text-purple-400 tracking-wider">
+                  <span className="text-xs font-mono font-bold uppercase text-rose-700 tracking-wider">
                     3-Qadam: Korxona Qamrovi / Hajmi
                   </span>
-                  <p className="text-xs text-slate-400 mt-0.5">
+                  <p className="text-xs text-slate-500 mt-0.5 font-medium">
                     Xodimlar, xonalar yoki savdo nuqtalari soni
                   </p>
                 </div>
-                <div className="px-3.5 py-1.5 rounded-xl bg-purple-500/20 text-purple-300 border border-purple-500/30 font-mono font-bold text-sm">
+                <div className="px-3.5 py-1.5 rounded-xl bg-rose-50 text-rose-700 border border-rose-200 font-mono font-bold text-sm">
                   {scaleCount} ta birlik
                 </div>
               </div>
@@ -270,7 +266,7 @@ export const CalculatorSection: React.FC<CalculatorSectionProps> = ({
                   step="5"
                   value={scaleCount}
                   onChange={(e) => setScaleCount(Number(e.target.value))}
-                  className="w-full accent-purple-500 cursor-pointer h-2 bg-slate-800 rounded-lg"
+                  className="w-full accent-rose-600 cursor-pointer h-2 bg-slate-200 rounded-lg"
                 />
                 <div className="flex justify-between text-[11px] font-mono text-slate-500">
                   <span>Kichik (5-15)</span>
@@ -283,63 +279,61 @@ export const CalculatorSection: React.FC<CalculatorSectionProps> = ({
 
           {/* Right Column: Live Estimate Summary Card (4 Cols - Sticky) */}
           <div className="lg:col-span-4 sticky top-28">
-            <div className="glass-panel rounded-3xl p-6 sm:p-8 border border-white/10 shadow-2xl space-y-6 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-40 h-40 bg-indigo-500/20 rounded-full blur-3xl pointer-events-none" />
-
-              <div className="flex items-center justify-between pb-4 border-b border-white/10">
+            <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-xl space-y-6 relative overflow-hidden">
+              <div className="flex items-center justify-between pb-4 border-b border-slate-100">
                 <div>
-                  <h3 className="font-outfit font-bold text-lg text-white">Hisob-Kitob Xulosasi</h3>
-                  <p className="text-xs text-slate-400">Kompleks ECOS integratsiyasi</p>
+                  <h3 className="font-outfit font-bold text-lg text-slate-900">Hisob-Kitob Xulosasi</h3>
+                  <p className="text-xs text-slate-500">Kompleks ECOS integratsiyasi</p>
                 </div>
-                <span className="p-2 rounded-xl bg-indigo-500/20 text-indigo-400 border border-indigo-400/30">
+                <span className="p-2 rounded-xl bg-emerald-50 text-emerald-700 border border-emerald-200">
                   <Sparkles className="w-5 h-5" />
                 </span>
               </div>
 
               {/* Price Display */}
               <div>
-                <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
+                <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
                   Taxminiy Loyiha Byudjeti
                 </span>
-                <div className="text-2xl sm:text-3xl font-outfit font-black text-transparent bg-gradient-to-r from-amber-300 via-indigo-300 to-cyan-300 bg-clip-text mt-1">
+                <div className="text-2xl sm:text-3xl font-outfit font-black text-slate-900 mt-1">
                   {formatUzs(totalPrice)}
                 </div>
-                <p className="text-[11px] text-slate-400 mt-1">
+                <p className="text-[11px] text-slate-500 mt-1 font-medium">
                   * Uskunalar, dasturlash va 1 yillik kafolatni o'z ichiga oladi
                 </p>
               </div>
 
               {/* Timeline Display */}
-              <div className="p-4 rounded-2xl bg-slate-900/80 border border-white/5 flex items-center justify-between">
+              <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-xl bg-cyan-500/20 text-cyan-400">
+                  <div className="p-2 rounded-xl bg-emerald-100 text-emerald-700">
                     <Clock className="w-4 h-4" />
                   </div>
                   <div>
-                    <span className="text-[11px] text-slate-400">Ishga Tushirish Muddati</span>
-                    <p className="text-sm font-bold text-white font-mono">
+                    <span className="text-[11px] text-slate-500">Ishga Tushirish Muddati</span>
+                    <p className="text-sm font-bold text-slate-900 font-mono">
                       ~ {estimatedDays} ish kuni
                     </p>
                   </div>
                 </div>
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-rose-50 text-rose-700 border border-rose-200 font-bold">
                   Tezkor
                 </span>
               </div>
 
               {/* Included Free Perks */}
-              <div className="space-y-2.5 pt-2 border-t border-white/10 text-xs text-slate-300">
-                <p className="font-bold text-slate-200">Paketga Bepul Kiritilgan:</p>
+              <div className="space-y-2.5 pt-2 border-t border-slate-100 text-xs text-slate-700 font-medium">
+                <p className="font-bold text-slate-900">Paketga Bepul Kiritilgan:</p>
                 <div className="flex items-center gap-2">
-                  <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                  <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 stroke-[3]" />
                   <span>Texnik topshiriq (TT) va arxitektura ishlab chiqish</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                  <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 stroke-[3]" />
                   <span>Xodimlarni o'qitish va tizimga o'rgatish</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                  <Check className="w-3.5 h-3.5 text-rose-600 shrink-0 stroke-[3]" />
                   <span>1 yillik bepul texnik qo'llab-quvvatlash kafolati</span>
                 </div>
               </div>
@@ -348,7 +342,7 @@ export const CalculatorSection: React.FC<CalculatorSectionProps> = ({
               <div className="pt-2">
                 <button
                   onClick={handleProceedWithEstimate}
-                  className="w-full py-4 rounded-2xl bg-gradient-to-r from-indigo-600 via-indigo-500 to-cyan-500 hover:from-indigo-500 hover:to-cyan-400 text-white font-bold text-sm shadow-xl shadow-indigo-600/30 hover:shadow-indigo-600/50 transition-all cursor-pointer flex items-center justify-center gap-2"
+                  className="w-full py-4 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 text-white font-bold text-sm shadow-md shadow-emerald-600/25 transition-all cursor-pointer flex items-center justify-center gap-2"
                 >
                   <span>Ushbu Hisob Bilan Ariza Qoldirish</span>
                   <ArrowRight className="w-4 h-4" />

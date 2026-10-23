@@ -20,7 +20,7 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans selection:bg-indigo-500 selection:text-white">
+    <div className="min-h-screen bg-white text-slate-900 flex flex-col font-sans selection:bg-emerald-600 selection:text-white">
       {/* 1. Glassmorphic Navigation Bar */}
       <Navbar onOpenConsult={() => setIsConsultOpen(true)} />
 

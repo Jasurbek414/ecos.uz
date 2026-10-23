@@ -6,7 +6,6 @@ import {
   CheckCircle2,
   Phone,
   User,
-  Building,
   Sparkles,
 } from 'lucide-react';
 
@@ -38,30 +37,31 @@ export const ConsultModal: React.FC<ConsultModalProps> = ({ isOpen, onClose }) =
           particleCount: 80,
           spread: 60,
           origin: { y: 0.5 },
+          colors: ['#059669', '#E11D48', '#0D9488', '#10B981'],
         });
       } catch (err) {}
     }, 800);
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 animate-in fade-in">
-      <div className="glass-panel bg-slate-950/95 max-w-lg w-full rounded-3xl border border-white/15 p-6 sm:p-8 shadow-2xl relative my-auto animate-in zoom-in-95 duration-200">
+    <div className="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in">
+      <div className="bg-white max-w-lg w-full rounded-3xl border border-slate-200 p-6 sm:p-8 shadow-2xl relative my-auto animate-in zoom-in-95 duration-200">
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 w-8 h-8 rounded-full bg-slate-900 border border-white/10 hover:border-white/20 text-slate-400 hover:text-white flex items-center justify-center cursor-pointer transition-colors"
+          className="absolute top-5 right-5 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-800 flex items-center justify-center cursor-pointer transition-colors"
         >
           <X className="w-4 h-4" />
         </button>
 
         {isDone ? (
           <div className="py-8 text-center space-y-4">
-            <div className="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center justify-center mx-auto">
+            <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-700 border border-emerald-300 flex items-center justify-center mx-auto shadow-md">
               <CheckCircle2 className="w-8 h-8" />
             </div>
-            <h3 className="text-2xl font-outfit font-black text-white">
+            <h3 className="text-2xl font-outfit font-black text-slate-900">
               Arizangiz Qabul Qilindi!
             </h3>
-            <p className="text-xs sm:text-sm text-slate-300 max-w-xs mx-auto">
+            <p className="text-xs sm:text-sm text-slate-600 max-w-xs mx-auto">
               Tez orada ECOS IT mutaxassislari siz bilan ko'rsatilgan raqam orqali bog'lanishadi.
             </p>
             <div className="pt-2">
@@ -70,7 +70,7 @@ export const ConsultModal: React.FC<ConsultModalProps> = ({ isOpen, onClose }) =
                   setIsDone(false);
                   onClose();
                 }}
-                className="px-6 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs cursor-pointer"
+                className="px-6 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs cursor-pointer"
               >
                 Tushunarli
               </button>
@@ -78,23 +78,23 @@ export const ConsultModal: React.FC<ConsultModalProps> = ({ isOpen, onClose }) =
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="flex items-center gap-3 pb-3 border-b border-white/10">
-              <div className="w-10 h-10 rounded-xl bg-indigo-600/20 border border-indigo-500/30 text-indigo-400 flex items-center justify-center">
+            <div className="flex items-center gap-3 pb-3 border-b border-slate-100">
+              <div className="w-10 h-10 rounded-xl bg-emerald-100 border border-emerald-200 text-emerald-700 flex items-center justify-center">
                 <Sparkles className="w-5 h-5" />
               </div>
               <div>
-                <h3 className="text-lg font-outfit font-bold text-white">
+                <h3 className="text-lg font-outfit font-bold text-slate-900">
                   Bepul IT Konsultatsiya Olish
                 </h3>
-                <p className="text-xs text-slate-400">
+                <p className="text-xs text-slate-500">
                   Biznesingizni avtomatlashtirish bo'yicha ekspert tavsiyasi
                 </p>
               </div>
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-slate-300 mb-1 flex items-center gap-1.5">
-                <User className="w-3.5 h-3.5 text-indigo-400" />
+              <label className="block text-xs font-bold text-slate-700 mb-1 flex items-center gap-1.5">
+                <User className="w-3.5 h-3.5 text-emerald-600" />
                 Ismingiz *
               </label>
               <input
@@ -103,13 +103,13 @@ export const ConsultModal: React.FC<ConsultModalProps> = ({ isOpen, onClose }) =
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
                 placeholder="Jasurbek Rahimov"
-                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-white/10 text-xs sm:text-sm text-white focus:outline-none focus:border-indigo-500"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs sm:text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-emerald-500 focus:bg-white"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-slate-300 mb-1 flex items-center gap-1.5">
-                <Phone className="w-3.5 h-3.5 text-indigo-400" />
+              <label className="block text-xs font-bold text-slate-700 mb-1 flex items-center gap-1.5">
+                <Phone className="w-3.5 h-3.5 text-rose-600" />
                 Telefon Raqamingiz *
               </label>
               <input
@@ -118,18 +118,18 @@ export const ConsultModal: React.FC<ConsultModalProps> = ({ isOpen, onClose }) =
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 placeholder="+998 90 123 45 67"
-                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-white/10 text-xs sm:text-sm text-white font-mono focus:outline-none focus:border-indigo-500"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs sm:text-sm text-slate-900 font-mono focus:outline-none focus:border-rose-500 focus:bg-white"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-slate-300 mb-1">
+              <label className="block text-xs font-bold text-slate-700 mb-1">
                 Qiziqtirgan Yo'nalish
               </label>
               <select
                 value={interest}
                 onChange={(e) => setInterest(e.target.value)}
-                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-900 border border-white/10 text-xs text-white focus:outline-none focus:border-indigo-500 cursor-pointer"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-emerald-500 focus:bg-white cursor-pointer"
               >
                 <option value="ALL">Kompleks Ekotizim (Barchasi)</option>
                 <option value="HOTEL">Hotel ECOS (Mehmonxona Avtomatizatsiyasi)</option>
@@ -140,7 +140,7 @@ export const ConsultModal: React.FC<ConsultModalProps> = ({ isOpen, onClose }) =
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-slate-300 mb-1">
+              <label className="block text-xs font-bold text-slate-700 mb-1">
                 Qo'shimcha izoh (ixtiyoriy)
               </label>
               <textarea
@@ -148,14 +148,14 @@ export const ConsultModal: React.FC<ConsultModalProps> = ({ isOpen, onClose }) =
                 value={notes}
                 onChange={(e) => setNotes(e.target.value)}
                 placeholder="Xodimlar yoki xonalar soni, maqsadlaringiz..."
-                className="w-full p-3 rounded-xl bg-slate-900 border border-white/10 text-xs text-white focus:outline-none focus:border-indigo-500 resize-none"
+                className="w-full p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-emerald-500 focus:bg-white resize-none"
               />
             </div>
 
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-3.5 rounded-xl bg-gradient-to-r from-indigo-600 via-indigo-500 to-cyan-500 hover:from-indigo-500 hover:to-cyan-400 text-white font-bold text-xs sm:text-sm shadow-xl shadow-indigo-600/30 transition-all cursor-pointer flex items-center justify-center gap-2"
+              className="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 text-white font-bold text-xs sm:text-sm shadow-md shadow-emerald-600/25 transition-all cursor-pointer flex items-center justify-center gap-2"
             >
               <Send className="w-4 h-4" />
               <span>{isSubmitting ? 'Yuborilmoqda...' : 'Arizani Jo\'natish'}</span>
