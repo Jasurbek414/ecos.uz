@@ -7,39 +7,61 @@ import {
   Phone,
   User,
 } from 'lucide-react';
+import { sendLeadToTelegram } from '../utils/telegram';
 
 interface ConsultModalProps {
   isOpen: boolean;
   onClose: () => void;
+  initialDirection?: string;
 }
 
-export const ConsultModal: React.FC<ConsultModalProps> = ({ isOpen, onClose }) => {
+export const ConsultModal: React.FC<ConsultModalProps> = ({
+  isOpen,
+  onClose,
+  initialDirection = 'ERP_CRM',
+}) => {
   const [fullName, setFullName] = useState('');
   const [phone, setPhone] = useState('+998 ');
-  const [direction, setDirection] = useState('HOTEL');
+  const [direction, setDirection] = useState(initialDirection);
   const [notes, setNotes] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isDone, setIsDone] = useState(false);
 
+  React.useEffect(() => {
+    if (initialDirection) {
+      setDirection(initialDirection);
+    }
+  }, [initialDirection, isOpen]);
+
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsDone(true);
+    try {
+      await sendLeadToTelegram({
+        fullName,
+        phone,
+        direction,
+        message: notes,
+        source: "ecos.uz Konsultatsiya Modali"
+      });
+    } catch (err) {
+      console.error(err);
+    }
 
-      try {
-        confetti({
-          particleCount: 70,
-          spread: 60,
-          origin: { y: 0.5 },
-          colors: ['#059669', '#0284c7', '#dc2626'],
-        });
-      } catch (err) {}
-    }, 600);
+    setIsSubmitting(false);
+    setIsDone(true);
+
+    try {
+      confetti({
+        particleCount: 70,
+        spread: 60,
+        origin: { y: 0.5 },
+        colors: ['#059669', '#0284c7', '#dc2626'],
+      });
+    } catch (err) {}
   };
 
   return (
@@ -126,10 +148,14 @@ export const ConsultModal: React.FC<ConsultModalProps> = ({ isOpen, onClose }) =
                 onChange={(e) => setDirection(e.target.value)}
                 className="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-emerald-600 focus:bg-white cursor-pointer"
               >
-                <option value="HOTEL">Hotel ECOS PMS (Mehmonxona)</option>
-                <option value="RETAIL">ECOS Savdo & POS (Do'kon, Kassa)</option>
-                <option value="FACEID">Face ID & Davomat (Turniket apparatlari)</option>
-                <option value="CUSTOM">Maxsus Dasturiy Ta'minot (Veb, Mobil)</option>
+                <option value="ERP_CRM">🏢 ERP & CRM Tizimlari (Kompaniyani to'liq avtomatlashtirish)</option>
+                <option value="MOBILE_APP">📱 Mobil Ilovalar (iOS & Android — Flutter / Native)</option>
+                <option value="WEB_SAAS">🌐 Veb-saytlar, Murakkab Portallar va SaaS Platformalar</option>
+                <option value="AI_BOT">🤖 Sun'iy Intellekt (AI) & Telegram Botlar</option>
+                <option value="HOTEL_PMS">🏨 Hotel ECOS PMS (Mehmonxona boshqaruv tizimi)</option>
+                <option value="FACEID_IOT">📹 Face ID & Biometriya (Turniket, Xodimlar/Maktab Davomati)</option>
+                <option value="NETWORK_VPN">🛡 Tarmoq Xavfsizligi, MikroTik VPN & Server Infratuzilmasi</option>
+                <option value="CUSTOM_DEV">⚙️ Maxsus Buyurtma Asosida Dasturlash (Custom Software)</option>
               </select>
             </div>
 

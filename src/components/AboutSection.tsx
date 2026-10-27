@@ -18,11 +18,10 @@ export const AboutSection: React.FC = () => {
               Biz Haqimizda
             </span>
             <h2 className="text-2xl sm:text-4xl font-outfit font-black text-slate-900 tracking-tight">
-              ECOS Technologies — Biznes Infratuzilmasini Yaratuvchi Jamoa
+              ECOS Technologies — Dasturiy Ta'minot va Raqamli Ekotizimlar Ishlab Chiqaruvchisi
             </h2>
             <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-              Biz O'zbekiston korxonalari uchun dasturiy ta'minot yaratish, biometrik Face ID uskunalarini o'rnatish
-              hamda kiberxavfsiz tarmoqlarni sozlashga ixtisoslashgan texnologik kompaniyamiz.
+              Biz korxonalar va tashkilotlar uchun murakkab dasturiy ta'minot (ERP, CRM, SaaS), mobil ilovalar, AI botlar hamda Smart Face ID biometriya uskunalarini ishlab chiqaruvchi va joriy qiluvchi yetakchi IT kompaniyamiz.
             </p>
             <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
               Bizning asosiy afzalligimiz — <strong>bitta qo'ldan kalit ostida topshirish</strong> tamoyili.
@@ -53,7 +52,7 @@ export const AboutSection: React.FC = () => {
                 <div className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
                   <Check className="w-3 h-3 stroke-[2.5]" />
                 </div>
-                <span>Toshkentda o'z servis laboratoriyamiz</span>
+                <span>Namanganda o'z servis laboratoriyamiz</span>
               </div>
             </div>
           </div>
@@ -66,7 +65,7 @@ export const AboutSection: React.FC = () => {
               </div>
               <div>
                 <h4 className="text-sm font-bold text-slate-900">Ofis va Laboratoriya</h4>
-                <p className="text-xs text-slate-500 mt-0.5">Toshkent shahri, IT Park hududi</p>
+                <p className="text-xs text-slate-500 mt-0.5">Namangan viloyati, Namangan shahri, IT Park hududi</p>
               </div>
             </div>
 

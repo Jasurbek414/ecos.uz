@@ -1,9 +1,9 @@
 import React from 'react';
 import {
   Code,
+  Smartphone,
+  Bot,
   Cpu,
-  ShieldCheck,
-  Headphones,
   Check,
 } from 'lucide-react';
 
@@ -14,47 +14,47 @@ interface ServicesSectionProps {
 export const ServicesSection: React.FC<ServicesSectionProps> = ({ onOpenConsult }) => {
   const services = [
     {
-      title: 'Dasturiy Ta\'minot Ishlab Chiqish',
-      description: 'Veb-saytlar, mobil ilovalar (iOS va Android) hamda korxona boshqaruv tizimlarini (ERP/CRM) noldan yaratamiz.',
+      title: 'ERP & CRM Tizimlari Ishlab Chiqish',
+      description: 'Kompaniya jarayonlarini 100% raqamlashtirish: moliya, ombor, savdo, xodimlar davomati va oylik hisoblash tizimlari.',
       icon: Code,
       iconBg: 'bg-emerald-100 text-emerald-800',
       bullets: [
-        'React, TypeScript va Flutter texnologiyalari',
-        'Click, Payme, Uzum to\'lov shlyuzlari',
+        'React, TypeScript, Spring Boot & Node.js',
+        'Click, Payme, Uzum to\'lov tizimlari',
         'Davlat Soliq OFD va 1C integratsiyasi',
       ],
     },
     {
-      title: 'Smart IoT & Uskunalar Montaji',
-      description: 'Face ID terminallari, elektron qulflar, turniketlar va 4K CCTV kameralarini yetkazib beramiz va o\'rnatamiz.',
+      title: 'Mobil Ilovalar (iOS & Android)',
+      description: 'Biznesingiz uchun mijozlar va xodimlar foydalanadigan zamonaviy, tezkor va xavfsiz mobil ilovalar yaratamiz.',
+      icon: Smartphone,
+      iconBg: 'bg-blue-100 text-blue-800',
+      bullets: [
+        'Flutter va Kotlin / Swift texnologiyalari',
+        'Push bildirishnomalar va offline ishlash rejimi',
+        'App Store va Google Play\'ga to\'liq joylashtirish',
+      ],
+    },
+    {
+      title: 'Sun\'iy Intellekt (AI) & Telegram Botlar',
+      description: 'Mijozlarga avtomatik xizmat ko\'rsatish, savdo qilish va hisobotlarni yuboruvchi aqlli bot va AI assistentlar.',
+      icon: Bot,
+      iconBg: 'bg-purple-100 text-purple-800',
+      bullets: [
+        'Telegram bot orqali savdo va qabullar',
+        'AI yordamida mijozlar bilan muloqot',
+        'Avtomatik kunlik grafik va xabarnomalar',
+      ],
+    },
+    {
+      title: 'Smart IoT, Face ID & Tarmoq Xavfsizligi',
+      description: 'Biometrik Face ID apparatlari, turniketlar, smart qulflar hamda shifrlangan xavfsiz MikroTik VPN tarmoqlari montaji.',
       icon: Cpu,
       iconBg: 'bg-rose-100 text-rose-700',
       bullets: [
         'Hikvision va Dahua biometrik apparatlari',
         'Mehmonxonalar uchun NFC smart qulflar',
-        'Turniket va to\'siqlarni dasturga ulash',
-      ],
-    },
-    {
-      title: 'Tarmoq Infratuzilmasi & Kiberxavfsizlik',
-      description: 'Filiallararo xavfsiz shifrlangan tunnel va barqaror korporativ tarmoqni noldan yo\'lga qo\'yamiz.',
-      icon: ShieldCheck,
-      iconBg: 'bg-slate-100 text-slate-800',
-      bullets: [
         'MikroTik RouterOS 7 va WireGuard VPN',
-        'Tashqi xakerlik hujumlaridan himoya',
-        'Wi-Fi Mesh va optik aloqa sozlamalari',
-      ],
-    },
-    {
-      title: '24/7 Monitoring & Rasmiy Kafolat',
-      description: 'O\'rnatilgan barcha dastur va apparatlarga 1 yillik kafolat beramiz hamda uzluksiz texnik xizmat ko\'rsatamiz.',
-      icon: Headphones,
-      iconBg: 'bg-teal-100 text-teal-800',
-      bullets: [
-        '1 yillik rasmiy kafolat shartnomasi',
-        'Ma\'lumotlar bazasini kunlik avtomat zaxiralash',
-        'Toshkentda o\'z muhandislar jamoasi',
       ],
     },
   ];

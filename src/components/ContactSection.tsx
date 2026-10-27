@@ -11,16 +11,17 @@ import {
   Phone,
   HelpCircle,
 } from 'lucide-react';
+import { sendLeadToTelegram } from '../utils/telegram';
 
 export const ContactSection: React.FC = () => {
   const [fullName, setFullName] = useState('');
   const [phone, setPhone] = useState('+998 ');
-  const [direction, setDirection] = useState('HOTEL');
+  const [direction, setDirection] = useState('ERP_CRM');
   const [message, setMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!fullName || phone.length < 9) {
       alert('Iltimos, ismingiz va telefon raqamingizni to\'liq kiriting!');
@@ -29,19 +30,29 @@ export const ContactSection: React.FC = () => {
 
     setIsSubmitting(true);
 
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSuccess(true);
+    try {
+      await sendLeadToTelegram({
+        fullName,
+        phone,
+        direction,
+        message,
+        source: "ecos.uz Aloqa Bo'limi (Forma)"
+      });
+    } catch (err) {
+      console.error(err);
+    }
 
-      try {
-        confetti({
-          particleCount: 70,
-          spread: 60,
-          origin: { y: 0.6 },
-          colors: ['#059669', '#0284c7', '#dc2626'],
-        });
-      } catch (err) {}
-    }, 600);
+    setIsSubmitting(false);
+    setIsSuccess(true);
+
+    try {
+      confetti({
+        particleCount: 70,
+        spread: 60,
+        origin: { y: 0.6 },
+        colors: ['#059669', '#0284c7', '#dc2626'],
+      });
+    } catch (err) {}
   };
 
   return (
@@ -74,8 +85,8 @@ export const ContactSection: React.FC = () => {
                   </div>
                   <div>
                     <span className="text-[11px] text-slate-400 block font-medium">Telefon raqam:</span>
-                    <a href="tel:+998712000055" className="font-bold text-slate-900 hover:text-emerald-700 transition-colors">
-                      +998 (71) 200-00-55
+                    <a href="tel:+998970504202" className="font-bold text-slate-900 hover:text-emerald-700 transition-colors">
+                      +998 (97) 050-42-02
                     </a>
                     <span className="text-slate-500 block text-[11px] mt-0.5">
                       Qo'llab-quvvatlash va sotuv bo'limi
@@ -88,14 +99,14 @@ export const ContactSection: React.FC = () => {
                     <Send className="w-4 h-4 text-emerald-700" />
                   </div>
                   <div>
-                    <span className="text-[11px] text-slate-400 block font-medium">Telegram kanal & bot:</span>
+                    <span className="text-[11px] text-slate-400 block font-medium">Telegram:</span>
                     <a
-                      href="https://t.me/ecos_uz"
+                      href="https://t.me/khorowiy_malchik"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="font-bold text-slate-900 hover:text-emerald-700 transition-colors"
                     >
-                      @ecos_uz
+                      @khorowiy_malchik
                     </a>
                   </div>
                 </div>
@@ -106,8 +117,8 @@ export const ContactSection: React.FC = () => {
                   </div>
                   <div>
                     <span className="text-[11px] text-slate-400 block font-medium">Elektron pochta:</span>
-                    <a href="mailto:info@ecos.uz" className="font-bold text-slate-900 hover:text-emerald-700 transition-colors">
-                      info@ecos.uz
+                    <a href="mailto:muminovjasurbek12@gmail.com" className="font-bold text-slate-900 hover:text-emerald-700 transition-colors">
+                      muminovjasurbek12@gmail.com
                     </a>
                   </div>
                 </div>
@@ -119,7 +130,7 @@ export const ContactSection: React.FC = () => {
                   <div>
                     <span className="text-[11px] text-slate-400 block font-medium">Bosh ofis:</span>
                     <span className="font-medium text-slate-900">
-                      O'zbekiston, Toshkent shahri, IT Park hududi
+                      O'zbekiston, Namangan viloyati, Namangan shahri, IT Park hududi
                     </span>
                   </div>
                 </div>
@@ -221,11 +232,14 @@ export const ContactSection: React.FC = () => {
                       onChange={(e) => setDirection(e.target.value)}
                       className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-emerald-600 focus:bg-white transition-colors cursor-pointer"
                     >
-                      <option value="HOTEL">Hotel ECOS PMS (Mehmonxona boshqaruvi)</option>
-                      <option value="RETAIL">ECOS Savdo & Kassa (POS, Soliq OFD)</option>
-                      <option value="FACEID">Face ID & Davomat (Turniket apparatlari)</option>
-                      <option value="CUSTOM">Maxsus Dasturiy Ta'minot (Veb, Mobil ilova)</option>
-                      <option value="NETWORK">Tarmoq & Kiberxavfsizlik (MikroTik VPN)</option>
+                      <option value="ERP_CRM">🏢 ERP & CRM Tizimlari (Kompaniyani to'liq avtomatlashtirish)</option>
+                      <option value="MOBILE_APP">📱 Mobil Ilovalar (iOS & Android — Flutter / Native)</option>
+                      <option value="WEB_SAAS">🌐 Veb-saytlar, Murakkab Portallar va SaaS Platformalar</option>
+                      <option value="AI_BOT">🤖 Sun'iy Intellekt (AI) & Telegram Botlar</option>
+                      <option value="HOTEL_PMS">🏨 Hotel ECOS PMS (Mehmonxona boshqaruv tizimi)</option>
+                      <option value="FACEID_IOT">📹 Face ID & Biometriya (Turniket, Xodimlar/Maktab Davomati)</option>
+                      <option value="NETWORK_VPN">🛡 Tarmoq Xavfsizligi, MikroTik VPN & Server Infratuzilmasi</option>
+                      <option value="CUSTOM_DEV">⚙️ Maxsus Buyurtma Asosida Dasturlash (Custom Software)</option>
                     </select>
                   </div>
 

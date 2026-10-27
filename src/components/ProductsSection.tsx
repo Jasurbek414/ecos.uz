@@ -81,51 +81,53 @@ export const ProductsSection: React.FC<ProductsSectionProps> = ({ onOpenConsult 
             </div>
           </div>
 
-          {/* 2. ECOS Savdo POS */}
+          {/* 2. ECOS CRM & ERP Platformasi */}
           <div className="bg-white rounded-2xl border border-slate-200/90 p-6 shadow-xs hover:border-slate-300 hover:shadow-sm transition-all flex flex-col justify-between">
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <div className="w-10 h-10 rounded-xl bg-slate-100 text-slate-800 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-800 flex items-center justify-center">
                   <ShoppingCart className="w-5 h-5" />
                 </div>
-                <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-200">
-                  RETAIL & POS
+                <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-800 border border-blue-200">
+                  ERP & CRM
                 </span>
               </div>
 
               <div>
                 <h3 className="text-lg font-outfit font-bold text-slate-900">
-                  ECOS Savdo & POS Kassa
+                  ECOS ERP & CRM Enterprise
                 </h3>
                 <p className="text-xs text-slate-600 mt-1.5 leading-relaxed">
-                  Supermarketlar, do'konlar va omborlar uchun tezkor kassa, fiskal chek va qoldiqlar hisobi.
+                  Ishlab chiqarish, savdo va xizmat ko'rsatish kompaniyalari uchun moliya, ombor, mijozlar va xodimlar boshqaruvi.
                 </p>
               </div>
 
               <div className="space-y-2 pt-2 border-t border-slate-100 text-xs text-slate-700">
                 <div className="flex items-start gap-2">
                   <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
-                  <span>Soliq OFD fiskal cheklari integratsiyasi</span>
+                  <span>Soliq OFD fiskal cheklari va to'liq 1C integratsiya</span>
                 </div>
                 <div className="flex items-start gap-2">
                   <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
-                  <span>Click, Payme, Uzum va naqd pul kassa</span>
+                  <span>Click, Payme, Uzum to'lovlari & naqd pul hisobi</span>
                 </div>
                 <div className="flex items-start gap-2">
                   <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
-                  <span>Shtrix-kod, tarozilar va ombor partiyalari</span>
+                  <span>Mobil ilovalar, ombor qoldiqlari va analitika</span>
                 </div>
               </div>
             </div>
 
             <div className="pt-6 mt-4 border-t border-slate-100">
-              <button
-                onClick={onOpenConsult}
+              <a
+                href="https://crm.ecos.uz"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-full py-2.5 rounded-xl border border-slate-200 hover:bg-slate-50 text-slate-800 font-semibold text-xs transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
               >
-                <span>Demo Buyurtma Qilish</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </button>
+                <span>CRM Tizimiga O'tish</span>
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
             </div>
           </div>
 

@@ -21,8 +21,8 @@ export const WhyUsSection: React.FC = () => {
       iconColor: 'bg-slate-100 text-slate-800',
     },
     {
-      title: 'Kiberxavfsizlik va Shifrlangan Aloqa',
-      description: 'Filiallar o\'rtasida MikroTik WireGuard shifrlangan tunnellari o\'rnatiladi. Face ID apparatlarida fotosurat orqali aldashdan (anti-spoofing) to\'liq himoya mavjud.',
+      title: 'Ma\'lumotlar Xavfsizligi va Shaxsiy Nazorat',
+      description: 'Biznesingiz sirlari va hisobotlari begonalar qo\'liga tushmaydi. Face ID apparatlarimizni esa fotosurat yoki telefon orqali alday olmaysiz — faqat tirik insonni taniydi.',
       icon: ShieldCheck,
       iconColor: 'bg-rose-50 text-rose-700',
     },

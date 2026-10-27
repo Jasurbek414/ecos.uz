@@ -18,10 +18,11 @@ export const Footer: React.FC = () => {
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-slate-100">
           {/* Brand */}
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-xl bg-emerald-600 flex items-center justify-center text-white font-outfit font-black text-lg relative shadow-xs">
-              <span>E</span>
-              <span className="absolute top-1 right-1 w-1.5 h-1.5 rounded-full bg-rose-500" />
-            </div>
+            <img
+              src="/logo.png"
+              alt="ECOS Technologies"
+              className="w-9 h-9 rounded-xl object-cover shadow-sm"
+            />
             <div>
               <span className="font-outfit font-bold text-base text-slate-900 block leading-tight">
                 ECOS Technologies
@@ -53,7 +54,7 @@ export const Footer: React.FC = () => {
           {/* Socials & Scroll to Top */}
           <div className="flex items-center gap-2.5">
             <a
-              href="https://t.me/ecos_uz"
+              href="https://t.me/khorowiy_malchik"
               target="_blank"
               rel="noopener noreferrer"
               className="w-8 h-8 rounded-lg bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-600 hover:text-emerald-700 flex items-center justify-center transition-colors"
@@ -62,14 +63,14 @@ export const Footer: React.FC = () => {
               <Send className="w-3.5 h-3.5" />
             </a>
             <a
-              href="mailto:info@ecos.uz"
+              href="mailto:muminovjasurbek12@gmail.com"
               className="w-8 h-8 rounded-lg bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-600 hover:text-emerald-700 flex items-center justify-center transition-colors"
               title="Email"
             >
               <Mail className="w-3.5 h-3.5" />
             </a>
             <a
-              href="tel:+998712000055"
+              href="tel:+998970504202"
               className="w-8 h-8 rounded-lg bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-600 hover:text-emerald-700 flex items-center justify-center transition-colors"
               title="Telefon"
             >
@@ -87,7 +88,7 @@ export const Footer: React.FC = () => {
 
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between text-[11px] text-slate-400 gap-2 text-center sm:text-left">
           <span>© {new Date().getFullYear()} ECOS Technologies MCHJ. Barcha huquqlar himoyalangan.</span>
-          <span>Toshkent shahri, IT Park hududi</span>
+          <span>Namangan viloyati, Namangan shahri, IT Park hududi</span>
         </div>
       </div>
     </footer>

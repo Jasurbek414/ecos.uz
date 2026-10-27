@@ -24,10 +24,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenConsult }) => {
   }, []);
 
   const navLinks = [
+    { label: 'Oddiy tilda', href: '#guide' },
     { label: 'Mahsulotlar', href: '#products' },
     { label: 'Xizmatlar', href: '#services' },
-    { label: 'Biz haqimizda', href: '#about' },
     { label: 'Afzalliklar', href: '#advantages' },
+    { label: 'Biz haqimizda', href: '#about' },
     { label: 'Aloqa', href: '#contact' },
   ];
 
@@ -43,10 +44,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenConsult }) => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <a href="#" className="flex items-center gap-3 group">
-            <div className="w-9 h-9 rounded-xl bg-emerald-600 flex items-center justify-center text-white font-outfit font-black text-xl shadow-xs relative">
-              <span>E</span>
-              <span className="absolute top-1 right-1 w-1.5 h-1.5 rounded-full bg-rose-500" />
-            </div>
+            <img
+              src="/logo.png"
+              alt="ECOS Technologies"
+              className="w-10 h-10 rounded-xl object-cover shadow-sm transition-transform duration-200 group-hover:scale-105"
+            />
             <div>
               <div className="flex items-center gap-1.5">
                 <span className="font-outfit font-black text-xl tracking-tight text-slate-900">
@@ -78,11 +80,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenConsult }) => {
           {/* Right Action Contacts */}
           <div className="hidden sm:flex items-center gap-4">
             <a
-              href="tel:+998712000055"
+              href="tel:+998970504202"
               className="flex items-center gap-1.5 text-xs font-semibold text-slate-700 hover:text-emerald-700 transition-colors"
             >
               <Phone className="w-3.5 h-3.5 text-emerald-600" />
-              <span>+998 (71) 200-00-55</span>
+              <span>+998 (97) 050-42-02</span>
             </a>
 
             <button
@@ -130,11 +132,11 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenConsult }) => {
           </div>
           <div className="pt-3 mt-2 border-t border-slate-100 flex items-center justify-between">
             <a
-              href="tel:+998712000055"
+              href="tel:+998970504202"
               className="text-xs font-semibold text-slate-700 flex items-center gap-1.5"
             >
               <Phone className="w-3.5 h-3.5 text-emerald-600" />
-              <span>+998 (71) 200-00-55</span>
+              <span>+998 (97) 050-42-02</span>
             </a>
             <button
               onClick={() => {
