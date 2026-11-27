@@ -9,6 +9,9 @@ export default defineConfig({
     tailwindcss(),
   ],
   build: {
+    outDir: 'dist-staging',
+    emptyOutDir: true,
+    assetsInlineLimit: 60000,
     rollupOptions: {
       output: {
         entryFileNames: () => `assets/ecos-app-[hash]-${Date.now()}.js`,
