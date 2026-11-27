@@ -16,29 +16,37 @@ export async function sendLeadToTelegram(data: LeadData): Promise<boolean> {
     WEB_SAAS: "🌐 Veb-saytlar, Murakkab Portallar & SaaS",
     AI_BOT: "🤖 Sun'iy Intellekt (AI) & Aqlli Telegram Botlar",
     HOTEL_PMS: "🏨 Hotel ECOS PMS (Mehmonxona boshqaruv tizimi)",
-    FACEID_IOT: "📹 Face ID & Biometriya (Turniket, Davomat nazorati)",
-    NETWORK_VPN: "🛡 Tarmoq Xavfsizligi, MikroTik VPN & Serverlar",
+    FACEID_IOT: "📷 Face ID & Biometriya (Turniket, Davomat nazorati)",
+    NETWORK_VPN: "🛡️ Tarmoq Xavfsizligi, MikroTik VPN & Serverlar",
     CUSTOM_DEV: "⚙️ Maxsus Buyurtma Asosida Dasturlash (Custom Software)",
-    // Moslik uchun:
     HOTEL: "🏨 Hotel ECOS PMS",
     RETAIL: "🛒 ECOS Savdo & POS",
-    FACEID: "📹 Face ID & Davomat",
+    FACEID: "📷 Face ID & Davomat",
     CUSTOM: "⚙️ Maxsus Dasturiy Ta'minot",
     ERP: "🏢 ERP & CRM Tizimlari",
-    SMART_HOTEL: "📹 Smart IoT & Face ID",
-    NETWORK: "🛡 Tarmoq Xavfsizligi & VPN",
+    SMART_HOTEL: "📷 Smart IoT & Face ID",
+    NETWORK: "🛡️ Tarmoq Xavfsizligi & VPN",
   };
 
   const dirName = directionMap[data.direction || ''] || data.direction || "Umumiy konsultatsiya";
   const now = new Date().toLocaleString('uz-UZ', { timeZone: 'Asia/Tashkent' });
 
+  const escapeHtml = (str: string) =>
+    str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+  const cleanName = escapeHtml(data.fullName.trim());
+  const cleanPhone = escapeHtml(data.phone.trim());
+  const cleanDir = escapeHtml(dirName);
+  const cleanMsg = data.message ? escapeHtml(data.message.trim()) : '';
+  const cleanSource = escapeHtml(data.source || 'ecos.uz bosh sahifa');
+
   const text = 
 `🔔 <b>YANGI ARIZA — ECOS.UZ SAYTIDAN!</b>
 ━━━━━━━━━━━━━━━━━━
-👤 <b>Mijoz:</b> ${data.fullName}
-📞 <b>Telefon:</b> ${data.phone}
-🎯 <b>Yo'nalish:</b> ${dirName}
-${data.message ? `💬 <b>Izoh / Xabar:</b> ${data.message}\n` : ''}📍 <b>Manba:</b> ${data.source || "ecos.uz bosh sahifa"}
+👤 <b>Mijoz:</b> ${cleanName}
+📞 <b>Telefon:</b> <code>${cleanPhone}</code>
+🎯 <b>Yo'nalish:</b> ${cleanDir}
+${cleanMsg ? `💬 <b>Izoh / Xabar:</b> ${cleanMsg}\n` : ''}📍 <b>Manba:</b> ${cleanSource}
 ⏰ <b>Vaqti:</b> ${now}
 ━━━━━━━━━━━━━━━━━━
 <i>Ushbu ariza ecos.uz saytidan to'g'ridan-to'g'ri qabul qilindi.</i>`;

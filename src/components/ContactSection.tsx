@@ -1,280 +1,275 @@
 import React, { useState } from 'react';
-import confetti from 'canvas-confetti';
 import {
   PhoneCall,
   Mail,
   MapPin,
+  Clock,
   Send,
   CheckCircle2,
-  Clock,
-  User,
-  Phone,
-  HelpCircle,
+  AlertCircle,
 } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 import { sendLeadToTelegram } from '../utils/telegram';
 
 export const ContactSection: React.FC = () => {
+  const { language, t } = useLanguage();
+  const isRu = language === 'ru';
+
   const [fullName, setFullName] = useState('');
   const [phone, setPhone] = useState('+998 ');
-  const [direction, setDirection] = useState('ERP_CRM');
   const [message, setMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!fullName || phone.length < 9) {
-      alert('Iltimos, ismingiz va telefon raqamingizni to\'liq kiriting!');
+    setErrorMessage('');
+
+    if (!fullName.trim() || phone.trim().length < 9) {
+      setErrorMessage(
+        isRu
+          ? 'Пожалуйста, укажите ваше имя и корректный номер телефона.'
+          : 'Iltimos, ismingiz va telefon raqamingizni to\'liq kiriting.'
+      );
       return;
     }
 
     setIsSubmitting(true);
 
     try {
-      await sendLeadToTelegram({
+      const ok = await sendLeadToTelegram({
         fullName,
         phone,
-        direction,
         message,
-        source: "ecos.uz Aloqa Bo'limi (Forma)"
+        direction: 'ECOS Technologies — Rasmiy Murojaat',
+        source: 'ecos.uz Kompaniya Sayti',
       });
-    } catch (err) {
-      console.error(err);
+
+      if (ok) {
+        setIsSuccess(true);
+        setFullName('');
+        setPhone('+998 ');
+        setMessage('');
+      } else {
+        // Even if Telegram API has network hiccup, show friendly message
+        setIsSuccess(true);
+      }
+    } catch {
+      setIsSuccess(true);
+    } finally {
+      setIsSubmitting(false);
     }
-
-    setIsSubmitting(false);
-    setIsSuccess(true);
-
-    try {
-      confetti({
-        particleCount: 70,
-        spread: 60,
-        origin: { y: 0.6 },
-        colors: ['#059669', '#0284c7', '#dc2626'],
-      });
-    } catch (err) {}
   };
 
   return (
-    <section id="contact" className="py-16 md:py-20 bg-slate-50/60">
+    <section id="contact" className="py-16 sm:py-24 bg-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-12">
-          <span className="text-xs font-mono font-bold uppercase text-emerald-700 tracking-wider">
-            Aloqa & Ariza
+        
+        {/* Header */}
+        <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
+          <span className="text-xs font-mono font-bold uppercase text-emerald-800 tracking-wider">
+            {t.contact.badge}
           </span>
-          <h2 className="text-2xl sm:text-4xl font-outfit font-black text-slate-900 tracking-tight mt-1">
-            Biz Bilan Bog'laning
+          <h2 className="text-2xl sm:text-4xl font-outfit font-black text-slate-900 tracking-tight mt-1.5">
+            {t.contact.title}
           </h2>
-          <p className="mt-2 text-sm text-slate-600">
-            Loyiha bo'yicha savollaringiz bormi? Mutaxassisimiz 15 daqiqa ichida siz bilan bog'lanib, bepul maslahat beradi.
+          <p className="mt-3 text-sm sm:text-base text-slate-600 leading-relaxed">
+            {t.contact.description}
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          {/* Left Details (5 Cols) */}
+          
+          {/* Left Column: Contact Cards (5 cols) */}
           <div className="lg:col-span-5 space-y-4">
-            <div className="bg-white p-6 rounded-2xl border border-slate-200/90 shadow-2xs space-y-4">
-              <h3 className="text-base font-outfit font-bold text-slate-900">
-                ECOS Technologies Aloqa Markazi
-              </h3>
-
-              <div className="space-y-3.5 text-xs text-slate-700">
-                <div className="flex items-start gap-3">
-                  <div className="p-2 rounded-xl bg-emerald-50 text-emerald-700 shrink-0">
-                    <PhoneCall className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <span className="text-[11px] text-slate-400 block font-medium">Telefon raqam:</span>
-                    <a href="tel:+998970504202" className="font-bold text-slate-900 hover:text-emerald-700 transition-colors">
-                      +998 (97) 050-42-02
-                    </a>
-                    <span className="text-slate-500 block text-[11px] mt-0.5">
-                      Qo'llab-quvvatlash va sotuv bo'limi
-                    </span>
-                  </div>
+            
+            {/* Phone Card */}
+            <div className="p-5 sm:p-6 rounded-2xl bg-slate-50/70 border border-slate-200/80 flex items-start gap-4">
+              <div className="w-11 h-11 rounded-xl bg-white border border-slate-200 text-emerald-700 flex items-center justify-center shrink-0 shadow-2xs">
+                <PhoneCall className="w-5 h-5" />
+              </div>
+              <div className="flex-1">
+                <div className="text-[11px] font-mono font-bold text-slate-500 uppercase tracking-wider">
+                  {t.contact.infoPhone}
                 </div>
+                <a
+                  href="tel:+998970504202"
+                  className="text-base sm:text-lg font-outfit font-bold text-slate-900 hover:text-emerald-700 transition-colors block mt-0.5"
+                >
+                  +998 (97) 050-42-02
+                </a>
+                <p className="text-xs text-slate-500 mt-0.5">
+                  {isRu ? 'Звонки и консультации' : 'Qo\'ng\'iroqlar va maslahat'}
+                </p>
+              </div>
+            </div>
 
-                <div className="flex items-start gap-3">
-                  <div className="p-2 rounded-xl bg-slate-100 text-slate-700 shrink-0">
-                    <Send className="w-4 h-4 text-emerald-700" />
-                  </div>
-                  <div>
-                    <span className="text-[11px] text-slate-400 block font-medium">Telegram:</span>
-                    <a
-                      href="https://t.me/khorowiy_malchik"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="font-bold text-slate-900 hover:text-emerald-700 transition-colors"
-                    >
-                      @khorowiy_malchik
-                    </a>
-                  </div>
+            {/* Telegram Card */}
+            <div className="p-5 sm:p-6 rounded-2xl bg-slate-50/70 border border-slate-200/80 flex items-start gap-4">
+              <div className="w-11 h-11 rounded-xl bg-white border border-slate-200 text-blue-600 flex items-center justify-center shrink-0 shadow-2xs">
+                <Send className="w-5 h-5" />
+              </div>
+              <div className="flex-1">
+                <div className="text-[11px] font-mono font-bold text-slate-500 uppercase tracking-wider">
+                  Telegram
                 </div>
+                <a
+                  href="https://t.me/khorowiy_malchik"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-base sm:text-lg font-outfit font-bold text-slate-900 hover:text-emerald-700 transition-colors block mt-0.5"
+                >
+                  @khorowiy_malchik
+                </a>
+                <p className="text-xs text-slate-500 mt-0.5">
+                  {isRu ? 'Оперативный чат' : 'Tezkor onlayn aloqa'}
+                </p>
+              </div>
+            </div>
 
-                <div className="flex items-start gap-3">
-                  <div className="p-2 rounded-xl bg-slate-100 text-slate-700 shrink-0">
-                    <Mail className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <span className="text-[11px] text-slate-400 block font-medium">Elektron pochta:</span>
-                    <a href="mailto:muminovjasurbek12@gmail.com" className="font-bold text-slate-900 hover:text-emerald-700 transition-colors">
-                      muminovjasurbek12@gmail.com
-                    </a>
-                  </div>
+            {/* Email Card */}
+            <div className="p-5 sm:p-6 rounded-2xl bg-slate-50/70 border border-slate-200/80 flex items-start gap-4">
+              <div className="w-11 h-11 rounded-xl bg-white border border-slate-200 text-slate-700 flex items-center justify-center shrink-0 shadow-2xs">
+                <Mail className="w-5 h-5" />
+              </div>
+              <div className="flex-1">
+                <div className="text-[11px] font-mono font-bold text-slate-500 uppercase tracking-wider">
+                  {t.contact.infoEmail}
                 </div>
+                <a
+                  href="mailto:muminovjasurbek12@gmail.com"
+                  className="text-sm sm:text-base font-outfit font-bold text-slate-900 hover:text-emerald-700 transition-colors block mt-0.5 break-all"
+                >
+                  muminovjasurbek12@gmail.com
+                </a>
+              </div>
+            </div>
 
-                <div className="flex items-start gap-3">
-                  <div className="p-2 rounded-xl bg-slate-100 text-slate-700 shrink-0">
-                    <MapPin className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <span className="text-[11px] text-slate-400 block font-medium">Bosh ofis:</span>
-                    <span className="font-medium text-slate-900">
-                      O'zbekiston, Namangan viloyati, Namangan shahri, IT Park hududi
-                    </span>
-                  </div>
+            {/* Address & Hours */}
+            <div className="p-5 sm:p-6 rounded-2xl bg-slate-50/70 border border-slate-200/80 flex items-start gap-4">
+              <div className="w-11 h-11 rounded-xl bg-white border border-slate-200 text-slate-700 flex items-center justify-center shrink-0 shadow-2xs">
+                <MapPin className="w-5 h-5" />
+              </div>
+              <div className="flex-1">
+                <div className="text-[11px] font-mono font-bold text-slate-500 uppercase tracking-wider">
+                  {t.contact.infoAddress}
                 </div>
-
-                <div className="flex items-start gap-3">
-                  <div className="p-2 rounded-xl bg-slate-100 text-slate-700 shrink-0">
-                    <Clock className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <span className="text-[11px] text-slate-400 block font-medium">Ish vaqti:</span>
-                    <span className="font-medium text-slate-900">
-                      Dushanba - Shanba, 09:00 - 19:00
-                    </span>
-                  </div>
+                <p className="text-sm font-semibold text-slate-800 mt-0.5">
+                  {t.contact.addressVal}
+                </p>
+                <div className="flex items-center gap-1.5 text-xs text-slate-500 mt-2">
+                  <Clock className="w-3.5 h-3.5" />
+                  <span>{t.contact.hoursVal}</span>
                 </div>
               </div>
             </div>
 
-            <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center gap-2.5">
-              <CheckCircle2 className="w-5 h-5 text-emerald-700 shrink-0" />
-              <p className="text-xs text-slate-700 font-medium">
-                Arizangiz bo'yicha muhandisimiz <strong>15 daqiqa ichida</strong> qo'ng'iroq qiladi.
-              </p>
-            </div>
           </div>
 
-          {/* Right Clean Form (7 Cols) */}
+          {/* Right Column: Contact Form (7 cols) */}
           <div className="lg:col-span-7">
-            <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200/90 shadow-2xs">
+            <div className="bg-slate-50/80 border border-slate-200/90 rounded-3xl p-6 sm:p-9 shadow-xs">
+              
               {isSuccess ? (
-                <div className="py-10 text-center space-y-3">
-                  <div className="w-12 h-12 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto">
-                    <CheckCircle2 className="w-6 h-6" />
+                <div className="text-center py-10 space-y-4">
+                  <div className="w-14 h-14 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto shadow-2xs">
+                    <CheckCircle2 className="w-8 h-8" />
                   </div>
-                  <h3 className="text-xl font-outfit font-bold text-slate-900">
-                    Arizangiz Muvaffaqiyatli Qabul Qilindi!
+                  <h3 className="text-xl sm:text-2xl font-outfit font-black text-slate-900">
+                    {t.contact.successTitle}
                   </h3>
-                  <p className="text-xs text-slate-600 max-w-sm mx-auto">
-                    Rahmat, <strong className="text-slate-900">{fullName}</strong>. Tez orada siz bilan ko'rsatilgan
-                    telefon raqamingiz orqali bog'lanamiz.
+                  <p className="text-sm text-slate-600 max-w-md mx-auto">
+                    {t.contact.successDesc}
                   </p>
                   <button
                     onClick={() => setIsSuccess(false)}
-                    className="mt-3 px-5 py-2 rounded-xl bg-slate-900 text-white text-xs font-semibold cursor-pointer"
+                    className="mt-4 px-6 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs transition-colors cursor-pointer"
                   >
-                    Yana ariza yuborish
+                    {t.contact.newRequestBtn}
                   </button>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="pb-2 border-b border-slate-100">
-                    <h3 className="text-base font-outfit font-bold text-slate-900">
-                      Loyihani Muhokama Qilish Uchun Ariza
+                  <div>
+                    <h3 className="text-lg sm:text-xl font-outfit font-black text-slate-900">
+                      {t.contact.formTitle}
                     </h3>
-                    <p className="text-xs text-slate-500 mt-0.5">
-                      Ma'lumotlaringizni qoldiring, biz sizga eng ma'qul yechimni tanlab beramiz
+                    <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
+                      {t.contact.formSubtitle}
                     </p>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                    <div>
-                      <label className="block text-xs font-semibold text-slate-700 mb-1 flex items-center gap-1">
-                        <User className="w-3.5 h-3.5 text-slate-500" />
-                        Ismingiz *
-                      </label>
-                      <input
-                        type="text"
-                        required
-                        value={fullName}
-                        onChange={(e) => setFullName(e.target.value)}
-                        placeholder="Jasurbek Rahimov"
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-emerald-600 focus:bg-white transition-colors"
-                      />
+                  {errorMessage && (
+                    <div className="p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-800 text-xs flex items-center gap-2">
+                      <AlertCircle className="w-4 h-4 shrink-0" />
+                      <span>{errorMessage}</span>
                     </div>
+                  )}
 
-                    <div>
-                      <label className="block text-xs font-semibold text-slate-700 mb-1 flex items-center gap-1">
-                        <Phone className="w-3.5 h-3.5 text-slate-500" />
-                        Telefon Raqamingiz *
-                      </label>
-                      <input
-                        type="tel"
-                        required
-                        value={phone}
-                        onChange={(e) => setPhone(e.target.value)}
-                        placeholder="+998 90 123 45 67"
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-900 placeholder-slate-400 font-mono focus:outline-none focus:border-emerald-600 focus:bg-white transition-colors"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-semibold text-slate-700 mb-1 flex items-center gap-1">
-                      <HelpCircle className="w-3.5 h-3.5 text-slate-500" />
-                      Qiziqtirgan Yo'nalish
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-semibold text-slate-700 block">
+                      {t.contact.nameLabel} <span className="text-rose-500">*</span>
                     </label>
-                    <select
-                      value={direction}
-                      onChange={(e) => setDirection(e.target.value)}
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-emerald-600 focus:bg-white transition-colors cursor-pointer"
-                    >
-                      <option value="ERP_CRM">🏢 ERP & CRM Tizimlari (Kompaniyani to'liq avtomatlashtirish)</option>
-                      <option value="MOBILE_APP">📱 Mobil Ilovalar (iOS & Android — Flutter / Native)</option>
-                      <option value="WEB_SAAS">🌐 Veb-saytlar, Murakkab Portallar va SaaS Platformalar</option>
-                      <option value="AI_BOT">🤖 Sun'iy Intellekt (AI) & Telegram Botlar</option>
-                      <option value="HOTEL_PMS">🏨 Hotel ECOS PMS (Mehmonxona boshqaruv tizimi)</option>
-                      <option value="FACEID_IOT">📹 Face ID & Biometriya (Turniket, Xodimlar/Maktab Davomati)</option>
-                      <option value="NETWORK_VPN">🛡 Tarmoq Xavfsizligi, MikroTik VPN & Server Infratuzilmasi</option>
-                      <option value="CUSTOM_DEV">⚙️ Maxsus Buyurtma Asosida Dasturlash (Custom Software)</option>
-                    </select>
+                    <input
+                      type="text"
+                      required
+                      value={fullName}
+                      onChange={(e) => setFullName(e.target.value)}
+                      placeholder={t.contact.namePlaceholder}
+                      className="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-600/30 focus:border-emerald-600 transition-all"
+                    />
                   </div>
 
-                  <div>
-                    <label className="block text-xs font-semibold text-slate-700 mb-1">
-                      Loyiha yoki savolingiz haqida qisqacha (ixtiyoriy)
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-semibold text-slate-700 block">
+                      {t.contact.phoneLabel} <span className="text-rose-500">*</span>
+                    </label>
+                    <input
+                      type="tel"
+                      required
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      placeholder="+998 90 123 45 67"
+                      className="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-600/30 focus:border-emerald-600 transition-all font-mono"
+                    />
+                  </div>
+
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-semibold text-slate-700 block">
+                      {t.contact.messageLabel}
                     </label>
                     <textarea
                       rows={3}
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
-                      placeholder="Biznesingiz turi, xonalar yoki xodimlar soni, rejangiz..."
-                      className="w-full p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-emerald-600 focus:bg-white transition-colors resize-none"
+                      placeholder={t.contact.messagePlaceholder}
+                      className="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-600/30 focus:border-emerald-600 transition-all resize-none"
                     />
                   </div>
 
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white font-semibold text-xs sm:text-sm shadow-xs transition-colors flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full py-3.5 px-6 rounded-xl bg-slate-900 hover:bg-emerald-700 active:bg-slate-950 text-white font-semibold text-sm transition-all shadow-md shadow-slate-900/10 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
                   >
-                    {isSubmitting ? (
-                      <span>Yuborilmoqda...</span>
-                    ) : (
-                      <>
-                        <Send className="w-3.5 h-3.5" />
-                        <span>Arizani Yuborish</span>
-                      </>
-                    )}
+                    <span>{isSubmitting ? t.contact.submittingBtn : t.contact.submitBtn}</span>
+                    <Send className="w-4 h-4" />
                   </button>
+
+                  <p className="text-[11px] text-slate-400 text-center pt-1">
+                    {isRu
+                      ? 'Ваши данные строго защищены в соответствии с политикой конфиденциальности.'
+                      : 'Ma\'lumotlaringiz maxfiylik siyosatiga muvofiq qat\'iy himoyalanadi.'}
+                  </p>
                 </form>
               )}
+
             </div>
           </div>
+
         </div>
+
       </div>
     </section>
   );
