@@ -11,9 +11,9 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        entryFileNames: () => `assets/app-[hash]-${Date.now()}.js`,
+        entryFileNames: () => `assets/bundle-[hash]-${Date.now()}.js`,
         chunkFileNames: () => `assets/chunk-[hash]-${Date.now()}.js`,
-        assetFileNames: () => `assets/style-[hash]-${Date.now()}.[ext]`,
+        assetFileNames: () => `assets/theme-[hash]-${Date.now()}.[ext]`,
       },
     },
   },
