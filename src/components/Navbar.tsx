@@ -85,7 +85,7 @@ export const Navbar: React.FC = () => {
                   <span className="font-outfit font-black text-xl tracking-tight text-slate-900">
                     ECOS
                   </span>
-                  <span className="text-[10px] font-mono font-bold uppercase px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-200">
+                  <span className="text-[10px] font-bold uppercase px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-200">
                     TECH
                   </span>
                 </div>
@@ -201,7 +201,7 @@ export const Navbar: React.FC = () => {
         <div className="fixed inset-0 z-40 md:hidden bg-slate-900/40 backdrop-blur-xs transition-opacity">
           <div className="fixed top-[65px] left-0 right-0 bottom-0 bg-white p-6 flex flex-col justify-between overflow-y-auto shadow-xl border-t border-slate-100 animate-in fade-in slide-in-from-top-2 duration-200">
             <div className="space-y-4">
-              <p className="text-[11px] font-mono font-bold uppercase tracking-wider text-slate-400">
+              <p className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
                 {language === 'ru' ? 'Навигация' : 'Bo\'limlar'}
               </p>
 

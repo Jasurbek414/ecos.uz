@@ -68,7 +68,7 @@ export const ContactSection: React.FC = () => {
         
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
-          <span className="text-xs font-mono font-bold uppercase text-emerald-800 tracking-wider">
+          <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-emerald-800 block">
             {t.contact.badge}
           </span>
           <h2 className="text-2xl sm:text-4xl font-outfit font-black text-slate-900 tracking-tight mt-1.5">
@@ -90,7 +90,7 @@ export const ContactSection: React.FC = () => {
                 <PhoneCall className="w-5 h-5" />
               </div>
               <div className="flex-1">
-                <div className="text-[11px] font-mono font-bold text-slate-500 uppercase tracking-wider">
+                <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">
                   {t.contact.infoPhone}
                 </div>
                 <a
@@ -111,7 +111,7 @@ export const ContactSection: React.FC = () => {
                 <Send className="w-5 h-5" />
               </div>
               <div className="flex-1">
-                <div className="text-[11px] font-mono font-bold text-slate-500 uppercase tracking-wider">
+                <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">
                   Telegram
                 </div>
                 <a
@@ -134,7 +134,7 @@ export const ContactSection: React.FC = () => {
                 <Mail className="w-5 h-5" />
               </div>
               <div className="flex-1">
-                <div className="text-[11px] font-mono font-bold text-slate-500 uppercase tracking-wider">
+                <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">
                   {t.contact.infoEmail}
                 </div>
                 <a
@@ -152,7 +152,7 @@ export const ContactSection: React.FC = () => {
                 <MapPin className="w-5 h-5" />
               </div>
               <div className="flex-1">
-                <div className="text-[11px] font-mono font-bold text-slate-500 uppercase tracking-wider">
+                <div className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">
                   {t.contact.infoAddress}
                 </div>
                 <p className="text-sm font-semibold text-slate-800 mt-0.5">
@@ -231,7 +231,7 @@ export const ContactSection: React.FC = () => {
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
                       placeholder="+998 90 123 45 67"
-                      className="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-600/30 focus:border-emerald-600 transition-all font-mono"
+                      className="w-full px-4 py-3 rounded-xl bg-white border border-slate-200 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-600/30 focus:border-emerald-600 transition-all"
                     />
                   </div>
 

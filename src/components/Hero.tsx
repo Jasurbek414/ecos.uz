@@ -43,10 +43,13 @@ export const Hero: React.FC = () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center space-y-6 sm:space-y-8">
           
-          {/* Corporate Badge */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100/90 border border-slate-200/90 text-[11px] sm:text-xs font-mono font-bold text-slate-700 shadow-2xs">
-            <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse" />
-            <span className="tracking-wide">{t.hero.badge}</span>
+          {/* Corporate Overline */}
+          <div className="flex items-center justify-center gap-3">
+            <span className="w-7 sm:w-10 h-px bg-emerald-600/40" />
+            <span className="text-xs sm:text-sm font-bold tracking-widest text-emerald-800 uppercase font-sans">
+              ECOS Technologies — {t.hero.badge}
+            </span>
+            <span className="w-7 sm:w-10 h-px bg-emerald-600/40" />
           </div>
 
           {/* Main Headline */}

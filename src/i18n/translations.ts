@@ -105,7 +105,7 @@ export const translations: Record<Language, Translations> = {
       callPhone: "+998 (97) 050-42-02",
     },
     hero: {
-      badge: "ECOS TECHNOLOGIES — AXBOROT VA SMART TIZIMLAR KOMPANIYASI",
+      badge: "Axborot Texnologiyalari va Smart Tizimlar",
       titlePart1: "Biznesingiz uchun mustahkam ",
       titleHighlight: "raqamli poydevor",
       titlePart2: " va zamonaviy texnologiyalar",
@@ -250,7 +250,7 @@ export const translations: Record<Language, Translations> = {
       callPhone: "+998 (97) 050-42-02",
     },
     hero: {
-      badge: "ECOS TECHNOLOGIES — КОМПАНИЯ ИНФОРМАЦИОННЫХ И SMART ТЕХНОЛОГИЙ",
+      badge: "Информационные и Smart Технологии",
       titlePart1: "Надежный ",
       titleHighlight: "цифровой фундамент",
       titlePart2: " и передовые технологии для вашего бизнеса",

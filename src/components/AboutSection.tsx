@@ -17,7 +17,7 @@ export const AboutSection: React.FC = () => {
           
           {/* Left Description Column (7 Cols) */}
           <div className="lg:col-span-7 space-y-5">
-            <span className="text-xs font-mono font-bold uppercase text-emerald-800 tracking-wider">
+            <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-emerald-800 block">
               {t.about.badge}
             </span>
 

@@ -18,7 +18,7 @@ export const ValuesSection: React.FC = () => {
         
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
-          <span className="text-xs font-mono font-bold uppercase text-emerald-800 tracking-wider">
+          <span className="text-xs sm:text-sm font-bold uppercase tracking-wider text-emerald-800 block">
             {t.values.badge}
           </span>
           <h2 className="text-2xl sm:text-4xl font-outfit font-black text-slate-900 tracking-tight mt-1.5">
