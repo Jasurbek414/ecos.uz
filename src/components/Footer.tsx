@@ -20,7 +20,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenModal }) => {
 
   return (
     <footer className="bg-[#060B08] text-gray-400 py-12 border-t border-emerald-950/40">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
           
           {/* Logo & Tagline */}
@@ -70,6 +70,12 @@ export const Footer: React.FC<FooterProps> = ({ onOpenModal }) => {
               onClick={onOpenModal}
               className="hover:text-emerald-400 transition-colors cursor-pointer"
             >
+              {t.nav.pricing}
+            </button>
+            <button
+              onClick={onOpenModal}
+              className="hover:text-emerald-400 transition-colors cursor-pointer"
+            >
               {t.nav.contact}
             </button>
           </nav>
@@ -78,7 +84,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenModal }) => {
           <div className="flex flex-col sm:flex-row items-center gap-6">
             <div className="flex items-center gap-3">
               <a
-                href="https://t.me/khorowiy_malchik"
+                href="https://t.me/ecos_uz"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-8 h-8 rounded-full bg-white/10 hover:bg-emerald-500/20 text-gray-300 hover:text-emerald-400 transition-all flex items-center justify-center border border-white/10"

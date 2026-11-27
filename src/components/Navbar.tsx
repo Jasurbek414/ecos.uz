@@ -46,7 +46,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenModal }) => {
     setActiveTab(id);
     setMobileMenuOpen(false);
 
-    if (id === 'contact') {
+    if (id === 'contact' || id === 'pricing') {
       onOpenModal();
       return;
     }

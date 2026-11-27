@@ -23,8 +23,8 @@ export const StatsBanner: React.FC = () => {
               return (
                 <div
                   key={idx}
-                  className={`flex items-center gap-3.5 ${
-                    idx !== 0 ? 'pt-4 md:pt-0 md:pl-6 lg:pl-8' : ''
+                  className={`flex items-center justify-start md:justify-center gap-3.5 ${
+                    idx !== 0 ? 'pt-4 md:pt-0 md:pl-4' : ''
                   }`}
                 >
                   <div className="w-11 h-11 rounded-xl bg-emerald-900/50 text-[#00d66c] flex items-center justify-center shrink-0 border border-emerald-800/50">

@@ -6,13 +6,13 @@ export const Preloader: React.FC = () => {
   const [fadeOut, setFadeOut] = useState(false);
 
   useEffect(() => {
-    const timer1 = setTimeout(() => setProgress(45), 100);
-    const timer2 = setTimeout(() => setProgress(85), 300);
+    const timer1 = setTimeout(() => setProgress(50), 60);
+    const timer2 = setTimeout(() => setProgress(90), 160);
     const timer3 = setTimeout(() => {
       setProgress(100);
       setFadeOut(true);
-    }, 600);
-    const timer4 = setTimeout(() => setLoading(false), 900);
+    }, 320);
+    const timer4 = setTimeout(() => setLoading(false), 520);
 
     return () => {
       clearTimeout(timer1);

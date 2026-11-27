@@ -27,7 +27,8 @@ export const WhyChooseUs: React.FC<WhyChooseUsProps> = ({ onOpenModal }) => {
   };
 
   return (
-    <section id="afzalliklar" className="pt-16 sm:pt-24 lg:pt-28 pb-16 sm:pb-24 bg-[#f8faf9] border-b border-slate-100">
+    <section id="afzalliklar" className="pt-16 sm:pt-24 lg:pt-28 pb-16 sm:pb-24 bg-[#f8faf9] border-b border-slate-100 relative">
+      <div id="biz-haqimizda" className="absolute -top-20" />
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           

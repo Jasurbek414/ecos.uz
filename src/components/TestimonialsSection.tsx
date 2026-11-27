@@ -52,22 +52,38 @@ export const TestimonialsSection: React.FC = () => {
               {t.testimonials.description}
             </p>
 
-            {/* Slider Navigation Buttons */}
-            <div className="flex items-center justify-center lg:justify-start gap-2 pt-3">
-              <button
-                onClick={handlePrev}
-                className="w-10 h-10 rounded-full border border-slate-300 hover:border-emerald-600 hover:text-emerald-700 bg-white text-slate-700 flex items-center justify-center transition-colors cursor-pointer shadow-2xs"
-                aria-label="Oldingi fikr"
-              >
-                <ChevronLeft className="w-5 h-5" />
-              </button>
-              <button
-                onClick={handleNext}
-                className="w-10 h-10 rounded-full border border-slate-300 hover:border-emerald-600 hover:text-emerald-700 bg-white text-slate-700 flex items-center justify-center transition-colors cursor-pointer shadow-2xs"
-                aria-label="Keyingi fikr"
-              >
-                <ChevronRight className="w-5 h-5" />
-              </button>
+            {/* Slider Navigation Buttons & Dots */}
+            <div className="flex items-center justify-center lg:justify-start gap-3 pt-3">
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={handlePrev}
+                  className="w-10 h-10 rounded-full border border-slate-300 hover:border-emerald-600 hover:text-emerald-700 bg-white text-slate-700 flex items-center justify-center transition-colors cursor-pointer shadow-2xs"
+                  aria-label="Oldingi fikr"
+                >
+                  <ChevronLeft className="w-5 h-5" />
+                </button>
+                <button
+                  onClick={handleNext}
+                  className="w-10 h-10 rounded-full border border-slate-300 hover:border-emerald-600 hover:text-emerald-700 bg-white text-slate-700 flex items-center justify-center transition-colors cursor-pointer shadow-2xs"
+                  aria-label="Keyingi fikr"
+                >
+                  <ChevronRight className="w-5 h-5" />
+                </button>
+              </div>
+
+              {/* Slide Counter / Indicators */}
+              <div className="flex items-center gap-1.5 pl-2">
+                {testimonialsList.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setCurrentIndex(i)}
+                    className={`h-2 rounded-full transition-all duration-300 ${
+                      currentIndex === i ? 'w-6 bg-[#00d66c]' : 'w-2 bg-slate-300 hover:bg-slate-400'
+                    }`}
+                    aria-label={`Slide ${i + 1}`}
+                  />
+                ))}
+              </div>
             </div>
           </div>
 

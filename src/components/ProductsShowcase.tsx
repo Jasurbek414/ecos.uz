@@ -64,12 +64,11 @@ export const ProductsShowcase: React.FC<ProductsShowcaseProps> = ({ onOpenModal 
                     className="bg-white rounded-2xl border border-slate-200/90 overflow-hidden shadow-xs hover:shadow-lg hover:border-emerald-300 transition-all duration-200 cursor-pointer group flex flex-col"
                   >
                     {/* Mockup Preview Area */}
-                    <div className="h-32 sm:h-28 bg-[#091510] flex items-center justify-center p-3 relative overflow-hidden">
-                      <div className="absolute inset-0 bg-emerald-500/10 filter blur-xl" />
+                    <div className="w-full bg-[#07130e] overflow-hidden flex items-center justify-center relative">
                       <img
                         src={item.img}
                         alt={item.name}
-                        className="max-h-full max-w-full object-contain relative z-10 transition-transform duration-300 group-hover:scale-105"
+                        className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105"
                       />
                     </div>
 

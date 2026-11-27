@@ -133,7 +133,7 @@ export const translations: Record<Language, Translations> = {
       items: [
         {
           name: "EcosHR",
-          desc: "Xodimlar nazorati va attendance",
+          desc: "Xodimlar nazorati va davomat",
           img: "/images/mockup-hr.png",
           icon: "users",
         },
@@ -145,7 +145,7 @@ export const translations: Record<Language, Translations> = {
         },
         {
           name: "EcosCRM",
-          desc: "Mijozlar bilan yanada yaqinroq bo'ling.",
+          desc: "Mijozlar bilan yanada yaqinroq bo'ling",
           img: "/images/mockup-crm.png",
           icon: "chart",
         },
@@ -175,7 +175,7 @@ export const translations: Record<Language, Translations> = {
     },
     footer: {
       slogan: "Innovatsiya. Imkoniyat. Rivojlanish.",
-      rights: "© 2026 ECOS. Barcha huquqlar himoyalangan.",
+      rights: "Barcha huquqlar himoyalangan.",
     },
     contactModal: {
       title: "ECOS bilan bog'lanish",
@@ -279,7 +279,7 @@ export const translations: Record<Language, Translations> = {
     },
     footer: {
       slogan: "Инновация. Возможность. Развитие.",
-      rights: "© 2026 ECOS. Все права защищены.",
+      rights: "Все права защищены.",
     },
     contactModal: {
       title: "Связаться с ECOS",
