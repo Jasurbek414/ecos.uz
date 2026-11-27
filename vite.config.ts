@@ -11,9 +11,9 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        entryFileNames: () => `assets/bundle-[hash]-${Date.now()}.js`,
-        chunkFileNames: () => `assets/chunk-[hash]-${Date.now()}.js`,
-        assetFileNames: () => `assets/theme-[hash]-${Date.now()}.[ext]`,
+        entryFileNames: () => `assets/ecos-app-[hash]-${Date.now()}.js`,
+        chunkFileNames: () => `assets/ecos-chunk-[hash]-${Date.now()}.js`,
+        assetFileNames: () => `assets/ecos-style-[hash]-${Date.now()}.[ext]`,
       },
     },
   },

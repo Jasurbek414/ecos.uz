@@ -10,10 +10,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
   const { t } = useLanguage();
 
   return (
-    <section className="relative pt-28 pb-20 sm:pt-36 sm:pb-28 lg:pb-32 bg-[#07130e] overflow-hidden">
-      {/* 1. Full High-Res Master Background (City Skyline + TV Tower + Laptop & Phone in 3D Space) */}
+    <section className="relative min-h-screen min-h-[100dvh] w-full flex flex-col justify-center pt-24 pb-28 sm:pt-28 sm:pb-36 lg:pb-40 bg-[#07130e] overflow-hidden">
+      {/* 1. Full High-Res Master Background Filling 100% of the Screen */}
       <div 
-        className="absolute inset-0 z-0 bg-no-repeat bg-cover bg-[center_right] sm:bg-[center_right_5%] pointer-events-none select-none transition-opacity duration-700"
+        className="absolute inset-0 z-0 bg-no-repeat bg-cover bg-[center_right] sm:bg-[center_right_5%] pointer-events-none select-none"
         style={{
           backgroundImage: `url('/images/hero-bg-master.webp')`,
         }}
@@ -25,10 +25,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
       <div className="absolute inset-0 z-0 bg-gradient-to-b from-[#07130e] via-transparent to-[#07130e] pointer-events-none" />
 
       {/* 3. Subtle Ambient Neon Lighting */}
-      <div className="absolute top-1/3 right-1/4 -z-0 w-[450px] h-[450px] bg-emerald-500/15 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/3 right-1/4 -z-0 w-[500px] h-[500px] bg-emerald-500/15 rounded-full blur-[150px] pointer-events-none" />
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center min-h-[380px] sm:min-h-[440px]">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full my-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center min-h-[380px] sm:min-h-[460px]">
           
           {/* Left Text Column (7 cols) */}
           <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
@@ -73,7 +73,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
               </button>
             </div>
 
-            {/* Mobile Devices Illustration (Visible only on smaller screens where background is hidden/cropped) */}
+            {/* Mobile Devices Illustration (Visible only on smaller screens where background is cropped) */}
             <div className="block lg:hidden pt-6">
               <img
                 src="/images/hero-devices-mobile.webp"
@@ -85,7 +85,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
           </div>
 
           {/* Right Spacer Column (5 cols) on desktop: lets the background 3D laptop & TV tower shine through naturally */}
-          <div className="hidden lg:block lg:col-span-5 h-full min-h-[420px]" />
+          <div className="hidden lg:block lg:col-span-5 h-full min-h-[460px]" />
 
         </div>
       </div>
