@@ -36,7 +36,7 @@ export const CtaBanner: React.FC<CtaBannerProps> = ({ onOpenModal }) => {
               <img
                 src={rocketImg}
                 alt="ECOS Rocket"
-                className="w-24 sm:w-28 h-auto object-contain drop-shadow-[0_10px_25px_rgba(0,214,108,0.4)] select-none shrink-0"
+                className="w-24 sm:w-28 h-auto object-contain mix-blend-screen drop-shadow-[0_10px_25px_rgba(0,214,108,0.4)] select-none shrink-0"
               />
 
               <div className="space-y-1.5">
