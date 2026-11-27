@@ -10,7 +10,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
   const { t } = useLanguage();
 
   return (
-    <section className="relative pt-28 pb-16 sm:pt-36 sm:pb-28 lg:pb-36 bg-[#07130e] overflow-hidden">
+    <section className="relative pt-28 pb-20 sm:pt-36 sm:pb-28 lg:pb-32 bg-[#07130e] overflow-hidden">
       {/* 1. Full High-Res Master Background (City Skyline + TV Tower + Laptop & Phone in 3D Space) */}
       <div 
         className="absolute inset-0 z-0 bg-no-repeat bg-cover bg-[center_right] sm:bg-[center_right_5%] pointer-events-none select-none transition-opacity duration-700"
