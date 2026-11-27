@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArrowRight, Play } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
-import heroDevicesImg from '../assets/hero-devices.png';
+import heroDevicesImg from '../assets/hero-devices.webp';
 
 interface HeroProps {
   onOpenModal: () => void;

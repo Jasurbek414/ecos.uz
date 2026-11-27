@@ -1,7 +1,7 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
-import rocketImg from '../assets/rocket.png';
+import rocketImg from '../assets/rocket.webp';
 
 interface CtaBannerProps {
   onOpenModal: () => void;
