@@ -1,27 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import {
-  Menu,
-  X,
-  Phone,
-  Send,
-  ArrowRight,
-} from 'lucide-react';
+import { Menu, X, ArrowRight } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
-export const Navbar: React.FC = () => {
+interface NavbarProps {
+  onOpenModal: () => void;
+}
+
+export const Navbar: React.FC<NavbarProps> = ({ onOpenModal }) => {
   const { language, setLanguage, t } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState('home');
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 12);
+      setIsScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Prevent background scroll when mobile menu is open
+  // Prevent background scroll on mobile menu open
   useEffect(() => {
     if (mobileMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -33,16 +32,30 @@ export const Navbar: React.FC = () => {
     };
   }, [mobileMenuOpen]);
 
-  const navLinks = [
-    { label: t.nav.about, href: '#about' },
-    { label: t.nav.competencies, href: '#competencies' },
-    { label: t.nav.values, href: '#values' },
-    { label: t.nav.contact, href: '#contact' },
+  const navItems = [
+    { id: 'home', label: t.nav.home, href: '#' },
+    { id: 'products', label: t.nav.products, href: '#mahsulotlar' },
+    { id: 'about', label: t.nav.about, href: '#biz-haqimizda' },
+    { id: 'advantages', label: t.nav.advantages, href: '#afzalliklar' },
+    { id: 'pricing', label: t.nav.pricing, href: '#narxlar' },
+    { id: 'contact', label: t.nav.contact, href: '#boglanish' },
   ];
 
-  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  const handleNavClick = (e: React.MouseEvent, id: string, href: string) => {
     e.preventDefault();
+    setActiveTab(id);
     setMobileMenuOpen(false);
+
+    if (id === 'contact') {
+      onOpenModal();
+      return;
+    }
+
+    if (href === '#') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
     const target = document.querySelector(href);
     if (target) {
       const topOffset = 80;
@@ -60,120 +73,122 @@ export const Navbar: React.FC = () => {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? 'bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-xs py-3'
-            : 'bg-white/90 backdrop-blur-sm py-4 border-b border-slate-100'
+            ? 'bg-[#06100b]/95 backdrop-blur-md border-b border-emerald-950/80 shadow-lg shadow-black/40 py-3'
+            : 'bg-[#07130e] py-4 sm:py-5 border-b border-emerald-950/40'
         }`}
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
-            {/* Logo & Brand */}
+            {/* Logo */}
             <a
               href="#"
-              onClick={(e) => {
-                e.preventDefault();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }}
-              className="flex items-center gap-3 group"
+              onClick={(e) => handleNavClick(e, 'home', '#')}
+              className="flex items-center gap-2.5 group"
             >
-              <img
-                src="/logo.png"
-                alt="ECOS Technologies"
-                className="w-10 h-10 rounded-xl object-cover shadow-2xs transition-transform duration-200 group-hover:scale-105"
-              />
-              <div>
-                <div className="flex items-center gap-1.5">
-                  <span className="font-outfit font-black text-xl tracking-tight text-slate-900">
-                    ECOS
-                  </span>
-                  <span className="text-[10px] font-bold uppercase px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-200">
-                    TECH
-                  </span>
-                </div>
-                <p className="text-[10px] font-medium text-slate-500 tracking-wider uppercase -mt-0.5">
-                  Technologies
-                </p>
+              {/* Isometric Green Hexagon Logo */}
+              <div className="w-8 h-8 relative flex items-center justify-center">
+                <svg
+                  viewBox="0 0 36 36"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-8 h-8 transition-transform duration-200 group-hover:scale-105"
+                >
+                  <path
+                    d="M18 2L32 10V26L18 34L4 26V10L18 2Z"
+                    stroke="#00d66c"
+                    strokeWidth="3.5"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M18 10L26 14.5V21.5L18 26L10 21.5V14.5L18 10Z"
+                    fill="#00d66c"
+                  />
+                </svg>
               </div>
+              <span className="font-outfit font-black text-2xl tracking-tight text-white">
+                ECOS
+              </span>
             </a>
 
-            {/* Desktop Nav Links */}
-            <nav className="hidden md:flex items-center gap-8">
-              {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  onClick={(e) => handleLinkClick(e, link.href)}
-                  className="text-sm font-semibold text-slate-600 hover:text-emerald-700 transition-colors"
-                >
-                  {link.label}
-                </a>
-              ))}
+            {/* Desktop Navigation Links */}
+            <nav className="hidden md:flex items-center gap-7 lg:gap-8 text-xs font-medium">
+              {navItems.map((item) => {
+                const isActive = activeTab === item.id;
+                return (
+                  <a
+                    key={item.id}
+                    href={item.href}
+                    onClick={(e) => handleNavClick(e, item.id, item.href)}
+                    className={`relative py-1 transition-colors ${
+                      isActive
+                        ? 'text-white font-bold'
+                        : 'text-slate-300 hover:text-white'
+                    }`}
+                  >
+                    <span>{item.label}</span>
+                    {isActive && (
+                      <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#00d66c] rounded-full animate-in fade-in duration-200" />
+                    )}
+                  </a>
+                );
+              })}
             </nav>
 
-            {/* Desktop Actions */}
-            <div className="hidden md:flex items-center gap-4">
-              {/* Language Switcher */}
-              <div className="flex items-center rounded-xl bg-slate-100 p-1 border border-slate-200/80 text-xs font-semibold">
+            {/* Right Action Button & Language Switcher */}
+            <div className="hidden sm:flex items-center gap-3">
+              {/* Language Switch */}
+              <div className="flex items-center rounded-full bg-slate-900/80 p-0.5 border border-slate-800 text-[11px] font-bold">
                 <button
                   onClick={() => setLanguage('uz')}
-                  className={`px-2.5 py-1 rounded-lg transition-all cursor-pointer ${
+                  className={`px-2 py-0.5 rounded-full transition-all cursor-pointer ${
                     language === 'uz'
-                      ? 'bg-white text-emerald-800 shadow-2xs font-bold'
-                      : 'text-slate-600 hover:text-slate-900'
+                      ? 'bg-[#00d66c] text-slate-950 font-black shadow-xs'
+                      : 'text-slate-400 hover:text-white'
                   }`}
                 >
-                  O'Z
+                  UZ
                 </button>
                 <button
                   onClick={() => setLanguage('ru')}
-                  className={`px-2.5 py-1 rounded-lg transition-all cursor-pointer ${
+                  className={`px-2 py-0.5 rounded-full transition-all cursor-pointer ${
                     language === 'ru'
-                      ? 'bg-white text-emerald-800 shadow-2xs font-bold'
-                      : 'text-slate-600 hover:text-slate-900'
+                      ? 'bg-[#00d66c] text-slate-950 font-black shadow-xs'
+                      : 'text-slate-400 hover:text-white'
                   }`}
                 >
                   RU
                 </button>
               </div>
 
-              {/* Direct Phone link */}
-              <a
-                href="tel:+998970504202"
-                className="hidden lg:flex items-center gap-2 text-xs font-semibold text-slate-700 hover:text-emerald-700 px-3 py-2 rounded-xl hover:bg-slate-50 transition-colors"
+              {/* Kirish Button */}
+              <button
+                onClick={onOpenModal}
+                className="bg-[#00d66c] hover:bg-[#00bf60] active:scale-95 text-slate-950 font-bold px-5 py-2 rounded-full text-xs flex items-center gap-1.5 transition-all shadow-md shadow-emerald-500/20 cursor-pointer"
               >
-                <Phone className="w-3.5 h-3.5 text-emerald-600" />
-                <span>+998 (97) 050-42-02</span>
-              </a>
-
-              {/* Contact Button */}
-              <a
-                href="#contact"
-                onClick={(e) => handleLinkClick(e, '#contact')}
-                className="px-4 py-2 rounded-xl bg-slate-900 hover:bg-emerald-700 text-white font-semibold text-xs transition-colors flex items-center gap-1.5 cursor-pointer shadow-xs"
-              >
-                <span>{t.nav.consultBtn}</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </a>
+                <span>{t.nav.loginBtn}</span>
+                <ArrowRight className="w-3.5 h-3.5 stroke-[2.5]" />
+              </button>
             </div>
 
-            {/* Mobile Controls (Language + Hamburger) */}
-            <div className="flex md:hidden items-center gap-2">
-              <div className="flex items-center rounded-lg bg-slate-100 p-0.5 border border-slate-200 text-xs font-bold">
+            {/* Mobile Controls */}
+            <div className="flex sm:hidden items-center gap-2">
+              <div className="flex items-center rounded-full bg-slate-900 p-0.5 border border-slate-800 text-[10px] font-bold">
                 <button
                   onClick={() => setLanguage('uz')}
-                  className={`px-2 py-1 rounded-md transition-all ${
+                  className={`px-1.5 py-0.5 rounded-full transition-all ${
                     language === 'uz'
-                      ? 'bg-white text-emerald-800 shadow-2xs'
-                      : 'text-slate-500'
+                      ? 'bg-[#00d66c] text-slate-950 font-bold'
+                      : 'text-slate-400'
                   }`}
                 >
-                  O'Z
+                  UZ
                 </button>
                 <button
                   onClick={() => setLanguage('ru')}
-                  className={`px-2 py-1 rounded-md transition-all ${
+                  className={`px-1.5 py-0.5 rounded-full transition-all ${
                     language === 'ru'
-                      ? 'bg-white text-emerald-800 shadow-2xs'
-                      : 'text-slate-500'
+                      ? 'bg-[#00d66c] text-slate-950 font-bold'
+                      : 'text-slate-400'
                   }`}
                 >
                   RU
@@ -182,63 +197,45 @@ export const Navbar: React.FC = () => {
 
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 transition-colors cursor-pointer"
-                aria-label={mobileMenuOpen ? 'Menyuni yopish' : 'Menyuni ochish'}
+                className="p-2 rounded-xl bg-slate-900 text-white border border-slate-800"
+                aria-label="Menyu"
               >
-                {mobileMenuOpen ? (
-                  <X className="w-5 h-5 text-slate-900" />
-                ) : (
-                  <Menu className="w-5 h-5 text-slate-900" />
-                )}
+                {mobileMenuOpen ? <X className="w-5 h-5 text-white" /> : <Menu className="w-5 h-5 text-white" />}
               </button>
             </div>
           </div>
         </div>
       </header>
 
-      {/* Mobile Menu Drawer */}
+      {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-40 md:hidden bg-slate-900/40 backdrop-blur-xs transition-opacity">
-          <div className="fixed top-[65px] left-0 right-0 bottom-0 bg-white p-6 flex flex-col justify-between overflow-y-auto shadow-xl border-t border-slate-100 animate-in fade-in slide-in-from-top-2 duration-200">
-            <div className="space-y-4">
-              <p className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
-                {language === 'ru' ? 'Навигация' : 'Bo\'limlar'}
-              </p>
+        <div className="fixed inset-0 z-40 sm:hidden bg-black/70 backdrop-blur-sm">
+          <div className="fixed top-[65px] left-0 right-0 bottom-0 bg-[#07130e] p-6 flex flex-col justify-between overflow-y-auto border-t border-emerald-950">
+            <nav className="flex flex-col space-y-2">
+              {navItems.map((item) => (
+                <a
+                  key={item.id}
+                  href={item.href}
+                  onClick={(e) => handleNavClick(e, item.id, item.href)}
+                  className="flex items-center justify-between p-3.5 rounded-xl bg-slate-900/60 text-slate-200 font-semibold text-sm border border-slate-800/60 hover:border-emerald-600/50"
+                >
+                  <span>{item.label}</span>
+                  <ArrowRight className="w-4 h-4 text-[#00d66c]" />
+                </a>
+              ))}
+            </nav>
 
-              <nav className="flex flex-col space-y-2">
-                {navLinks.map((link) => (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    onClick={(e) => handleLinkClick(e, link.href)}
-                    className="flex items-center justify-between p-3.5 rounded-xl bg-slate-50 hover:bg-emerald-50/60 text-slate-800 hover:text-emerald-800 font-semibold text-base transition-colors border border-slate-100"
-                  >
-                    <span>{link.label}</span>
-                    <ArrowRight className="w-4 h-4 text-slate-400" />
-                  </a>
-                ))}
-              </nav>
-            </div>
-
-            {/* Direct Quick Contact Buttons for Mobile */}
-            <div className="pt-6 border-t border-slate-100 space-y-3">
-              <a
-                href="tel:+998970504202"
-                className="w-full py-3.5 px-4 rounded-xl bg-emerald-600 active:bg-emerald-700 text-white font-semibold text-sm flex items-center justify-center gap-2.5 shadow-sm"
+            <div className="pt-6 border-t border-slate-800/80">
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  onOpenModal();
+                }}
+                className="w-full py-3.5 rounded-full bg-[#00d66c] text-slate-950 font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20"
               >
-                <Phone className="w-4 h-4" />
-                <span>+998 (97) 050-42-02</span>
-              </a>
-
-              <a
-                href="https://t.me/khorowiy_malchik"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full py-3.5 px-4 rounded-xl border border-slate-200 bg-slate-50 active:bg-slate-100 text-slate-800 font-semibold text-sm flex items-center justify-center gap-2.5"
-              >
-                <Send className="w-4 h-4 text-emerald-600" />
-                <span>Telegram: @khorowiy_malchik</span>
-              </a>
+                <span>{t.nav.loginBtn}</span>
+                <ArrowRight className="w-4 h-4 stroke-[2.5]" />
+              </button>
             </div>
           </div>
         </div>

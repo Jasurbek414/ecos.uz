@@ -2,387 +2,295 @@ export type Language = 'uz' | 'ru';
 
 export interface Translations {
   nav: {
+    home: string;
+    products: string;
     about: string;
-    competencies: string;
-    values: string;
+    advantages: string;
+    pricing: string;
     contact: string;
-    consultBtn: string;
-    callPhone: string;
+    loginBtn: string;
   };
   hero: {
     badge: string;
-    titlePart1: string;
     titleHighlight: string;
-    titlePart2: string;
+    titleSuffix: string;
     description: string;
-    contactBtn: string;
-    telegramBtn: string;
-    metric1Val: string;
-    metric1Label: string;
-    metric2Val: string;
-    metric2Label: string;
-    metric3Val: string;
-    metric3Label: string;
-    metric4Val: string;
-    metric4Label: string;
+    startBtn: string;
+    watchVideoBtn: string;
   };
-  about: {
-    badge: string;
-    title: string;
-    p1: string;
-    p2: string;
-    bullets: string[];
-    cardTitle: string;
-    cardSubtitle: string;
-    stat1Val: string;
-    stat1Label: string;
-    stat2Val: string;
-    stat2Label: string;
-    stat3Val: string;
-    stat3Label: string;
-    stat4Val: string;
-    stat4Label: string;
-  };
-  competencies: {
-    badge: string;
+  ecosystem: Array<{
+    name: string;
+    desc: string;
+    icon: string;
+  }>;
+  whyUs: {
+    tag: string;
     title: string;
     description: string;
+    aboutBtn: string;
     items: Array<{
       title: string;
-      description: string;
-      details: string[];
+      desc: string;
+      icon: string;
     }>;
   };
-  values: {
-    badge: string;
+  showcase: {
+    tag: string;
     title: string;
     description: string;
+    allBtn: string;
     items: Array<{
-      title: string;
-      description: string;
+      name: string;
+      desc: string;
+      img: string;
+      icon: string;
     }>;
   };
-  contact: {
-    badge: string;
+  stats: Array<{
+    val: string;
+    label: string;
+    icon: string;
+  }>;
+  testimonials: {
+    tag: string;
     title: string;
     description: string;
-    formTitle: string;
-    formSubtitle: string;
-    nameLabel: string;
+    quote: string;
+    author: string;
+    company: string;
+  };
+  cta: {
+    titlePrefix: string;
+    titleHighlight: string;
+    titleMiddle: string;
+    titleHighlight2: string;
+    subtitle: string;
+    startBtn: string;
+  };
+  footer: {
+    slogan: string;
+    rights: string;
+  };
+  contactModal: {
+    title: string;
+    subtitle: string;
     namePlaceholder: string;
-    phoneLabel: string;
-    messageLabel: string;
-    messagePlaceholder: string;
+    phonePlaceholder: string;
     submitBtn: string;
     submittingBtn: string;
     successTitle: string;
     successDesc: string;
-    newRequestBtn: string;
-    infoPhone: string;
-    infoEmail: string;
-    infoAddress: string;
-    infoHours: string;
-    addressVal: string;
-    hoursVal: string;
-    directCall: string;
-    directTelegram: string;
-  };
-  footer: {
-    desc: string;
-    rights: string;
-    address: string;
+    closeBtn: string;
   };
 }
 
 export const translations: Record<Language, Translations> = {
   uz: {
     nav: {
-      about: "Kompaniya haqida",
-      competencies: "Yo'nalishlar",
-      values: "Qadriyatlarimiz",
-      contact: "Aloqa",
-      consultBtn: "Bog'lanish",
-      callPhone: "+998 (97) 050-42-02",
+      home: "Bosh sahifa",
+      products: "Mahsulotlar",
+      about: "Biz haqimizda",
+      advantages: "Afzalliklar",
+      pricing: "Narxlar",
+      contact: "Bog'lanish",
+      loginBtn: "Kirish",
     },
     hero: {
-      badge: "Axborot Texnologiyalari va Smart Tizimlar",
-      titlePart1: "Biznesingiz uchun mustahkam ",
-      titleHighlight: "raqamli poydevor",
-      titlePart2: " va zamonaviy texnologiyalar",
-      description: "ECOS Technologies — korxonalar faoliyatini kompleks raqamlashtirish, muhandislik dasturiy ta'minoti, aqlli biometriya va xavfsiz tarmoq infratuzilmasini yaratuvchi texnologik kompaniya.",
-      contactBtn: "Hamkorlik uchun bog'lanish",
-      telegramBtn: "Telegram orqali yozish",
-      metric1Val: "5+ Yil",
-      metric1Label: "Muhandislik va ishlab chiqish tajribasi",
-      metric2Val: "99.9%",
-      metric2Label: "Server va tizimlar barqarorligi",
-      metric3Val: "100%",
-      metric3Label: "Rasmiy shartnoma va kafolat",
-      metric4Val: "24/7",
-      metric4Label: "Uzluksiz texnik ko'mak",
+      badge: "O'zbekistonda innovatsion IT yechimlar",
+      titleHighlight: "ECOS — ",
+      titleSuffix: "Bizning raqamli kelajagimiz!",
+      description: "Biznesingiz, ish jarayoningiz va kundalik hayotingiz uchun zamonaviy, qulay va ishonchli IT mahsulotlar.",
+      startBtn: "Boshlash",
+      watchVideoBtn: "Video ko'rish",
     },
-    about: {
-      badge: "Biz haqimizda",
-      title: "Zamonaviy biznes talablariga javob beradigan muhandislik madaniyati",
-      p1: "ECOS Technologies O'zbekiston bo'ylab korxona va tashkilotlarga zamonaviy axborot texnologiyalari, murakkab korporativ tizimlar hamda aqlli apparat yechimlarini yetkazib berishga ixtisoslashgan.",
-      p2: "Bizning maqsadimiz — mijozlarimizga tarqoq vositalar emas, balki yaxlit, o'zaro muvofiqlashtirilgan va yuqori ishonchlilikka ega tizimli yechimlarni taqdim etishdir. Loyihalashtirishdan boshlab to'liq ishga tushirish va xodimlarni o'qitishgacha barcha mas'uliyatni o'z zimmamizga olamiz.",
-      bullets: [
-        "100% rasmiy shartnoma va hisob-kitoblar",
-        "Ma'lumotlar maxfiyligi bo'yicha qat'iy kafolat (NDA)",
-        "Yuqori barqarorlikka ega shaxsiy server arxitekturasi",
-        "O'zbekiston bo'ylab operativ texnik ko'mak va servis",
+    ecosystem: [
+      { name: "EcosHR", desc: "Kadrlar boshqaruvi", icon: "users" },
+      { name: "EcosPOS", desc: "Savdo tizimi", icon: "cart" },
+      { name: "EcosCRM", desc: "Mijozlar boshqaruvi", icon: "chart" },
+      { name: "EcosVision", desc: "Kuzatuv va tahlil", icon: "eye" },
+      { name: "EcosChat", desc: "Onlayn chat", icon: "chat" },
+      { name: "EcosPhone", desc: "Aloqa tizimi", icon: "phone" },
+    ],
+    whyUs: {
+      tag: "Nega aynan ECOS?",
+      title: "Biz sizga ko'proq imkoniyat beramiz",
+      description: "ECOS — bu zamonaviy texnologiyalar, qulay interfeys va ishonchli xizmatdir.",
+      aboutBtn: "Biz haqimizda",
+      items: [
+        { title: "Tez va qulay", desc: "Barcha yechimlar maksimal tezlikda ishlaydi.", icon: "zap" },
+        { title: "Ishonchlilik", desc: "Ma'lumotlaringiz har doim himoyalangan.", icon: "shield" },
+        { title: "24/7 Texnik yordam", desc: "Har doim sizning xizmatingizda.", icon: "headset" },
+        { title: "Moslashuvchanlik", desc: "Biznesingizga mos yechimlar.", icon: "settings" },
+        { title: "Bulutli texnologiya", desc: "Har joydan kirish imkoniyati.", icon: "cloud" },
+        { title: "Rivojlanish", desc: "Doimiy yangilanish va yangi imkoniyatlar.", icon: "trending" },
       ],
-      cardTitle: "ECOS Technologies MCHJ",
-      cardSubtitle: "Texnologik tizimlar integratori",
-      stat1Val: "100+",
-      stat1Label: "Joriy etilgan korporativ tizimlar",
-      stat2Val: "50+",
-      stat2Label: "Doimiy korporativ mijozlar",
-      stat3Val: "99.9%",
-      stat3Label: "Tizimlar uptime ko'rsatkichi",
-      stat4Val: "1 Yil",
-      stat4Label: "To'liq kafolatli texnik servis",
     },
-    competencies: {
-      badge: "Asosiy yo'nalishlarimiz",
-      title: "Kompaniyamizning asosiy muhandislik kompetensiyalari",
-      description: "Biz biznesingizning turli bosqichlaridagi vazifalarni professional darajada hal qiluvchi 4 ta strategik yo'nalishda faoliyat yuritamiz.",
+    showcase: {
+      tag: "Bizning mahsulotlarimiz",
+      title: "Bitta ekotizim — bir nechta imkoniyat",
+      description: "ECOS mahsulotlari bilan biznesingizni avtomatlashtiring va rivojlantiring.",
+      allBtn: "Barcha mahsulotlar",
       items: [
         {
-          title: "Korporativ Dasturiy Ta'minot",
-          description: "Murakkab biznes jarayonlari, resurslar boshqaruvi (ERP), mijozlar bilan munosabatlar (CRM) va ichki tahliliy tizimlarni loyihalash hamda joriy qilish.",
-          details: [
-            "Modulli va kengayuvchan arxitektura",
-            "Mavjud buxgalteriya va davlat tizimlari bilan integratsiya",
-            "Xavfsiz va tezkor ma'lumotlar bazalari",
-          ],
+          name: "EcosHR",
+          desc: "Xodimlar nazorati va attendance",
+          img: "/images/mockup-hr.png",
+          icon: "users",
         },
         {
-          title: "Smart Uskunalar va Biometriya",
-          description: "Zamonaviy Face ID biometrik uskunalari, smart turniketlar, xodimlar davomati va xavfsizlik perimetrini boshqarish apparat majmualari.",
-          details: [
-            "Tiriklikni tekshiruvchi (Anti-spoofing) yuz skanerlari",
-            "Avtomatlashtirilgan davomat va kirish nazorati",
-            "Tarmoq bilan uzluksiz sinxronizatsiya",
-          ],
+          name: "EcosPOS",
+          desc: "Savdo jarayonini soddalashtiring",
+          img: "/images/mockup-pos.png",
+          icon: "cart",
         },
         {
-          title: "Sun'iy Intellekt va Jarayonlar Avtomatizatsiyasi",
-          description: "Muntazam inson aralashuvini talab qiladigan operatsiyalarni avtomatlashtirish, tahliliy modellar va aqlli yordamchi tizimlarni integratsiya qilish.",
-          details: [
-            "Ma'lumotlarni tahlil qilish va bashoratlash",
-            "24/7 ishlovchi aqlli mijozlar aloqa kanallari",
-            "Inson omilidagi xatoliklarni minimallashtirish",
-          ],
-        },
-        {
-          title: "Kiberxavfsizlik va Bulutli Infratuzilma",
-          description: "Korxona axborot resurslarini tashqi va ichki xatarlardan himoya qilish, shifrlangan korporativ tarmoqlar (VPN) va server barqarorligini ta'minlash.",
-          details: [
-            "Zero-Trust shifrlangan aloqa kanallari",
-            "Avtomatlashtirilgan ko'p bosqichli zaxira nusxalash (Backup)",
-            "DDoS va tarmoq hujumlaridan ishonchli himoya",
-          ],
+          name: "EcosCRM",
+          desc: "Mijozlar bilan yanada yaqinroq bo'ling.",
+          img: "/images/mockup-crm.png",
+          icon: "chart",
         },
       ],
     },
-    values: {
-      badge: "Qadriyatlarimiz",
-      title: "Hamkorlarimiz nima uchun bizga ishonishadi?",
-      description: "Bizning faoliyatimiz asosi — uzoq muddatli sheriklik, texnik mukammallik va so'zsiz javobgarlik tamoyillariga qurilgan.",
-      items: [
-        {
-          title: "Yaxlit Javobgarlik (Bitta jamoa)",
-          description: "Dasturiy ta'minot, apparat qurilmalari va tarmoq infratuzilmasiga to'liq bitta jamoa javob beradi. Bir-biriga ayb ag'darish holatlari mutlaqo bo'lmaydi.",
-        },
-        {
-          title: "Ma'lumotlar Daxlsizligi va Maxfiylik",
-          description: "Mijozlarimizning ichki tijoriy sirlari, moliyaviy ma'lumotlari va xodimlar ma'lumotlari xalqaro shifrlash standartlari hamda qat'iy NDA bilan himoyalangan.",
-        },
-        {
-          title: "Qonuniylik va Rasmiy Kafolat",
-          description: "Barcha loyihalar shartnoma asosida amalga oshiriladi. O'rnatilgan har bir tizim va dasturga 1 yillik rasmiy kafolat hamda bepul servis xizmati taqdim etiladi.",
-        },
-        {
-          title: "Doimiy Texnik Hamrohlik",
-          description: "Tizim topshirilgandan keyin ham jamoamiz xodimlarni o'qitish, yangilanishlarni kiritish va 24/7 yordam ko'rsatishda davom etadi.",
-        },
-      ],
+    stats: [
+      { val: "10+", label: "Muvaffaqiyatli loyiha", icon: "users" },
+      { val: "1000+", label: "Mamnun mijozlar", icon: "building" },
+      { val: "12", label: "Viloyat qamrovi", icon: "map" },
+      { val: "99%", label: "Mijozlar ishonchi", icon: "star" },
+    ],
+    testimonials: {
+      tag: "Mijozlarimiz fikri",
+      title: "Ular biz bilan mamnun",
+      description: "ECOS xizmatlari haqida mijozlarimiz nima deydi?",
+      quote: "ECOS bilan ishlash juda qulay! EcosPOS bizning savdo jarayonimizni ancha yengillashtirdi. Rahmat ECOS jamoasiga!",
+      author: "Azizbek Karimov",
+      company: 'Namangan, "SmartMarket" MChJ',
     },
-    contact: {
-      badge: "Aloqa va Hamkorlik",
-      title: "Biz bilan bog'laning",
-      description: "Biznesingizni yangi texnologik bosqichga olib chiqish bo'yicha maslahat olish yoki hamkorlik qilish uchun biz bilan to'g'ridan-to'g'ri bog'laning.",
-      formTitle: "Xabar yoki so'rov qoldiring",
-      formSubtitle: "Mutaxassislarimiz qisqa vaqt ichida siz bilan bog'lanib, kerakli ma'lumotlarni berishadi.",
-      nameLabel: "Ismingiz yoki Tashkilot nomi",
-      namePlaceholder: "Masalan: Jamshid Usmonov",
-      phoneLabel: "Telefon raqamingiz",
-      messageLabel: "Xabar yoki talablaringiz (ixtiyoriy)",
-      messagePlaceholder: "Sizni qiziqtirgan masalani qisqacha yozishingiz mumkin...",
-      submitBtn: "Xabarni yuborish",
-      submittingBtn: "Yuborilmoqda...",
-      successTitle: "Murojaatingiz qabul qilindi!",
-      successDesc: "Tez orada mutaxassisimiz ko'rsatilgan telefon raqami orqali siz bilan bog'lanadi.",
-      newRequestBtn: "Yana xabar yuborish",
-      infoPhone: "To'g'ridan-to'g'ri telefon",
-      infoEmail: "Rasmiy elektron pochta",
-      infoAddress: "Bosh ofis manzili",
-      infoHours: "Ish tartibi",
-      addressVal: "Namangan shahri, IT Park majmuasi",
-      hoursVal: "Dushanba — Shanba: 09:00 — 18:00",
-      directCall: "Qo'ng'iroq qilish",
-      directTelegram: "Telegram'da yozish",
+    cta: {
+      titlePrefix: "Bugundan boshlab ",
+      titleHighlight: "ECOS",
+      titleMiddle: " bilan kelajagingizni ",
+      titleHighlight2: "quring!",
+      subtitle: "Innovatsion yechimlar siz uchun!",
+      startBtn: "Boshlash",
     },
     footer: {
-      desc: "ECOS Technologies — korporativ dasturiy ta'minot, aqlli tizimlar va xavfsiz texnologik infratuzilma kompaniyasi.",
-      rights: "ECOS Technologies. Barcha huquqlar himoyalangan.",
-      address: "Namangan shahri, IT Park majmuasi",
+      slogan: "Innovatsiya. Imkoniyat. Rivojlanish.",
+      rights: "© 2026 ECOS. Barcha huquqlar himoyalangan.",
+    },
+    contactModal: {
+      title: "ECOS bilan bog'lanish",
+      subtitle: "Ma'lumotlaringizni qoldiring, mutaxassisimiz 10 daqiqa ichida siz bilan bog'lanadi.",
+      namePlaceholder: "Ismingiz yoki kompaniya nomi",
+      phonePlaceholder: "+998 90 123 45 67",
+      submitBtn: "Yuborish",
+      submittingBtn: "Yuborilmoqda...",
+      successTitle: "Murojaatingiz qabul qilindi!",
+      successDesc: "Tez orada mutaxassisimiz siz bilan bog'lanadi.",
+      closeBtn: "Yopish",
     },
   },
   ru: {
     nav: {
-      about: "О компании",
-      competencies: "Компетенции",
-      values: "Принципы",
+      home: "Главная",
+      products: "Продукты",
+      about: "О нас",
+      advantages: "Преимущества",
+      pricing: "Тарифы",
       contact: "Контакты",
-      consultBtn: "Связаться",
-      callPhone: "+998 (97) 050-42-02",
+      loginBtn: "Войти",
     },
     hero: {
-      badge: "Информационные и Smart Технологии",
-      titlePart1: "Надежный ",
-      titleHighlight: "цифровой фундамент",
-      titlePart2: " и передовые технологии для вашего бизнеса",
-      description: "ECOS Technologies — технологическая компания, специализирующаяся на комплексной цифровизации предприятий, разработке корпоративного ПО, биометрии и безопасной сетевой инфраструктуре.",
-      contactBtn: "Обсудить сотрудничество",
-      telegramBtn: "Написать в Telegram",
-      metric1Val: "5+ Лет",
-      metric1Label: "Опыта инженерной разработки",
-      metric2Val: "99.9%",
-      metric2Label: "Бесперебойность систем и серверов",
-      metric3Val: "100%",
-      metric3Label: "Официальный договор и гарантия",
-      metric4Val: "24/7",
-      metric4Label: "Постоянная техническая поддержка",
+      badge: "Инновационные IT-решения в Узбекистане",
+      titleHighlight: "ECOS — ",
+      titleSuffix: "Наше цифровое будущее!",
+      description: "Современные, удобные и надежные IT-продукты для вашего бизнеса, рабочих процессов и повседневной жизни.",
+      startBtn: "Начать",
+      watchVideoBtn: "Смотреть видео",
     },
-    about: {
-      badge: "О компании",
-      title: "Инженерная культура, отвечающая современным требованиям бизнеса",
-      p1: "ECOS Technologies специализируется на проектировании и внедрении высоконадежных информационных систем, корпоративного программного обеспечения и интеллектуального оборудования по всему Узбекистану.",
-      p2: "Наша ключевая цель — предоставить партнерам не набор разрозненных инструментов, а целостную, согласованную и масштабируемую систему. Мы берем на себя полную ответственность: от проектирования до ввода в эксплуатацию и обучения сотрудников.",
-      bullets: [
-        "100% официальная деятельность по договору",
-        "Строгая конфиденциальность данных и соглашение NDA",
-        "Собственная отказоустойчивая серверная инфраструктура",
-        "Оперативное сервисное обслуживание по всему Узбекистану",
+    ecosystem: [
+      { name: "EcosHR", desc: "Управление кадрами", icon: "users" },
+      { name: "EcosPOS", desc: "Торговая система", icon: "cart" },
+      { name: "EcosCRM", desc: "Управление клиентами", icon: "chart" },
+      { name: "EcosVision", desc: "Мониторинг и анализ", icon: "eye" },
+      { name: "EcosChat", desc: "Онлайн-чат", icon: "chat" },
+      { name: "EcosPhone", desc: "Система связи", icon: "phone" },
+    ],
+    whyUs: {
+      tag: "Почему именно ECOS?",
+      title: "Мы даем вам больше возможностей",
+      description: "ECOS — это современные технологии, удобный интерфейс и надежный сервис.",
+      aboutBtn: "О нас",
+      items: [
+        { title: "Быстро и удобно", desc: "Все решения работают на максимальной скорости.", icon: "zap" },
+        { title: "Надежность", desc: "Ваши данные всегда надежно защищены.", icon: "shield" },
+        { title: "24/7 Поддержка", desc: "Всегда к вашим услугам без перерывов.", icon: "headset" },
+        { title: "Гибкость", desc: "Решения, адаптированные под ваш бизнес.", icon: "settings" },
+        { title: "Облачные технологии", desc: "Доступ из любой точки мира.", icon: "cloud" },
+        { title: "Развитие", desc: "Постоянные обновления и новые функции.", icon: "trending" },
       ],
-      cardTitle: "ООО ECOS Technologies",
-      cardSubtitle: "Интегратор технологических систем",
-      stat1Val: "100+",
-      stat1Label: "Реализованных корпоративных систем",
-      stat2Val: "50+",
-      stat2Label: "Постоянных корпоративных партнеров",
-      stat3Val: "99.9%",
-      stat3Label: "Показатель Uptime систем",
-      stat4Val: "1 Год",
-      stat4Label: "Полная гарантия и сервисная поддержка",
     },
-    competencies: {
-      badge: "Направления",
-      title: "Ключевые инженерные компетенции компании",
-      description: "Мы работаем в 4 стратегических направлениях, профессионально решая задачи бизнеса на каждом этапе его развития.",
+    showcase: {
+      tag: "Наши продукты",
+      title: "Единая экосистема — множество возможностей",
+      description: "Автоматизируйте и развивайте свой бизнес с решениями ECOS.",
+      allBtn: "Все продукты",
       items: [
         {
-          title: "Корпоративное Программное Обеспечение",
-          description: "Проектирование и внедрение ERP, CRM систем, платформ управления ресурсами, финансами и глубокой аналитикой.",
-          details: [
-            "Модульная масштабируемая архитектура",
-            "Интеграция с государственными и бухгалтерскими системами",
-            "Высокопроизводительные и защищенные базы данных",
-          ],
+          name: "EcosHR",
+          desc: "Контроль сотрудников и посещаемость",
+          img: "/images/mockup-hr.png",
+          icon: "users",
         },
         {
-          title: "Smart Оборудование и Биометрия",
-          description: "Интеллектуальные терминалы распознавания лиц (Face ID), турникеты, контроль рабочего времени и управление доступом.",
-          details: [
-            "Защита от подделок (Anti-spoofing) по живым лицам",
-            "Автоматизированный учет трудовой дисциплины",
-            "Бесшовная сетевая интеграция в корпоративную сеть",
-          ],
+          name: "EcosPOS",
+          desc: "Упростите процесс торговли и учета",
+          img: "/images/mockup-pos.png",
+          icon: "cart",
         },
         {
-          title: "Искусственный Интеллект и Автоматизация",
-          description: "Автоматизация рутинных процессов, внедрение прогнозных аналитических алгоритмов и интеллектуальных сервисов.",
-          details: [
-            "Анализ данных и автоматическая отчетность",
-            "Интеллектуальные каналы взаимодействия с клиентами 24/7",
-            "Сведение человеческого фактора к минимуму",
-          ],
-        },
-        {
-          title: "Кибербезопасность и Облачная Инфраструктура",
-          description: "Защита корпоративной информации от внешних и внутренних угроз, построение изолированных корпоративных VPN и отказоустойчивых серверов.",
-          details: [
-            "Шифрование данных и каналы Zero-Trust",
-            "Многоуровневое автоматическое резервное копирование",
-            "Надежная защита от DDoS и несанкционированного доступа",
-          ],
+          name: "EcosCRM",
+          desc: "Станьте ближе к вашим клиентам.",
+          img: "/images/mockup-crm.png",
+          icon: "chart",
         },
       ],
     },
-    values: {
-      badge: "Наши принципы",
-      title: "Почему нам доверяют корпоративные клиенты?",
-      description: "Фундамент нашей работы — долгосрочное партнерство, техническое качество и безусловная ответственность.",
-      items: [
-        {
-          title: "Единая Ответственность",
-          description: "За ПО, сетевую безопасность и оборудование отвечает одна команда инженеров. Полное отсутствие перекладывания ответственности.",
-        },
-        {
-          title: "Конфиденциальность и Безопасность",
-          description: "Коммерческая тайна, финансовые потоки и персональные данные клиентов защищены современными стандартами криптографии и строгим NDA.",
-        },
-        {
-          title: "Официальный Договор и Гарантия",
-          description: "Все взаиморасчеты и этапы работы строго формализованы. На все решения действует официальная гарантия 1 год и сервисное сопровождение.",
-        },
-        {
-          title: "Постоянная Техническая Поддержка",
-          description: "После ввода систем в эксплуатацию мы продолжаем поддерживать инфраструктуру, обучать персонал и оперативно внедрять обновления.",
-        },
-      ],
+    stats: [
+      { val: "10+", label: "Успешных проектов", icon: "users" },
+      { val: "1000+", label: "Довольных клиентов", icon: "building" },
+      { val: "12", label: "Регионов покрытия", icon: "map" },
+      { val: "99%", label: "Доверие клиентов", icon: "star" },
+    ],
+    testimonials: {
+      tag: "Отзывы клиентов",
+      title: "Они довольны сотрудничеством с нами",
+      description: "Что говорят наши клиенты о сервисах ECOS?",
+      quote: "Работать с ECOS невероятно удобно! EcosPOS значительно упростил наши торговые процессы. Спасибо команде ECOS!",
+      author: "Азизбек Каримов",
+      company: 'г. Наманган, ООО "SmartMarket"',
     },
-    contact: {
-      badge: "Связь и Сотрудничество",
-      title: "Свяжитесь с нами",
-      description: "Свяжитесь с нами напрямую, чтобы обсудить сотрудничество или получить экспертную консультацию для вашей компании.",
-      formTitle: "Оставить обращение или запрос",
-      formSubtitle: "Наши специалисты оперативно свяжутся с вами для уточнения деталей.",
-      nameLabel: "Ваше имя или название организации",
-      namePlaceholder: "Например: ООО Прогресс / Джамшид",
-      phoneLabel: "Номер телефона",
-      messageLabel: "Сообщение или задачи (необязательно)",
-      messagePlaceholder: "Кратко опишите сферу деятельности или ваши требования...",
-      submitBtn: "Отправить запрос",
-      submittingBtn: "Отправка...",
-      successTitle: "Ваш запрос успешно принят!",
-      successDesc: "Наш специалист свяжется с вами по указанному номеру телефона в ближайшее время.",
-      newRequestBtn: "Отправить еще запрос",
-      infoPhone: "Прямой телефон",
-      infoEmail: "Официальная почта",
-      infoAddress: "Адрес главного офиса",
-      infoHours: "График работы",
-      addressVal: "г. Наманган, комплекс IT Park",
-      hoursVal: "Понедельник — Суббота: 09:00 — 18:00",
-      directCall: "Позвонить",
-      directTelegram: "Написать в Telegram",
+    cta: {
+      titlePrefix: "Начните строить будущее с ",
+      titleHighlight: "ECOS",
+      titleMiddle: " уже ",
+      titleHighlight2: "сегодня!",
+      subtitle: "Инновационные решения для вашего успеха!",
+      startBtn: "Начать",
     },
     footer: {
-      desc: "ECOS Technologies — компания корпоративного ПО, интеллектуальных систем и безопасной технологической инфраструктуры.",
-      rights: "ECOS Technologies. Все права защищены.",
-      address: "г. Наманган, комплекс IT Park",
+      slogan: "Инновация. Возможность. Развитие.",
+      rights: "© 2026 ECOS. Все права защищены.",
+    },
+    contactModal: {
+      title: "Связаться с ECOS",
+      subtitle: "Оставьте заявку, и наш специалист свяжется с вами в течение 10 минут.",
+      namePlaceholder: "Ваше имя или название компании",
+      phonePlaceholder: "+998 90 123 45 67",
+      submitBtn: "Отправить",
+      submittingBtn: "Отправка...",
+      successTitle: "Заявка успешно принята!",
+      successDesc: "Наш специалист свяжется с вами в ближайшее время.",
+      closeBtn: "Закрыть",
     },
   },
 };
