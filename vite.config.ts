@@ -2,8 +2,6 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 
-const buildTime = Date.now().toString(36);
-
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
@@ -13,9 +11,9 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        entryFileNames: `assets/app-[hash]-${buildTime}.js`,
-        chunkFileNames: `assets/chunk-[hash]-${buildTime}.js`,
-        assetFileNames: `assets/[name]-[hash]-${buildTime}.[ext]`,
+        entryFileNames: () => `assets/app-[hash]-${Date.now()}.js`,
+        chunkFileNames: () => `assets/chunk-[hash]-${Date.now()}.js`,
+        assetFileNames: () => `assets/style-[hash]-${Date.now()}.[ext]`,
       },
     },
   },
