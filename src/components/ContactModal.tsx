@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { X, CheckCircle2, Loader2, Send, Phone, ArrowRight } from 'lucide-react';
 import { sendLeadToTelegram } from '../utils/telegram';
 import { useLanguage } from '../context/LanguageContext';
@@ -21,6 +21,21 @@ export const ContactModal: React.FC<ContactModalProps> = ({
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
+
+  // Handle ESC key and prevent body scroll
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    if (isOpen) {
+      window.addEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'hidden';
+    }
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = '';
+    };
+  }, [isOpen, onClose]);
 
   if (!isOpen) return null;
 
@@ -69,9 +84,12 @@ export const ContactModal: React.FC<ContactModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm animate-fadeIn">
+    <div 
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fadeIn"
+      onClick={onClose}
+    >
       <div 
-        className="relative w-full max-w-md bg-[#0e1713] border border-emerald-500/25 rounded-3xl p-6 sm:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.8),0_0_40px_rgba(16,185,129,0.15)] text-white"
+        className="relative w-full max-w-md bg-[#0e1713] border border-emerald-500/30 rounded-3xl p-6 sm:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.8),0_0_50px_rgba(0,229,117,0.18)] text-white"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
@@ -84,7 +102,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
 
         {success ? (
           <div className="py-8 text-center flex flex-col items-center">
-            <div className="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mb-4">
+            <div className="w-16 h-16 rounded-full bg-emerald-500/20 text-[#00e575] flex items-center justify-center mb-4 shadow-[0_0_30px_rgba(0,229,117,0.3)]">
               <CheckCircle2 className="w-10 h-10" />
             </div>
             <h3 className="text-xl font-bold font-outfit text-white mb-2">
@@ -99,8 +117,8 @@ export const ContactModal: React.FC<ContactModalProps> = ({
         ) : (
           <>
             <div className="mb-6">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold mb-3">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[#00e575] text-xs font-semibold mb-3">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#00e575] animate-ping" />
                 ECOS Technologies
               </div>
               <h2 className="text-2xl font-bold font-outfit tracking-tight">
@@ -124,7 +142,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder={language === 'uz' ? 'Masalan: Jasurbek' : 'Например: Жасурбек'}
-                  className="w-full px-4 py-3 bg-[#15231c] border border-emerald-500/20 rounded-xl text-white text-sm focus:outline-none focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400 transition-all placeholder-gray-500"
+                  className="w-full px-4 py-3 bg-[#15231c] border border-emerald-500/20 rounded-xl text-white text-sm focus:outline-none focus:border-[#00e575] focus:ring-1 focus:ring-[#00e575] transition-all placeholder-gray-500"
                 />
               </div>
 
@@ -138,7 +156,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                   value={phone}
                   onChange={handlePhoneChange}
                   placeholder="+998 90 123 45 67"
-                  className="w-full px-4 py-3 bg-[#15231c] border border-emerald-500/20 rounded-xl text-white text-sm focus:outline-none focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400 transition-all placeholder-gray-500"
+                  className="w-full px-4 py-3 bg-[#15231c] border border-emerald-500/20 rounded-xl text-white text-sm focus:outline-none focus:border-[#00e575] focus:ring-1 focus:ring-[#00e575] transition-all placeholder-gray-500"
                 />
               </div>
 
@@ -149,7 +167,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                 <select
                   value={product}
                   onChange={(e) => setProduct(e.target.value)}
-                  className="w-full px-4 py-3 bg-[#15231c] border border-emerald-500/20 rounded-xl text-white text-sm focus:outline-none focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400 transition-all cursor-pointer"
+                  className="w-full px-4 py-3 bg-[#15231c] border border-emerald-500/20 rounded-xl text-white text-sm focus:outline-none focus:border-[#00e575] focus:ring-1 focus:ring-[#00e575] transition-all cursor-pointer"
                 >
                   <option value="ECOS Ekosistema">ECOS Ekosistema (Barcha yechimlar)</option>
                   <option value="EcosHR">EcosHR (Kadrlar va davomat)</option>
@@ -170,17 +188,17 @@ export const ContactModal: React.FC<ContactModalProps> = ({
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full mt-2 py-3.5 px-6 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-400 hover:from-emerald-400 hover:to-teal-300 text-[#07130e] font-bold text-sm flex items-center justify-center gap-2 transition-all shadow-[0_4px_20px_rgba(16,185,129,0.35)] cursor-pointer disabled:opacity-50"
+                className="w-full mt-2 py-3.5 px-6 rounded-xl bg-gradient-to-r from-emerald-500 to-[#00e575] hover:from-emerald-400 hover:to-[#00bf60] text-[#07130e] font-bold text-sm flex items-center justify-center gap-2 transition-all shadow-[0_4px_20px_rgba(0,229,117,0.35)] cursor-pointer disabled:opacity-50"
               >
                 {loading ? (
                   <>
-                    <Loader2 className="w-4 h-4 animate-spin" />
+                    <Loader2 className="w-4 h-4 animate-spin text-[#07130e]" />
                     <span>{language === 'uz' ? 'Yuborilmoqda...' : 'Отправка...'}</span>
                   </>
                 ) : (
                   <>
                     <span>{language === 'uz' ? 'Yuborish' : 'Отправить'}</span>
-                    <ArrowRight className="w-4 h-4" />
+                    <ArrowRight className="w-4 h-4 stroke-[2.5]" />
                   </>
                 )}
               </button>
@@ -189,16 +207,16 @@ export const ContactModal: React.FC<ContactModalProps> = ({
             <div className="mt-5 pt-4 border-t border-white/5 flex items-center justify-between text-xs text-gray-400">
               <a
                 href="tel:+998970504202"
-                className="flex items-center gap-1.5 hover:text-emerald-400 transition-colors"
+                className="flex items-center gap-1.5 hover:text-[#00e575] transition-colors"
               >
-                <Phone className="w-3.5 h-3.5 text-emerald-400" />
+                <Phone className="w-3.5 h-3.5 text-[#00e575]" />
                 <span>+998 (97) 050-42-02</span>
               </a>
               <a
                 href="https://t.me/khorowiy_malchik"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 hover:text-emerald-400 transition-colors text-emerald-400 font-medium"
+                className="flex items-center gap-1.5 hover:text-[#00e575] transition-colors text-[#00e575] font-medium"
               >
                 <Send className="w-3.5 h-3.5" />
                 <span>Telegram</span>

@@ -86,24 +86,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenModal }) => {
               className="flex items-center gap-2.5 group"
             >
               {/* Isometric Green Hexagon Logo */}
-              <div className="w-8 h-8 relative flex items-center justify-center">
-                <svg
-                  viewBox="0 0 36 36"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-8 h-8 transition-transform duration-200 group-hover:scale-105"
-                >
-                  <path
-                    d="M18 2L32 10V26L18 34L4 26V10L18 2Z"
-                    stroke="#00d66c"
-                    strokeWidth="3.5"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M18 10L26 14.5V21.5L18 26L10 21.5V14.5L18 10Z"
-                    fill="#00d66c"
-                  />
-                </svg>
+              <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center p-0.5 shadow-[0_0_15px_rgba(0,214,108,0.35)] group-hover:scale-105 transition-transform">
+                <div className="w-full h-full bg-[#07130e] rounded-[10px] flex items-center justify-center">
+                  <span className="font-outfit font-black text-xl text-[#00d66c]">e</span>
+                </div>
               </div>
               <span className="font-outfit font-black text-2xl tracking-tight text-white">
                 ECOS

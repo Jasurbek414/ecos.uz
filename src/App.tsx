@@ -10,6 +10,7 @@ import { TestimonialsSection } from './components/TestimonialsSection';
 import { CtaBanner } from './components/CtaBanner';
 import { Footer } from './components/Footer';
 import { ContactModal } from './components/ContactModal';
+import { Preloader } from './components/Preloader';
 
 function MainContent() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -30,6 +31,9 @@ function MainContent() {
 
   return (
     <div className="min-h-screen bg-white text-slate-900 flex flex-col font-sans selection:bg-[#00d66c] selection:text-[#07130e] antialiased">
+      {/* 0. Cyber Preloader */}
+      <Preloader />
+
       {/* 1. Header / Navbar */}
       <Navbar onOpenModal={() => handleOpenModal()} />
 
