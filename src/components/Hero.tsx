@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowRight, Play } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+import heroDevicesImg from '../assets/hero-devices.png';
 
 interface HeroProps {
   onOpenModal: () => void;
@@ -79,7 +80,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
           <div className="lg:col-span-5 flex items-center justify-center pt-6 lg:pt-0">
             <div className="relative w-full max-w-md lg:max-w-none flex items-center justify-center">
               <img
-                src="/images/hero-devices-v2.png"
+                src={heroDevicesImg}
                 alt="ECOS Ekosistema Mahsulotlari"
                 className="w-full h-auto object-contain drop-shadow-[0_20px_50px_rgba(0,214,108,0.3)] select-none pointer-events-none transform lg:scale-105 transition-transform duration-500 hover:scale-110"
               />
