@@ -213,7 +213,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                 <span>+998 (97) 050-42-02</span>
               </a>
               <a
-                href="https://t.me/khorowiy_malchik"
+                href="https://t.me/ecos_uz"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-1.5 hover:text-[#00e575] transition-colors text-[#00e575] font-medium"

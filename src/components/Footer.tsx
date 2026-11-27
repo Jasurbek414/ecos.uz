@@ -41,7 +41,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenModal }) => {
           </div>
 
           {/* Navigation links */}
-          <nav className="flex flex-wrap items-center justify-center gap-6 text-xs text-gray-300">
+          <nav className="flex flex-wrap items-center justify-center gap-4 sm:gap-5 md:gap-6 text-xs text-gray-300">
             <button
               onClick={() => scrollTo('home')}
               className="hover:text-emerald-400 transition-colors cursor-pointer"
