@@ -45,7 +45,7 @@ function MainContent() {
         </div>
 
         {/* 6 Products Ecosystem Bar */}
-        <div id="ekotizim">
+        <div id="ekotizim" className="bg-[#f8faf9]">
           <EcosystemBar onSelectProduct={(name) => handleOpenModal(name)} />
         </div>
 

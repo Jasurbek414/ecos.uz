@@ -55,9 +55,12 @@ export interface Translations {
     tag: string;
     title: string;
     description: string;
-    quote: string;
-    author: string;
-    company: string;
+    items: Array<{
+      quote: string;
+      author: string;
+      company: string;
+      avatar: string;
+    }>;
   };
   cta: {
     titlePrefix: string;
@@ -72,15 +75,20 @@ export interface Translations {
     rights: string;
   };
   contactModal: {
+    tag: string;
     title: string;
     subtitle: string;
+    nameLabel: string;
     namePlaceholder: string;
+    phoneLabel: string;
     phonePlaceholder: string;
+    productLabel: string;
     submitBtn: string;
     submittingBtn: string;
     successTitle: string;
     successDesc: string;
     closeBtn: string;
+    products: Array<{ value: string; label: string }>;
   };
 }
 
@@ -161,9 +169,20 @@ export const translations: Record<Language, Translations> = {
       tag: "Mijozlarimiz fikri",
       title: "Ular biz bilan mamnun",
       description: "ECOS xizmatlari haqida mijozlarimiz nima deydi?",
-      quote: "ECOS bilan ishlash juda qulay! EcosPOS bizning savdo jarayonimizni ancha yengillashtirdi. Rahmat ECOS jamoasiga!",
-      author: "Azizbek Karimov",
-      company: 'Namangan, "SmartMarket" MChJ',
+      items: [
+        {
+          quote: "ECOS bilan ishlash juda qulay! EcosPOS bizning savdo jarayonimizni ancha yengillashtirdi. Rahmat ECOS jamoasiga!",
+          author: "Azizbek Karimov",
+          company: 'Namangan, "SmartMarket" MChJ',
+          avatar: '/images/testimonial-avatar.png',
+        },
+        {
+          quote: "EcosCRM va EcosVision tizimlari korxonamizning barcha filiallaridagi hisobotlarni 100% bitta ekranda jamlab berdi. Ish samaradorligimiz 2 barobar oshdi!",
+          author: "Jasurbek Mo'minov",
+          company: 'Toshkent, "EcosHolding" MChJ',
+          avatar: '/images/testimonial-avatar.png',
+        },
+      ],
     },
     cta: {
       titlePrefix: "Bugundan boshlab ",
@@ -178,15 +197,28 @@ export const translations: Record<Language, Translations> = {
       rights: "Barcha huquqlar himoyalangan.",
     },
     contactModal: {
-      title: "ECOS bilan bog'lanish",
-      subtitle: "Ma'lumotlaringizni qoldiring, mutaxassisimiz 10 daqiqa ichida siz bilan bog'lanadi.",
-      namePlaceholder: "Ismingiz yoki kompaniya nomi",
+      tag: "ECOS Technologies",
+      title: "Bepul konsultatsiya oling",
+      subtitle: "Ma’lumotlaringizni qoldiring, 15 daqiqa ichida javob beramiz.",
+      nameLabel: "Ismingiz",
+      namePlaceholder: "Masalan: Jasurbek",
+      phoneLabel: "Telefon raqamingiz",
       phonePlaceholder: "+998 90 123 45 67",
+      productLabel: "Qiziqtirgan mahsulot",
       submitBtn: "Yuborish",
       submittingBtn: "Yuborilmoqda...",
-      successTitle: "Murojaatingiz qabul qilindi!",
-      successDesc: "Tez orada mutaxassisimiz siz bilan bog'lanadi.",
+      successTitle: "Arizangiz qabul qilindi!",
+      successDesc: "Mutaxassisimiz tez orada siz bilan bog‘lanadi.",
       closeBtn: "Yopish",
+      products: [
+        { value: "ECOS Ekosistema", label: "ECOS Ekosistema (Barcha yechimlar)" },
+        { value: "EcosHR", label: "EcosHR (Kadrlar va davomat)" },
+        { value: "EcosPOS", label: "EcosPOS (Savdo va kassa)" },
+        { value: "EcosCRM", label: "EcosCRM (Mijozlar boshqaruvi)" },
+        { value: "EcosVision", label: "EcosVision (Kuzatuv va Face ID)" },
+        { value: "EcosChat", label: "EcosChat (Onlayn muloqot)" },
+        { value: "EcosPhone", label: "EcosPhone (IP telefoniya)" },
+      ],
     },
   },
   ru: {
@@ -265,9 +297,20 @@ export const translations: Record<Language, Translations> = {
       tag: "Отзывы клиентов",
       title: "Они довольны сотрудничеством с нами",
       description: "Что говорят наши клиенты о сервисах ECOS?",
-      quote: "Работать с ECOS невероятно удобно! EcosPOS значительно упростил наши торговые процессы. Спасибо команде ECOS!",
-      author: "Азизбек Каримов",
-      company: 'г. Наманган, ООО "SmartMarket"',
+      items: [
+        {
+          quote: "Работать с ECOS невероятно удобно! EcosPOS значительно упростил наши торговые процессы. Спасибо команде ECOS!",
+          author: "Азизбек Каримов",
+          company: 'г. Наманган, ООО "SmartMarket"',
+          avatar: '/images/testimonial-avatar.png',
+        },
+        {
+          quote: "Системы EcosCRM и EcosVision объединили отчеты всех наших филиалов на едином дашборде. Эффективность работы выросла в два раза!",
+          author: "Жасурбек Муминов",
+          company: 'г. Ташкент, ООО "EcosHolding"',
+          avatar: '/images/testimonial-avatar.png',
+        },
+      ],
     },
     cta: {
       titlePrefix: "Начните строить будущее с ",
@@ -282,15 +325,28 @@ export const translations: Record<Language, Translations> = {
       rights: "Все права защищены.",
     },
     contactModal: {
-      title: "Связаться с ECOS",
-      subtitle: "Оставьте заявку, и наш специалист свяжется с вами в течение 10 минут.",
-      namePlaceholder: "Ваше имя или название компании",
+      tag: "ECOS Technologies",
+      title: "Получите бесплатную консультацию",
+      subtitle: "Оставьте данные, и мы свяжемся с вами в течение 15 минут.",
+      nameLabel: "Ваше имя",
+      namePlaceholder: "Например: Жасурбек",
+      phoneLabel: "Номер телефона",
       phonePlaceholder: "+998 90 123 45 67",
+      productLabel: "Интересующий продукт",
       submitBtn: "Отправить",
       submittingBtn: "Отправка...",
       successTitle: "Заявка успешно принята!",
       successDesc: "Наш специалист свяжется с вами в ближайшее время.",
       closeBtn: "Закрыть",
+      products: [
+        { value: "ECOS Ekosistema", label: "Экосистема ECOS (Все решения)" },
+        { value: "EcosHR", label: "EcosHR (Кадры и учет рабочего времени)" },
+        { value: "EcosPOS", label: "EcosPOS (Торговля и кассовый учет)" },
+        { value: "EcosCRM", label: "EcosCRM (Управление клиентами и продажи)" },
+        { value: "EcosVision", label: "EcosVision (Видеонаблюдение и Face ID)" },
+        { value: "EcosChat", label: "EcosChat (Онлайн-чат и коммуникация)" },
+        { value: "EcosPhone", label: "EcosPhone (IP-телефония и связь)" },
+      ],
     },
   },
 };

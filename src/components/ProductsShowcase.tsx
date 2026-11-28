@@ -22,14 +22,14 @@ export const ProductsShowcase: React.FC<ProductsShowcaseProps> = ({ onOpenModal 
   };
 
   return (
-    <section id="mahsulotlar" className="py-20 sm:py-28 bg-[#f8fafc] border-b border-slate-100">
+    <section id="mahsulotlar" className="py-20 sm:py-28 bg-white border-b border-slate-100">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center mb-10">
           
           {/* Left Title Column (5 cols) */}
           <div className="lg:col-span-5 space-y-3.5 text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-[#00a855] text-xs font-bold tracking-wide">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 border border-emerald-200/60 text-[#00a854] text-xs font-bold tracking-wide">
               <span className="w-1.5 h-1.5 rounded-full bg-[#00d66c]" />
               <span>{t.showcase.tag}</span>
             </div>

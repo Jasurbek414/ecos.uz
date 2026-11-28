@@ -6,21 +6,7 @@ export const TestimonialsSection: React.FC = () => {
   const { t } = useLanguage();
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const testimonialsList = [
-    {
-      quote: t.testimonials.quote,
-      author: t.testimonials.author,
-      company: t.testimonials.company,
-      avatar: '/images/testimonial-avatar.png',
-    },
-    {
-      quote:
-        "EcosCRM va EcosVision tizimlari korxonamizning barcha filiallaridagi hisobotlarni 100% bitta ekranda jamlab berdi. Ish samaradorligimiz 2 barobar oshdi!",
-      author: "Jasurbek Mo'minov",
-      company: 'Toshkent, "EcosHolding" MChJ',
-      avatar: '/images/testimonial-avatar.png',
-    },
-  ];
+  const testimonialsList = t.testimonials.items;
 
   const handlePrev = () => {
     setCurrentIndex((prev) => (prev === 0 ? testimonialsList.length - 1 : prev - 1));
@@ -30,7 +16,7 @@ export const TestimonialsSection: React.FC = () => {
     setCurrentIndex((prev) => (prev === testimonialsList.length - 1 ? 0 : prev + 1));
   };
 
-  const current = testimonialsList[currentIndex];
+  const current = testimonialsList[currentIndex] || testimonialsList[0];
 
   return (
     <section className="py-16 sm:py-24 bg-[#f8faf9] border-b border-slate-100">
@@ -38,9 +24,9 @@ export const TestimonialsSection: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           
           {/* Left Column (5 Cols) */}
-          <div className="lg:col-span-5 space-y-3 text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 text-xs font-bold text-[#00a854]">
-              <span className="w-4 h-0.5 bg-[#00d66c] rounded-full inline-block" />
+          <div className="lg:col-span-5 space-y-3.5 text-center lg:text-left">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 border border-emerald-200/60 text-[#00a854] text-xs font-bold tracking-wide">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#00d66c]" />
               <span>{t.testimonials.tag}</span>
             </div>
 

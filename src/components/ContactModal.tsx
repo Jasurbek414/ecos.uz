@@ -14,7 +14,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
   onClose,
   initialProduct = '',
 }) => {
-  const { language } = useLanguage();
+  const { language, t } = useLanguage();
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('+998 ');
   const [product, setProduct] = useState(initialProduct || 'ECOS Ekosistema');
@@ -106,12 +106,10 @@ export const ContactModal: React.FC<ContactModalProps> = ({
               <CheckCircle2 className="w-10 h-10" />
             </div>
             <h3 className="text-xl font-bold font-outfit text-white mb-2">
-              {language === 'uz' ? 'Arizangiz qabul qilindi!' : 'Заявка принята!'}
+              {t.contactModal.successTitle}
             </h3>
             <p className="text-sm text-gray-300">
-              {language === 'uz' 
-                ? 'Mutaxassisimiz tez orada siz bilan bog‘lanadi.' 
-                : 'Наш специалист свяжется с вами в ближайшее время.'}
+              {t.contactModal.successDesc}
             </p>
           </div>
         ) : (
@@ -119,63 +117,59 @@ export const ContactModal: React.FC<ContactModalProps> = ({
             <div className="mb-6">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[#00e575] text-xs font-semibold mb-3">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#00e575] animate-ping" />
-                ECOS Technologies
+                {t.contactModal.tag}
               </div>
               <h2 className="text-2xl font-bold font-outfit tracking-tight">
-                {language === 'uz' ? 'Bepul konsultatsiya oling' : 'Получите бесплатную консультацию'}
+                {t.contactModal.title}
               </h2>
               <p className="text-xs text-gray-400 mt-1">
-                {language === 'uz'
-                  ? 'Ma’lumotlaringizni qoldiring, 15 daqiqa ichida javob beramiz.'
-                  : 'Оставьте данные, и мы свяжемся с вами в течение 15 минут.'}
+                {t.contactModal.subtitle}
               </p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label className="block text-xs font-medium text-gray-300 mb-1.5">
-                  {language === 'uz' ? 'Ismingiz' : 'Ваше имя'}
+                  {t.contactModal.nameLabel}
                 </label>
                 <input
                   type="text"
                   required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  placeholder={language === 'uz' ? 'Masalan: Jasurbek' : 'Например: Жасурбек'}
+                  placeholder={t.contactModal.namePlaceholder}
                   className="w-full px-4 py-3 bg-[#15231c] border border-emerald-500/20 rounded-xl text-white text-sm focus:outline-none focus:border-[#00e575] focus:ring-1 focus:ring-[#00e575] transition-all placeholder-gray-500"
                 />
               </div>
 
               <div>
                 <label className="block text-xs font-medium text-gray-300 mb-1.5">
-                  {language === 'uz' ? 'Telefon raqamingiz' : 'Номер телефона'}
+                  {t.contactModal.phoneLabel}
                 </label>
                 <input
                   type="tel"
                   required
                   value={phone}
                   onChange={handlePhoneChange}
-                  placeholder="+998 90 123 45 67"
+                  placeholder={t.contactModal.phonePlaceholder}
                   className="w-full px-4 py-3 bg-[#15231c] border border-emerald-500/20 rounded-xl text-white text-sm focus:outline-none focus:border-[#00e575] focus:ring-1 focus:ring-[#00e575] transition-all placeholder-gray-500"
                 />
               </div>
 
               <div>
                 <label className="block text-xs font-medium text-gray-300 mb-1.5">
-                  {language === 'uz' ? 'Qiziqtirgan mahsulot' : 'Интересующий продукт'}
+                  {t.contactModal.productLabel}
                 </label>
                 <select
                   value={product}
                   onChange={(e) => setProduct(e.target.value)}
                   className="w-full px-4 py-3 bg-[#15231c] border border-emerald-500/20 rounded-xl text-white text-sm focus:outline-none focus:border-[#00e575] focus:ring-1 focus:ring-[#00e575] transition-all cursor-pointer"
                 >
-                  <option value="ECOS Ekosistema">ECOS Ekosistema (Barcha yechimlar)</option>
-                  <option value="EcosHR">EcosHR (Kadrlar va davomat)</option>
-                  <option value="EcosPOS">EcosPOS (Savdo va kassa)</option>
-                  <option value="EcosCRM">EcosCRM (Mijozlar boshqaruvi)</option>
-                  <option value="EcosVision">EcosVision (Kuzatuv va Face ID)</option>
-                  <option value="EcosChat">EcosChat (Onlayn muloqot)</option>
-                  <option value="EcosPhone">EcosPhone (IP telefoniya)</option>
+                  {t.contactModal.products.map((p) => (
+                    <option key={p.value} value={p.value}>
+                      {p.label}
+                    </option>
+                  ))}
                 </select>
               </div>
 
@@ -193,11 +187,11 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                 {loading ? (
                   <>
                     <Loader2 className="w-4 h-4 animate-spin text-[#07130e]" />
-                    <span>{language === 'uz' ? 'Yuborilmoqda...' : 'Отправка...'}</span>
+                    <span>{t.contactModal.submittingBtn}</span>
                   </>
                 ) : (
                   <>
-                    <span>{language === 'uz' ? 'Yuborish' : 'Отправить'}</span>
+                    <span>{t.contactModal.submitBtn}</span>
                     <ArrowRight className="w-4 h-4 stroke-[2.5]" />
                   </>
                 )}

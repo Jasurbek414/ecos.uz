@@ -34,8 +34,8 @@ export const WhyChooseUs: React.FC<WhyChooseUsProps> = ({ onOpenModal }) => {
           
           {/* Left Column (5 Cols) */}
           <div className="lg:col-span-5 space-y-4 text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 text-xs font-bold text-[#00a854]">
-              <span className="w-4 h-0.5 bg-[#00d66c] rounded-full inline-block" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 border border-emerald-200/60 text-[#00a854] text-xs font-bold tracking-wide">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#00d66c]" />
               <span>{t.whyUs.tag}</span>
             </div>
 
@@ -67,13 +67,13 @@ export const WhyChooseUs: React.FC<WhyChooseUsProps> = ({ onOpenModal }) => {
                 return (
                   <div
                     key={idx}
-                    className="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200/80 shadow-xs hover:shadow-md hover:border-emerald-300 transition-all duration-200 flex flex-col justify-start"
+                    className="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200/80 shadow-xs hover:shadow-md hover:border-emerald-300 transition-all duration-200 flex flex-col justify-start group"
                   >
-                    <div className="w-9 h-9 rounded-xl bg-emerald-50 text-[#00d66c] flex items-center justify-center mb-3">
-                      <Icon className="w-5 h-5 stroke-[2.5]" />
+                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#ebfcf3] to-[#d4fae8] border border-emerald-400/25 text-[#00c961] flex items-center justify-center mb-3 group-hover:from-[#00e575] group-hover:to-[#00b85b] group-hover:text-slate-950 group-hover:scale-105 transition-all duration-300 shadow-xs">
+                      <Icon className="w-5 h-5 stroke-[2.2]" />
                     </div>
 
-                    <h3 className="font-outfit font-bold text-sm text-slate-900 mb-1">
+                    <h3 className="font-outfit font-bold text-sm text-slate-900 mb-1 group-hover:text-emerald-600 transition-colors">
                       {item.title}
                     </h3>
 
