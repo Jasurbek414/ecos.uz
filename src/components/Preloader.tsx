@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import ecosLogoMark from '../assets/ecos-logo-mark.png';
 
 export const Preloader: React.FC = () => {
   const [loading, setLoading] = useState(true);
@@ -43,20 +44,12 @@ export const Preloader: React.FC = () => {
         <div className="absolute inset-2 rounded-full border-2 border-teal-500/10 border-b-[#00e575] border-l-[#00e575]/40 animate-spin [animation-direction:reverse] [animation-duration:1.6s]" />
 
         {/* Central Glowing ECOS Hexagon Emblem */}
-        <div className="relative w-11 h-11 rounded-xl bg-gradient-to-br from-emerald-400/30 to-[#00e575]/10 border border-[#00e575]/40 flex items-center justify-center shadow-[0_0_20px_rgba(0,229,117,0.35)] backdrop-blur-sm">
-          <svg
-            className="w-6 h-6 text-[#00e575] drop-shadow-[0_0_8px_rgba(0,229,117,0.8)]"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M12 2L2 7l10 5 10-5-10-5z" />
-            <path d="M2 17l10 5 10-5" />
-            <path d="M2 12l10 5 10-5" />
-          </svg>
+        <div className="relative w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-400/20 to-[#00e575]/10 border border-[#00e575]/40 flex items-center justify-center shadow-[0_0_20px_rgba(0,229,117,0.35)] backdrop-blur-sm p-1.5">
+          <img
+            src={ecosLogoMark}
+            alt="ECOS"
+            className="w-full h-full object-contain drop-shadow-[0_0_10px_rgba(0,229,117,0.8)]"
+          />
         </div>
       </div>
 

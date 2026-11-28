@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ArrowRight } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+import ecosLogoMark from '../assets/ecos-logo-mark.png';
 
 interface NavbarProps {
   onOpenModal: () => void;
@@ -83,15 +84,15 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenModal }) => {
             <a
               href="#"
               onClick={(e) => handleNavClick(e, 'home', '#')}
-              className="flex items-center gap-2.5 group"
+              className="flex items-center gap-3 group"
             >
-              {/* Isometric Green Hexagon Logo */}
-              <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center p-0.5 shadow-[0_0_15px_rgba(0,214,108,0.35)] group-hover:scale-105 transition-transform">
-                <div className="w-full h-full bg-[#07130e] rounded-[10px] flex items-center justify-center">
-                  <span className="font-outfit font-black text-xl text-[#00d66c]">e</span>
-                </div>
-              </div>
-              <span className="font-outfit font-black text-2xl tracking-tight text-white">
+              {/* Authentic ECOS Isometric Green Hexagon Emblem */}
+              <img
+                src={ecosLogoMark}
+                alt="ECOS"
+                className="w-8 h-8 sm:w-9 sm:h-9 object-contain drop-shadow-[0_0_15px_rgba(0,229,117,0.45)] group-hover:scale-105 transition-transform"
+              />
+              <span className="font-outfit font-black text-2xl tracking-tight text-white group-hover:text-white">
                 ECOS
               </span>
             </a>

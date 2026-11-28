@@ -1,6 +1,7 @@
 import React from 'react';
 import { Send } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+import ecosLogoMark from '../assets/ecos-logo-mark.png';
 
 interface FooterProps {
   onOpenModal?: () => void;
@@ -25,13 +26,13 @@ export const Footer: React.FC<FooterProps> = ({ onOpenModal }) => {
           
           {/* Logo & Tagline */}
           <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
-            <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-400 to-teal-600 flex items-center justify-center p-0.5 shadow-[0_0_15px_rgba(16,185,129,0.3)]">
-                <div className="w-full h-full bg-[#07130e] rounded-[10px] flex items-center justify-center">
-                  <span className="font-outfit font-black text-xl text-emerald-400">e</span>
-                </div>
-              </div>
-              <span className="font-outfit font-black text-2xl tracking-wider text-white">
+            <div className="flex items-center gap-3">
+              <img
+                src={ecosLogoMark}
+                alt="ECOS"
+                className="w-9 h-9 object-contain drop-shadow-[0_0_15px_rgba(0,229,117,0.4)]"
+              />
+              <span className="font-outfit font-black text-2xl tracking-tight text-white">
                 ECOS
               </span>
             </div>
