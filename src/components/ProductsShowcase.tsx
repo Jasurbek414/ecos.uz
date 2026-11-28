@@ -6,6 +6,9 @@ import {
   ArrowRight,
 } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+import mockupHr from '../assets/mockup-hr.webp';
+import mockupPos from '../assets/mockup-pos.webp';
+import mockupCrm from '../assets/mockup-crm.webp';
 
 interface ProductsShowcaseProps {
   onOpenModal: () => void;
@@ -14,10 +17,10 @@ interface ProductsShowcaseProps {
 export const ProductsShowcase: React.FC<ProductsShowcaseProps> = ({ onOpenModal }) => {
   const { t } = useLanguage();
 
-  const iconMap: Record<string, React.ElementType> = {
-    users: Users,
-    cart: ShoppingCart,
-    chart: TrendingUp,
+  const productAssets: Record<number, { img: string; icon: React.ElementType }> = {
+    0: { img: mockupHr, icon: Users },
+    1: { img: mockupPos, icon: ShoppingCart },
+    2: { img: mockupCrm, icon: TrendingUp },
   };
 
   return (
@@ -56,7 +59,8 @@ export const ProductsShowcase: React.FC<ProductsShowcaseProps> = ({ onOpenModal 
           <div className="lg:col-span-7">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-5">
               {t.showcase.items.map((item, idx) => {
-                const Icon = iconMap[item.icon] || Users;
+                const asset = productAssets[idx] || { img: mockupHr, icon: Users };
+                const Icon = asset.icon;
 
                 return (
                   <div
@@ -71,7 +75,7 @@ export const ProductsShowcase: React.FC<ProductsShowcaseProps> = ({ onOpenModal 
                       
                       {/* High-res Image container */}
                       <img
-                        src={item.img}
+                        src={asset.img}
                         alt={item.name}
                         className="w-full h-full object-cover rounded-lg sm:rounded-xl shadow-md shadow-black/40 transform group-hover:scale-105 transition-transform duration-500 select-none pointer-events-none"
                       />
