@@ -89,7 +89,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
       onClick={onClose}
     >
       <div 
-        className="relative w-full max-w-md bg-[#0e1713] border border-emerald-500/30 rounded-3xl p-6 sm:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.8),0_0_50px_rgba(0,229,117,0.18)] text-white"
+        className="relative w-full max-w-md max-h-[90vh] overflow-y-auto bg-[#0e1713] border border-emerald-500/30 rounded-3xl p-5 sm:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.8),0_0_50px_rgba(0,229,117,0.18)] text-white"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}

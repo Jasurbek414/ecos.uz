@@ -142,8 +142,8 @@ export const EcosystemBar: React.FC<EcosystemBarProps> = ({ onSelectProduct }) =
   };
 
   return (
-    <section className="relative -mt-14 sm:-mt-20 lg:-mt-24 z-30 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 lg:gap-4">
+    <section className="relative -mt-10 sm:-mt-16 lg:-mt-24 z-30 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5 sm:gap-3.5 lg:gap-4">
         {t.ecosystem.map((item, idx) => {
           const Icon = iconMap[item.icon] || HrIcon;
 
@@ -151,19 +151,19 @@ export const EcosystemBar: React.FC<EcosystemBarProps> = ({ onSelectProduct }) =
             <div
               key={idx}
               onClick={() => onSelectProduct?.(item.name)}
-              className="bg-white rounded-2xl sm:rounded-[22px] p-4 sm:p-5 border border-slate-100/90 shadow-[0_8px_24px_rgba(0,0,0,0.05)] hover:shadow-[0_16px_36px_rgba(0,214,108,0.18)] hover:border-emerald-300 hover:-translate-y-1.5 transition-all duration-300 cursor-pointer group flex flex-col justify-between min-h-[145px] sm:min-h-[160px]"
+              className="bg-white rounded-2xl sm:rounded-[22px] p-3.5 sm:p-4 lg:p-5 border border-slate-100/90 shadow-[0_6px_20px_rgba(0,0,0,0.04)] hover:shadow-[0_16px_36px_rgba(0,214,108,0.18)] hover:border-emerald-300 hover:-translate-y-1.5 transition-all duration-300 cursor-pointer group flex flex-col justify-between min-h-[135px] sm:min-h-[155px]"
             >
               {/* Top Custom Icon Badge */}
-              <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-[#ebfcf3] to-[#d4fae8] border border-emerald-400/25 text-[#00c961] flex items-center justify-center mb-3 sm:mb-4 shadow-xs group-hover:bg-gradient-to-br group-hover:from-[#00e575] group-hover:to-[#00b85b] group-hover:text-slate-950 group-hover:border-emerald-400 group-hover:scale-105 group-hover:shadow-[0_6px_20px_rgba(0,229,117,0.35)] transition-all duration-300">
-                <Icon className="w-5 h-5" />
+              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-gradient-to-br from-[#ebfcf3] to-[#d4fae8] border border-emerald-400/25 text-[#00c961] flex items-center justify-center mb-2.5 sm:mb-4 shadow-xs group-hover:bg-gradient-to-br group-hover:from-[#00e575] group-hover:to-[#00b85b] group-hover:text-slate-950 group-hover:border-emerald-400 group-hover:scale-105 group-hover:shadow-[0_6px_20px_rgba(0,229,117,0.35)] transition-all duration-300">
+                <Icon className="w-4.5 h-4.5 sm:w-5 sm:h-5" />
               </div>
 
               {/* Title & Description matching mockup */}
               <div>
-                <h3 className="font-outfit font-black text-sm sm:text-[15px] text-slate-900 group-hover:text-emerald-600 transition-colors tracking-tight leading-snug">
+                <h3 className="font-outfit font-black text-xs sm:text-sm lg:text-[15px] text-slate-900 group-hover:text-emerald-600 transition-colors tracking-tight leading-snug">
                   {item.name}
                 </h3>
-                <p className="text-[11px] sm:text-xs text-slate-500 mt-0.5 sm:mt-1 leading-snug font-normal">
+                <p className="text-[10px] sm:text-[11px] lg:text-xs text-slate-500 mt-0.5 sm:mt-1 leading-snug font-normal">
                   {item.desc}
                 </p>
               </div>
