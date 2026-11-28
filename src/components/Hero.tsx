@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Play } from 'lucide-react';
+import { Rocket, ArrowRight, Play } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import heroDevicesImg from '../assets/hero-devices.webp';
 
@@ -51,9 +51,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4 pt-1 sm:pt-2">
               <button
                 onClick={onOpenModal}
-                className="w-full sm:w-auto bg-[#00d66c] hover:bg-[#00bf60] active:scale-95 text-slate-950 font-bold px-7 py-3 sm:py-3.5 rounded-full text-sm flex items-center justify-center gap-2 transition-all shadow-lg shadow-emerald-500/30 cursor-pointer hover:shadow-emerald-500/50"
+                className="w-full sm:w-auto bg-[#00d66c] hover:bg-[#00bf60] active:scale-95 text-slate-950 font-bold px-7 py-3 sm:py-3.5 rounded-full text-sm flex items-center justify-center gap-2.5 transition-all shadow-lg shadow-emerald-500/30 cursor-pointer hover:shadow-emerald-500/50 group"
               >
-                <span>🚀 {t.hero.startBtn}</span>
+                <Rocket className="w-4 h-4 stroke-[2.3] text-slate-950 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform shrink-0" />
+                <span>{t.hero.startBtn}</span>
                 <ArrowRight className="w-4 h-4 stroke-[2.5]" />
               </button>
 
