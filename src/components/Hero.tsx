@@ -34,12 +34,6 @@ export const Hero: React.FC<HeroProps> = ({ onOpenModal }) => {
           {/* Left Text Column (7 cols on lg) */}
           <div className="lg:col-span-7 space-y-4 sm:space-y-6 text-center lg:text-left">
             
-            {/* Top Pill Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full bg-slate-900/90 border border-emerald-800/60 text-xs text-slate-200 shadow-sm backdrop-blur-md">
-              <span className="text-sm">🚀</span>
-              <span className="font-medium text-slate-300">{t.hero.badge}</span>
-            </div>
-
             {/* Headline matching mockup */}
             <h1 className="text-2xl xs:text-3xl sm:text-5xl lg:text-[46px] xl:text-[52px] font-outfit font-black tracking-tight text-white leading-[1.15] max-w-xl mx-auto lg:mx-0">
               <span className="text-[#00e575] drop-shadow-[0_0_25px_rgba(0,229,117,0.35)] block sm:inline">
