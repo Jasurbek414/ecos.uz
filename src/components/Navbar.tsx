@@ -97,8 +97,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenModal }) => {
               </span>
             </a>
 
-            {/* Desktop Navigation Links (>= md / 768px) */}
-            <nav className="hidden md:flex items-center gap-5 lg:gap-8 text-xs font-medium">
+            {/* Desktop Navigation Links (>= lg / 1024px) */}
+            <nav className="hidden lg:flex items-center gap-5 xl:gap-8 text-xs font-medium">
               {navItems.map((item) => {
                 const isActive = activeTab === item.id;
                 return (
@@ -121,8 +121,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenModal }) => {
               })}
             </nav>
 
-            {/* Desktop Action Button & Language Switcher (>= md / 768px) */}
-            <div className="hidden md:flex items-center gap-3 shrink-0">
+            {/* Desktop Action Button & Language Switcher (>= lg / 1024px) */}
+            <div className="hidden lg:flex items-center gap-3 shrink-0">
               {/* Language Switch */}
               <div className="flex items-center rounded-full bg-slate-900/80 p-0.5 border border-slate-800 text-[11px] font-bold">
                 <button
@@ -157,8 +157,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenModal }) => {
               </button>
             </div>
 
-            {/* Mobile Controls (< md / 768px): Language Switch + Hamburger */}
-            <div className="flex md:hidden items-center gap-2">
+            {/* Mobile Controls (< lg / 1024px): Language Switch + Hamburger */}
+            <div className="flex lg:hidden items-center gap-2">
               <div className="flex items-center rounded-full bg-slate-900 p-0.5 border border-slate-800 text-[10px] font-bold">
                 <button
                   onClick={() => setLanguage('uz')}
@@ -194,9 +194,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenModal }) => {
         </div>
       </header>
 
-      {/* Mobile Drawer (< md / 768px) */}
+      {/* Mobile Drawer (< lg / 1024px) */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-40 md:hidden bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
+        <div className="fixed inset-0 z-40 lg:hidden bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
           <div className="fixed top-[58px] sm:top-[65px] left-0 right-0 bottom-0 bg-[#07130e] p-5 sm:p-6 flex flex-col justify-between overflow-y-auto border-t border-emerald-950/80">
             <nav className="flex flex-col space-y-2">
               {navItems.map((item) => (

@@ -6,7 +6,7 @@ interface EcosystemBarProps {
 }
 
 /* 1. Custom High-Fidelity Duotone SVG Icons */
-const HrIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
+export const HrIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
   <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor">
     <path
       d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"
@@ -31,7 +31,7 @@ const HrIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
   </svg>
 );
 
-const PosIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
+export const PosIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
   <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor">
     <circle cx="8.5" cy="20.5" r="1.5" fill="currentColor" stroke="none" />
     <circle cx="18.5" cy="20.5" r="1.5" fill="currentColor" stroke="none" />
@@ -50,7 +50,7 @@ const PosIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
   </svg>
 );
 
-const CrmIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
+export const CrmIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
   <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor">
     <path
       d="M3 3v16a2 2 0 0 0 2 2h16"

@@ -1,11 +1,9 @@
 import React from 'react';
 import {
-  Users,
-  ShoppingCart,
-  TrendingUp,
   ArrowRight,
 } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+import { HrIcon, PosIcon, CrmIcon } from './EcosystemBar';
 import mockupHr from '../assets/mockup-hr.webp';
 import mockupPos from '../assets/mockup-pos.webp';
 import mockupCrm from '../assets/mockup-crm.webp';
@@ -18,9 +16,9 @@ export const ProductsShowcase: React.FC<ProductsShowcaseProps> = ({ onOpenModal 
   const { t } = useLanguage();
 
   const productAssets: Record<number, { img: string; icon: React.ElementType }> = {
-    0: { img: mockupHr, icon: Users },
-    1: { img: mockupPos, icon: ShoppingCart },
-    2: { img: mockupCrm, icon: TrendingUp },
+    0: { img: mockupHr, icon: HrIcon },
+    1: { img: mockupPos, icon: PosIcon },
+    2: { img: mockupCrm, icon: CrmIcon },
   };
 
   return (
@@ -59,7 +57,7 @@ export const ProductsShowcase: React.FC<ProductsShowcaseProps> = ({ onOpenModal 
           <div className="lg:col-span-7">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-5">
               {t.showcase.items.map((item, idx) => {
-                const asset = productAssets[idx] || { img: mockupHr, icon: Users };
+                const asset = productAssets[idx] || { img: mockupHr, icon: HrIcon };
                 const Icon = asset.icon;
 
                 return (
@@ -81,18 +79,16 @@ export const ProductsShowcase: React.FC<ProductsShowcaseProps> = ({ onOpenModal 
                       />
                     </div>
 
-                    {/* Card Description */}
-                    <div className="p-4 sm:p-4.5 bg-white flex-1 flex flex-col justify-between">
+                    {/* Card Description matching user reference */}
+                    <div className="p-4 sm:p-5 bg-white flex-1 flex flex-col justify-between">
                       <div>
                         <div className="flex items-center gap-2 mb-1.5">
-                          <div className="w-7 h-7 rounded-lg bg-[#ecfdf5] text-[#00d66c] flex items-center justify-center shrink-0 group-hover:bg-[#00d66c] group-hover:text-slate-950 transition-colors">
-                            <Icon className="w-3.5 h-3.5 stroke-[2.2]" />
-                          </div>
-                          <h3 className="font-outfit font-black text-sm sm:text-[15px] text-slate-900 group-hover:text-emerald-600 transition-colors tracking-tight">
+                          <Icon className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-[#00c961] shrink-0" />
+                          <h3 className="font-outfit font-black text-sm sm:text-base text-slate-900 group-hover:text-emerald-600 transition-colors tracking-tight">
                             {item.name}
                           </h3>
                         </div>
-                        <p className="text-[11px] sm:text-xs text-slate-500 leading-snug pl-9">
+                        <p className="text-xs text-slate-500 leading-snug">
                           {item.desc}
                         </p>
                       </div>
